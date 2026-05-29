@@ -19,3 +19,8 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
+
+# 本地开发规范（私有，不上传）
+CLAUDE.md
+templates/
+.obsidian/
