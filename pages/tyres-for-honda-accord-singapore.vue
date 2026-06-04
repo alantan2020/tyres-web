@@ -23,7 +23,8 @@ useHead({
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tyres.sgcarpass.com/' },
-          { '@type': 'ListItem', position: 2, name: 'Honda Accord Tyres Singapore', item: 'https://tyres.sgcarpass.com/tyres-for-honda-accord-singapore/' },
+          { '@type': 'ListItem', position: 2, name: 'Honda Tyres Singapore', item: 'https://tyres.sgcarpass.com/tyres-for-honda-singapore/' },
+          { '@type': 'ListItem', position: 3, name: 'Honda Accord Tyres Singapore', item: 'https://tyres.sgcarpass.com/tyres-for-honda-accord-singapore/' },
         ],
       }),
     },
@@ -172,6 +173,8 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
       <nav aria-label="breadcrumb" class="breadcrumb">
         <NuxtLink to="/">Home</NuxtLink>
         <span class="bc-sep">/</span>
+        <NuxtLink to="/tyres-for-honda-singapore/">Honda Tyres Singapore</NuxtLink>
+        <span class="bc-sep">/</span>
         <span>Honda Accord Tyres</span>
       </nav>
 
@@ -204,6 +207,16 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
           <span class="chip-label">From installed</span>
           <span class="chip-value chip-green">$120</span>
         </div>
+      </div>
+
+      <!-- Year-specific pages -->
+      <div class="year-nav">
+        <span class="year-nav-label">Browse by year:</span>
+        <NuxtLink to="/tyres-for-honda-accord-2021-singapore/" class="year-chip year-chip--live">2021</NuxtLink>
+        <span class="year-chip year-chip--dim">2020</span>
+        <span class="year-chip year-chip--dim">2022</span>
+        <span class="year-chip year-chip--dim">2023</span>
+        <span class="year-chip year-chip--dim">2019</span>
       </div>
 
       <a
@@ -788,6 +801,14 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 .chip-label { font-size: 0.5875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.28); }
 .chip-value { font-family: 'Chakra Petch', sans-serif; font-size: 1.125rem; font-weight: 700; color: white; }
 .chip-green { color: #22c55e; }
+
+/* Year Navigator */
+.year-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
+.year-nav-label { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.28); margin-right: 0.25rem; }
+.year-chip { font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.4); text-decoration: none; }
+.year-chip--live { border-color: var(--red); color: white; background: rgba(227,24,55,0.18); transition: background 0.15s; }
+.year-chip--live:hover { background: rgba(227,24,55,0.3); }
+.year-chip--dim { opacity: 0.35; cursor: default; }
 
 .wa-btn {
   display: inline-flex; align-items: center; gap: 0.625rem;
