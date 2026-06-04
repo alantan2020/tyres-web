@@ -529,7 +529,7 @@ function scoreLabelPos(score: number, i: number) {
                          :points="hexPoints(s)"
                          fill="none"
                          :stroke="s === 1 ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)'"
-                         :stroke-width="s === 1 ? '1.5' : '1'" />
+                         stroke-width="1" />
                 <line v-for="i in 6" :key="i"
                       :x1="CX" :y1="CY"
                       :x2="axisEnd(i-1).x" :y2="axisEnd(i-1).y"
@@ -547,8 +547,8 @@ function scoreLabelPos(score: number, i: number) {
                       :x="scoreLabelPos(s, i).x"
                       :y="scoreLabelPos(s, i).y"
                       class="score-val-label"
-                      font-size="9.5" font-weight="700"
-                      stroke="#09090B" stroke-width="3" paint-order="stroke fill"
+                      font-size="9.5" font-weight="400"
+                      stroke="#09090B" stroke-width="1" paint-order="stroke fill"
                       text-anchor="middle" dominant-baseline="middle"
                       font-family="Chakra Petch,sans-serif"
                       :fill="radar.stroke">{{ s }}</text>
