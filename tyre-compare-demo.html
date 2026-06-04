@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tyre Size Comparison</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0b0b10;
+      color: #cbd5e1;
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding: 44px 20px 60px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header h1 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #475569;
+    }
+
+    /* ── Input row ── */
+    .inputs {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .panel {
+      background: #12121a;
+      border: 1px solid #1e2030;
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-end;
+    }
+    .panel.p1 { border-top: 2px solid #3b82f6; }
+    .panel.p2 { border-top: 2px solid #f59e0b; }
+
+    .ptitle {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .p1 .ptitle { color: #3b82f6; }
+    .p2 .ptitle { color: #f59e0b; }
+
+    .fields { flex: 1; }
+    .fields-row {
+      display: flex;
+      gap: 10px;
+    }
+    .field { flex: 1; }
+    .field label {
+      display: block;
+      font-size: 0.6rem;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+    .field select {
+      width: 100%;
+      background: #0b0b10;
+      border: 1px solid #1e2030;
+      border-radius: 7px;
+      color: #e2e8f0;
+      padding: 8px 28px 8px 10px;
+      font-size: 0.85rem;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'%3E%3Cpath fill='%23475569' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      transition: border-color .15s;
+    }
+    .p1 .field select:focus { border-color: #3b82f6; }
+    .p2 .field select:focus { border-color: #f59e0b; }
+
+    .badge {
+      min-width: 100px;
+      text-align: right;
+    }
+    .badge .sz {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      line-height: 1.2;
+    }
+    .p1 .sz { color: #3b82f6; }
+    .p2 .sz { color: #f59e0b; }
+    .badge .dm {
+      font-size: 0.68rem;
+      color: #475569;
+      margin-top: 3px;
+    }
+
+    /* ── SVG ── */
+    .viz-wrap {
+      max-width: 760px;
+      margin: 0 auto 24px;
+      background: #0e0e17;
+      border: 1px solid #1e2030;
+      border-radius: 14px;
+      padding: 8px 0 0;
+      overflow: hidden;
+    }
+    #viz { width: 100%; display: block; }
+    .row-label {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      fill: #334155;
+    }
+
+    /* ── Stats ── */
+    .stats { max-width: 760px; margin: 0 auto; }
+    .stbl {
+      background: #12121a;
+      border: 1px solid #1e2030;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .srow {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr;
+      padding: 10px 22px;
+      border-bottom: 1px solid #1e2030;
+      align-items: center;
+    }
+    .srow:last-child { border-bottom: none; }
+    .srow.hdr {
+      background: #0d0d15;
+      padding: 7px 22px;
+    }
+    .srow.hdr span {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #2d3748;
+    }
+    .srow.hdr span:last-child { text-align: right; }
+    .srow.hdr span:nth-child(2) { text-align: center; }
+    .sv1 { font-size: .88rem; font-weight: 600; color: #3b82f6; }
+    .slbl {
+      font-size: .72rem;
+      color: #475569;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .sv2 { font-size: .88rem; font-weight: 600; color: #f59e0b; text-align: right; }
+    .sdiff { display: block; font-size: .62rem; color: #334155; margin-top: 1px; }
+    .sdiff.up   { color: #34d399; }
+    .sdiff.down { color: #f87171; }
+    .unit { font-size: .68rem; opacity: .5; }
+
+    .speedo-note {
+      max-width: 760px;
+      margin: 10px auto 0;
+      text-align: center;
+      font-size: .7rem;
+      color: #334155;
+    }
+    .speedo-note span { color: #94a3b8; }
+
+    @media (max-width: 560px) {
+      .inputs { grid-template-columns: 1fr; }
+      .panel { flex-direction: column; align-items: stretch; }
+      .badge { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<header><h1>Tyre Size Comparison</h1></header>
+
+<div class="inputs">
+  <div class="panel p1">
+    <div class="fields">
+      <div class="ptitle">Tyre 1</div>
+      <div class="fields-row">
+        <div class="field"><label>Width</label><select id="w1"></select></div>
+        <div class="field"><label>Ratio</label><select id="r1"></select></div>
+        <div class="field"><label>Rim</label><select id="d1"></select></div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="sz" id="lbl1">—</div>
+      <div class="dm" id="dm1">—</div>
+    </div>
+  </div>
+
+  <div class="panel p2">
+    <div class="fields">
+      <div class="ptitle">Tyre 2</div>
+      <div class="fields-row">
+        <div class="field"><label>Width</label><select id="w2"></select></div>
+        <div class="field"><label>Ratio</label><select id="r2"></select></div>
+        <div class="field"><label>Rim</label><select id="d2"></select></div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="sz" id="lbl2">—</div>
+      <div class="dm" id="dm2">—</div>
+    </div>
+  </div>
+</div>
+
+<div class="viz-wrap">
+  <svg id="viz" viewBox="0 0 760 560" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="stats">
+  <div class="stbl">
+    <div class="srow hdr">
+      <span>Tyre 1</span><span>Measurement</span><span>Tyre 2</span>
+    </div>
+    <div id="statrows"></div>
+  </div>
+</div>
+<div class="speedo-note" id="speedonote"></div>
+
+<script>
+const WIDTHS = [155,165,175,185,195,205,215,225,235,245,255,265,275,285,295,305,315,325];
+const RATIOS = [25,30,35,40,45,50,55,60,65,70,75,80];
+const RIMS   = [13,14,15,16,17,18,19,20,21,22];
+
+function fill(id, list, sel) {
+  const el = document.getElementById(id);
+  list.forEach(v => {
+    const o = document.createElement('option');
+    o.value = v; o.textContent = v;
+    if (v === sel) o.selected = true;
+    el.appendChild(o);
+  });
+}
+fill('w1', WIDTHS, 235); fill('r1', RATIOS, 40); fill('d1', RIMS, 18);
+fill('w2', WIDTHS, 205); fill('r2', RATIOS, 55); fill('d2', RIMS, 16);
+
+function calc(w, r, d) {
+  const sidewall  = w * r / 100;
+  const rimMM     = d * 25.4;
+  const outerDiam = rimMM + 2 * sidewall;
+  return { w, r, d, sidewall, rimMM, outerDiam, circumf: Math.PI * outerDiam };
+}
+
+// SVG: 760×560, two rows — top: rolling circles, bottom: tyre profile cross-sections
+const VW = 760;
+const GROUND1 = 268;   // ground line for circles
+const GROUND2 = 530;   // ground line for profiles
+const MAX_R   = 118;   // px max radius for circles
+const C1 = '#3b82f6', C2 = '#f59e0b';
+const CX1 = 190, CX2 = 570;
+
+// Radial gradient donut fill (transparent inside rim, color in tyre band)
+function donutDefs(id, rimFrac, color) {
+  const p = (rimFrac * 100).toFixed(1);
+  return `<radialGradient id="${id}" cx="50%" cy="50%" r="50%">
+    <stop offset="0%"    stop-color="${color}" stop-opacity="0"/>
+    <stop offset="${p}%" stop-color="${color}" stop-opacity="0"/>
+    <stop offset="${p}%" stop-color="${color}" stop-opacity="0.22"/>
+    <stop offset="100%"  stop-color="${color}" stop-opacity="0.10"/>
+  </radialGradient>`;
+}
+
+// Linear gradient for profile cross-section (brighter on outer tread)
+function profileDefs(id, color) {
+  return `<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%"   stop-color="${color}" stop-opacity="0.30"/>
+    <stop offset="60%"  stop-color="${color}" stop-opacity="0.15"/>
+    <stop offset="100%" stop-color="${color}" stop-opacity="0.06"/>
+  </linearGradient>`;
+}
+
+// Rounded-rect path (top corners rounded only, for tyre profile shape)
+function profilePath(cx, bY, w, h) {
+  const r = Math.min(w * 0.12, h * 0.45, 22);
+  const x = cx - w / 2, tY = bY - h;
+  return `M ${x+r},${bY} L ${x+w-r},${bY}` +
+         ` Q ${x+w},${bY} ${x+w},${bY-r}` +
+         ` L ${x+w},${tY+r}` +
+         ` Q ${x+w},${tY} ${x+w-r},${tY}` +
+         ` L ${x+r},${tY}` +
+         ` Q ${x},${tY} ${x},${tY+r}` +
+         ` L ${x},${bY-r}` +
+         ` Q ${x},${bY} ${x+r},${bY} Z`;
+}
+
+function render() {
+  const t1 = calc(+w1.value, +r1.value, +d1.value);
+  const t2 = calc(+w2.value, +r2.value, +d2.value);
+  const maxOD = Math.max(t1.outerDiam, t2.outerDiam);
+  const sc    = (MAX_R * 2) / maxOD;   // one shared scale for all 4 views
+
+  // ── Circle view ──
+  const o1 = t1.outerDiam / 2 * sc,  i1 = t1.rimMM / 2 * sc;
+  const o2 = t2.outerDiam / 2 * sc,  i2 = t2.rimMM / 2 * sc;
+  const cy1 = GROUND1 - o1,  cy2 = GROUND1 - o2;
+
+  // ── Profile view ──
+  const pw1 = t1.w * sc,  ph1 = t1.sidewall * sc;   // width & height px
+  const pw2 = t2.w * sc,  ph2 = t2.sidewall * sc;
+  // bottom-align profiles to GROUND2
+  const pby1 = GROUND2, pby2 = GROUND2;
+
+  // rim oval inside profile: height = rim_diam × sc, width ≈ section_w × 0.68
+  const rimOH1 = t1.rimMM * sc, rimOW1 = pw1 * 0.68;
+  const rimOH2 = t2.rimMM * sc, rimOW2 = pw2 * 0.68;
+
+  const svg = document.getElementById('viz');
+  svg.innerHTML = `
+  <defs>
+    ${donutDefs('dg1', i1/o1, C1)}
+    ${donutDefs('dg2', i2/o2, C2)}
+    ${profileDefs('pg1', C1)}
+    ${profileDefs('pg2', C2)}
+  </defs>
+
+  <!-- ══ ROW LABEL: ROLLING DIAMETER ══ -->
+  <text x="12" y="145" class="row-label" font-family="system-ui"
+    transform="rotate(-90,12,145)" text-anchor="middle">Rolling Diameter</text>
+
+  <!-- ground line row 1 -->
+  <line x1="30" y1="${GROUND1}" x2="${VW-30}" y2="${GROUND1}"
+    stroke="#1e2030" stroke-width="1"/>
+
+  <!-- vertical centre guides -->
+  <line x1="${CX1}" y1="14" x2="${CX1}" y2="${GROUND1}"
+    stroke="#16162a" stroke-width="1" stroke-dasharray="3 5"/>
+  <line x1="${CX2}" y1="14" x2="${CX2}" y2="${GROUND1}"
+    stroke="#16162a" stroke-width="1" stroke-dasharray="3 5"/>
+
+  <!-- ── T1 circle ── -->
+  <circle cx="${CX1}" cy="${cy1}" r="${o1}"
+    fill="url(#dg1)" stroke="${C1}" stroke-width="2" opacity=".95"/>
+  <circle cx="${CX1}" cy="${cy1}" r="${i1}"
+    fill="none" stroke="${C1}" stroke-width="1.2"
+    stroke-dasharray="4 3" opacity=".4"/>
+  <circle cx="${CX1}" cy="${cy1}" r="3" fill="${C1}" opacity=".35"/>
+
+  <!-- T1 diameter arrow (right) -->
+  <line x1="${CX1+o1+13}" y1="${cy1-o1}" x2="${CX1+o1+13}" y2="${GROUND1}"
+    stroke="${C1}" stroke-width=".8" opacity=".35"/>
+  <line x1="${CX1+o1+9}"  y1="${cy1-o1}" x2="${CX1+o1+17}" y2="${cy1-o1}"
+    stroke="${C1}" stroke-width=".8" opacity=".35"/>
+  <line x1="${CX1+o1+9}"  y1="${GROUND1}" x2="${CX1+o1+17}" y2="${GROUND1}"
+    stroke="${C1}" stroke-width=".8" opacity=".35"/>
+  <text x="${CX1+o1+21}" y="${cy1+o1/2}"
+    fill="${C1}" font-size="10" font-family="system-ui" dominant-baseline="middle"
+    opacity=".8">${t1.outerDiam.toFixed(0)} mm</text>
+
+  <!-- T1 sidewall tick (left) -->
+  <line x1="${CX1-i1-3}" y1="${cy1}" x2="${CX1-o1-3}" y2="${cy1}"
+    stroke="${C1}" stroke-width=".7" opacity=".3"/>
+  <line x1="${CX1-i1-3}" y1="${cy1-5}" x2="${CX1-i1-3}" y2="${cy1+5}"
+    stroke="${C1}" stroke-width=".7" opacity=".3"/>
+  <line x1="${CX1-o1-3}" y1="${cy1-5}" x2="${CX1-o1-3}" y2="${cy1+5}"
+    stroke="${C1}" stroke-width=".7" opacity=".3"/>
+  <text x="${CX1-(i1+o1)/2-3}" y="${cy1-8}"
+    fill="${C1}" font-size="9" font-family="system-ui" text-anchor="middle"
+    opacity=".5">${t1.sidewall.toFixed(0)}</text>
+
+  <!-- T1 size label -->
+  <text x="${CX1}" y="${cy1-o1-13}"
+    fill="${C1}" font-size="12.5" font-weight="700" font-family="system-ui"
+    text-anchor="middle">${t1.w}/${t1.r}R${t1.d}</text>
+
+  <!-- ── T2 circle ── -->
+  <circle cx="${CX2}" cy="${cy2}" r="${o2}"
+    fill="url(#dg2)" stroke="${C2}" stroke-width="2" opacity=".95"/>
+  <circle cx="${CX2}" cy="${cy2}" r="${i2}"
+    fill="none" stroke="${C2}" stroke-width="1.2"
+    stroke-dasharray="4 3" opacity=".4"/>
+  <circle cx="${CX2}" cy="${cy2}" r="3" fill="${C2}" opacity=".35"/>
+
+  <!-- T2 diameter arrow (left) -->
+  <line x1="${CX2-o2-13}" y1="${cy2-o2}" x2="${CX2-o2-13}" y2="${GROUND1}"
+    stroke="${C2}" stroke-width=".8" opacity=".35"/>
+  <line x1="${CX2-o2-17}" y1="${cy2-o2}" x2="${CX2-o2-9}"  y2="${cy2-o2}"
+    stroke="${C2}" stroke-width=".8" opacity=".35"/>
+  <line x1="${CX2-o2-17}" y1="${GROUND1}" x2="${CX2-o2-9}" y2="${GROUND1}"
+    stroke="${C2}" stroke-width=".8" opacity=".35"/>
+  <text x="${CX2-o2-21}" y="${cy2+o2/2}"
+    fill="${C2}" font-size="10" font-family="system-ui" dominant-baseline="middle"
+    text-anchor="end" opacity=".8">${t2.outerDiam.toFixed(0)} mm</text>
+
+  <!-- T2 sidewall tick (right) -->
+  <line x1="${CX2+i2+3}" y1="${cy2}" x2="${CX2+o2+3}" y2="${cy2}"
+    stroke="${C2}" stroke-width=".7" opacity=".3"/>
+  <line x1="${CX2+i2+3}" y1="${cy2-5}" x2="${CX2+i2+3}" y2="${cy2+5}"
+    stroke="${C2}" stroke-width=".7" opacity=".3"/>
+  <line x1="${CX2+o2+3}" y1="${cy2-5}" x2="${CX2+o2+3}" y2="${cy2+5}"
+    stroke="${C2}" stroke-width=".7" opacity=".3"/>
+  <text x="${CX2+(i2+o2)/2+3}" y="${cy2-8}"
+    fill="${C2}" font-size="9" font-family="system-ui" text-anchor="middle"
+    opacity=".5">${t2.sidewall.toFixed(0)}</text>
+
+  <!-- T2 size label -->
+  <text x="${CX2}" y="${cy2-o2-13}"
+    fill="${C2}" font-size="12.5" font-weight="700" font-family="system-ui"
+    text-anchor="middle">${t2.w}/${t2.r}R${t2.d}</text>
+
+  <!-- ══ DIVIDER ══ -->
+  <line x1="30" y1="${GROUND1+20}" x2="${VW-30}" y2="${GROUND1+20}"
+    stroke="#1e2030" stroke-width=".8" stroke-dasharray="5 6"/>
+
+  <!-- ══ ROW LABEL: TYRE PROFILE ══ -->
+  <text x="12" y="420" class="row-label" font-family="system-ui"
+    transform="rotate(-90,12,420)" text-anchor="middle">Tyre Profile</text>
+
+  <!-- ground line row 2 -->
+  <line x1="30" y1="${GROUND2}" x2="${VW-30}" y2="${GROUND2}"
+    stroke="#1e2030" stroke-width="1"/>
+
+  <!-- vertical centre guides row 2 -->
+  <line x1="${CX1}" y1="${GROUND1+28}" x2="${CX1}" y2="${GROUND2}"
+    stroke="#16162a" stroke-width="1" stroke-dasharray="3 5"/>
+  <line x1="${CX2}" y1="${GROUND1+28}" x2="${CX2}" y2="${GROUND2}"
+    stroke="#16162a" stroke-width="1" stroke-dasharray="3 5"/>
+
+  <!-- ── T1 profile ── -->
+  <path d="${profilePath(CX1, pby1, pw1, ph1)}"
+    fill="url(#pg1)" stroke="${C1}" stroke-width="1.8"/>
+  <!-- rim oval cutout indicator -->
+  <ellipse cx="${CX1}" cy="${pby1}" rx="${rimOW1/2}" ry="${rimOH1/2}"
+    fill="none" stroke="${C1}" stroke-width="1" stroke-dasharray="3 3" opacity=".3"/>
+  <!-- rim bead line -->
+  <line x1="${CX1-pw1/2}" y1="${pby1}" x2="${CX1+pw1/2}" y2="${pby1}"
+    stroke="${C1}" stroke-width=".7" stroke-dasharray="4 3" opacity=".25"/>
+
+  <!-- T1 width arrow (below profile) -->
+  <line x1="${CX1-pw1/2}" y1="${pby1+12}" x2="${CX1+pw1/2}" y2="${pby1+12}"
+    stroke="${C1}" stroke-width=".8" opacity=".45"/>
+  <line x1="${CX1-pw1/2}" y1="${pby1+8}" x2="${CX1-pw1/2}" y2="${pby1+16}"
+    stroke="${C1}" stroke-width=".8" opacity=".45"/>
+  <line x1="${CX1+pw1/2}" y1="${pby1+8}" x2="${CX1+pw1/2}" y2="${pby1+16}"
+    stroke="${C1}" stroke-width=".8" opacity=".45"/>
+  <text x="${CX1}" y="${pby1+26}"
+    fill="${C1}" font-size="10" font-family="system-ui" text-anchor="middle"
+    opacity=".85">${t1.w} mm wide</text>
+
+  <!-- T1 sidewall height arrow (right side of profile) -->
+  <line x1="${CX1+pw1/2+12}" y1="${pby1-ph1}" x2="${CX1+pw1/2+12}" y2="${pby1}"
+    stroke="${C1}" stroke-width=".8" opacity=".35"/>
+  <line x1="${CX1+pw1/2+8}" y1="${pby1-ph1}" x2="${CX1+pw1/2+16}" y2="${pby1-ph1}"
+    stroke="${C1}" stroke-width=".8" opacity=".35"/>
+  <line x1="${CX1+pw1/2+8}" y1="${pby1}" x2="${CX1+pw1/2+16}" y2="${pby1}"
+    stroke="${C1}" stroke-width=".8" opacity=".35"/>
+  <text x="${CX1+pw1/2+20}" y="${pby1-ph1/2}"
+    fill="${C1}" font-size="9.5" font-family="system-ui" dominant-baseline="middle"
+    opacity=".7">${t1.sidewall.toFixed(0)} mm</text>
+
+  <!-- T1 rim label -->
+  <text x="${CX1}" y="${pby1-ph1-13}"
+    fill="${C1}" font-size="10.5" font-weight="600" font-family="system-ui"
+    text-anchor="middle" opacity=".9">R${t1.d} rim · ${t1.r}% sidewall</text>
+
+  <!-- ── T2 profile ── -->
+  <path d="${profilePath(CX2, pby2, pw2, ph2)}"
+    fill="url(#pg2)" stroke="${C2}" stroke-width="1.8"/>
+  <!-- rim oval cutout indicator -->
+  <ellipse cx="${CX2}" cy="${pby2}" rx="${rimOW2/2}" ry="${rimOH2/2}"
+    fill="none" stroke="${C2}" stroke-width="1" stroke-dasharray="3 3" opacity=".3"/>
+  <!-- rim bead line -->
+  <line x1="${CX2-pw2/2}" y1="${pby2}" x2="${CX2+pw2/2}" y2="${pby2}"
+    stroke="${C2}" stroke-width=".7" stroke-dasharray="4 3" opacity=".25"/>
+
+  <!-- T2 width arrow -->
+  <line x1="${CX2-pw2/2}" y1="${pby2+12}" x2="${CX2+pw2/2}" y2="${pby2+12}"
+    stroke="${C2}" stroke-width=".8" opacity=".45"/>
+  <line x1="${CX2-pw2/2}" y1="${pby2+8}" x2="${CX2-pw2/2}" y2="${pby2+16}"
+    stroke="${C2}" stroke-width=".8" opacity=".45"/>
+  <line x1="${CX2+pw2/2}" y1="${pby2+8}" x2="${CX2+pw2/2}" y2="${pby2+16}"
+    stroke="${C2}" stroke-width=".8" opacity=".45"/>
+  <text x="${CX2}" y="${pby2+26}"
+    fill="${C2}" font-size="10" font-family="system-ui" text-anchor="middle"
+    opacity=".85">${t2.w} mm wide</text>
+
+  <!-- T2 sidewall height arrow (left side of profile) -->
+  <line x1="${CX2-pw2/2-12}" y1="${pby2-ph2}" x2="${CX2-pw2/2-12}" y2="${pby2}"
+    stroke="${C2}" stroke-width=".8" opacity=".35"/>
+  <line x1="${CX2-pw2/2-16}" y1="${pby2-ph2}" x2="${CX2-pw2/2-8}" y2="${pby2-ph2}"
+    stroke="${C2}" stroke-width=".8" opacity=".35"/>
+  <line x1="${CX2-pw2/2-16}" y1="${pby2}" x2="${CX2-pw2/2-8}" y2="${pby2}"
+    stroke="${C2}" stroke-width=".8" opacity=".35"/>
+  <text x="${CX2-pw2/2-20}" y="${pby2-ph2/2}"
+    fill="${C2}" font-size="9.5" font-family="system-ui" dominant-baseline="middle"
+    text-anchor="end" opacity=".7">${t2.sidewall.toFixed(0)} mm</text>
+
+  <!-- T2 rim label -->
+  <text x="${CX2}" y="${pby2-ph2-13}"
+    fill="${C2}" font-size="10.5" font-weight="600" font-family="system-ui"
+    text-anchor="middle" opacity=".9">R${t2.d} rim · ${t2.r}% sidewall</text>
+  `;
+
+  // Badges
+  document.getElementById('lbl1').textContent = `${t1.w}/${t1.r}R${t1.d}`;
+  document.getElementById('dm1').textContent  = `⌀ ${t1.outerDiam.toFixed(1)} mm`;
+  document.getElementById('lbl2').textContent = `${t2.w}/${t2.r}R${t2.d}`;
+  document.getElementById('dm2').textContent  = `⌀ ${t2.outerDiam.toFixed(1)} mm`;
+
+  // Stats
+  const rows = [
+    { lbl: 'Overall Diameter', v1: t1.outerDiam, v2: t2.outerDiam, u: 'mm', dp: 1 },
+    { lbl: 'Sidewall Height',  v1: t1.sidewall,  v2: t2.sidewall,  u: 'mm', dp: 1 },
+    { lbl: 'Section Width',    v1: t1.w,         v2: t2.w,         u: 'mm', dp: 0 },
+    { lbl: 'Rim Diameter',     v1: t1.rimMM,     v2: t2.rimMM,     u: 'mm', dp: 1 },
+    { lbl: 'Circumference',    v1: t1.circumf,   v2: t2.circumf,   u: 'mm', dp: 0 },
+  ];
+
+  document.getElementById('statrows').innerHTML = rows.map(({ lbl, v1, v2, u, dp }) => {
+    const d   = v2 - v1;
+    const cls = Math.abs(d) < 0.05 ? '' : d > 0 ? 'up' : 'down';
+    const diff = `<span class="sdiff ${cls}">${d > 0 ? '+' : ''}${d.toFixed(dp)} ${u}</span>`;
+    return `<div class="srow">
+      <div class="sv1">${v1.toFixed(dp)}<span class="unit"> ${u}</span></div>
+      <div class="slbl">${lbl}${diff}</div>
+      <div class="sv2">${v2.toFixed(dp)}<span class="unit"> ${u}</span></div>
+    </div>`;
+  }).join('');
+
+  // Speedo
+  const err = (t1.circumf / t2.circumf - 1) * 100;
+  const col = Math.abs(err) < 0.5 ? '#475569' : Math.abs(err) < 2 ? '#f59e0b' : '#f87171';
+  document.getElementById('speedonote').innerHTML =
+    `Speedometer calibrated for Tyre 1 → reads <span style="color:${col}">${err > 0 ? '+' : ''}${err.toFixed(2)}%</span> on Tyre 2`;
+}
+
+['w1','r1','d1','w2','r2','d2'].forEach(id =>
+  document.getElementById(id).addEventListener('change', render)
+);
+render();
+</script>
+</body>
+</html>

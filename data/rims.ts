@@ -43,3 +43,7 @@ export const allRims: RimModel[] = [
 // Sizes practical for Honda Civic (Gen 10 FC / Gen 11 FE)
 // 18" = direct fit; 19" = popular upsize; 20"+ = confirm ET offset first
 export const CIVIC_RIM_SIZES = ['18"', '19"']
+
+// Sizes practical for Toyota Corolla Altis (E180 / E210)
+// 17" = OEM Sport size; 18" = popular upsize; 19" = enthusiast upsize
+export const ALTIS_RIM_SIZES = ['17"', '18"', '19"']

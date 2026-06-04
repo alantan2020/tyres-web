@@ -191,30 +191,97 @@ function waRimUrl(brand: string, model: string): string {
       </div>
     </header>
 
-    <main class="max-w-3xl mx-auto px-4 py-6">
+    <!-- Dark Hero Section -->
+    <section class="bg-gray-900 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div class="absolute bottom-0 left-10 w-64 h-64 bg-green-500/5 rounded-full translate-y-1/2 pointer-events-none" />
 
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb" class="text-xs text-gray-400 mb-5 flex items-center gap-1.5">
-        <NuxtLink to="/" class="hover:text-gray-600">Home</NuxtLink>
-        <span>/</span>
-        <a href="/tyres-for-honda-singapore/" class="hover:text-gray-600">Honda</a>
-        <span>/</span>
-        <span class="text-gray-600">Honda Civic Tyres</span>
-      </nav>
+      <div class="relative max-w-3xl mx-auto px-4 pt-4 pb-10">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="text-xs text-gray-500 mb-6 flex items-center gap-1.5">
+          <NuxtLink to="/" class="hover:text-gray-300 transition-colors">Home</NuxtLink>
+          <span class="text-gray-700">/</span>
+          <a href="/tyres-for-honda-singapore/" class="hover:text-gray-300 transition-colors">Honda</a>
+          <span class="text-gray-700">/</span>
+          <span class="text-gray-400">Honda Civic Tyres</span>
+        </nav>
 
-      <!-- Hero -->
-      <div class="mb-6">
-        <div class="flex flex-wrap items-center gap-2 mb-2">
-          <span class="text-xs bg-green-100 text-green-700 font-semibold px-2.5 py-1 rounded-full">✓ Updated May 2026</span>
-          <span class="text-xs bg-blue-100 text-blue-700 font-semibold px-2.5 py-1 rounded-full">Gen 10 + Gen 11</span>
+        <div class="flex items-center gap-8 md:gap-12">
+          <!-- Text content -->
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="text-xs bg-green-500/15 text-green-400 font-semibold px-2.5 py-1 rounded-full border border-green-500/20">✓ Updated May 2026</span>
+              <span class="text-xs bg-blue-500/15 text-blue-300 font-semibold px-2.5 py-1 rounded-full border border-blue-500/20">Gen 10 + Gen 11</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl font-black text-white leading-tight mb-5">
+              Honda Civic<br>
+              <span class="text-primary">Tyre Size</span> &amp; Best Price<br>
+              <span class="text-gray-300 text-2xl sm:text-3xl font-bold">Singapore Guide</span>
+            </h1>
+
+            <!-- Quick-answer stat chips -->
+            <div class="flex flex-wrap gap-2.5 mb-6">
+              <div class="bg-white/8 border border-white/10 rounded-xl px-4 py-2.5 text-center">
+                <p class="text-xs text-gray-400 mb-0.5">Gen 11 FE (2022–)</p>
+                <p class="font-black text-white font-mono text-sm tracking-tight">235/40R18</p>
+              </div>
+              <div class="bg-white/8 border border-white/10 rounded-xl px-4 py-2.5 text-center">
+                <p class="text-xs text-gray-400 mb-0.5">Gen 10 FC 1.5T</p>
+                <p class="font-black text-white font-mono text-sm tracking-tight">215/50R17</p>
+              </div>
+              <div class="bg-white/8 border border-white/10 rounded-xl px-4 py-2.5 text-center">
+                <p class="text-xs text-gray-400 mb-0.5">From installed</p>
+                <p class="font-black text-green-400 text-sm">$110 / tyre</p>
+              </div>
+            </div>
+
+            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I%20have%20a%20Honda%20Civic%20and%20need%20a%20tyre%20quote."
+               target="_blank"
+               class="inline-flex items-center gap-2.5 bg-green-500 text-white font-bold px-5 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg shadow-green-950/40 text-sm">
+              <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              WhatsApp for Tyre Quote
+            </a>
+          </div>
+
+          <!-- Alloy wheel SVG illustration (desktop) -->
+          <div class="hidden md:block shrink-0 opacity-75">
+            <svg width="185" height="185" viewBox="0 0 200 200" aria-hidden="true">
+              <!-- Outer tyre -->
+              <circle cx="100" cy="100" r="98" fill="#0f172a"/>
+              <circle cx="100" cy="100" r="92" fill="none" stroke="#1f2937" stroke-width="13"/>
+              <circle cx="100" cy="100" r="98" fill="none" stroke="#374151" stroke-width="2"/>
+              <!-- Rim face -->
+              <circle cx="100" cy="100" r="77" fill="#1e293b" stroke="#475569" stroke-width="2.5"/>
+              <!-- 5 spokes (5×114.3 pattern) -->
+              <line x1="100" y1="76" x2="100" y2="32" stroke="#64748b" stroke-width="14" stroke-linecap="round"/>
+              <line x1="123" y1="93" x2="165" y2="79" stroke="#64748b" stroke-width="14" stroke-linecap="round"/>
+              <line x1="114" y1="119" x2="140" y2="155" stroke="#64748b" stroke-width="14" stroke-linecap="round"/>
+              <line x1="86" y1="119" x2="60" y2="155" stroke="#64748b" stroke-width="14" stroke-linecap="round"/>
+              <line x1="77" y1="93" x2="35" y2="79" stroke="#64748b" stroke-width="14" stroke-linecap="round"/>
+              <!-- Inner detail ring -->
+              <circle cx="100" cy="100" r="50" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+              <!-- Center hub -->
+              <circle cx="100" cy="100" r="22" fill="#0f172a" stroke="#1a56db" stroke-width="2.5"/>
+              <circle cx="100" cy="100" r="8" fill="#1a56db" opacity="0.7"/>
+              <!-- 5 lug holes at r=30 -->
+              <circle cx="100" cy="70" r="4" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+              <circle cx="129" cy="91" r="4" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+              <circle cx="118" cy="124" r="4" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+              <circle cx="82" cy="124" r="4" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+              <circle cx="71" cy="91" r="4" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+              <!-- Accent rings -->
+              <circle cx="100" cy="100" r="77" fill="none" stroke="#1a56db" stroke-width="1" opacity="0.35"/>
+              <circle cx="100" cy="100" r="65" fill="none" stroke="#334155" stroke-width="1" opacity="0.5"/>
+            </svg>
+          </div>
         </div>
-        <h1 class="text-2xl font-bold text-gray-900 leading-tight mb-3">
-          Honda Civic Tyre Size &amp; Recommended Tyres in Singapore
-        </h1>
-        <p class="text-gray-600 leading-relaxed">
-          The <strong>Honda Civic Gen 11 FE (2022–2026)</strong> uses <strong>235/40R18</strong> tyres as standard across all variants including the e:HEV hybrid. The older <strong>Gen 10 FC (2016–2021)</strong> uses <strong>215/50R17</strong> on the 1.5T Turbo and <strong>215/55R16</strong> on the 1.8 i-VTEC base model. All generations share the <strong>5×114.3 bolt pattern</strong>. Replacement tyres in Singapore start from <strong>$110 per tyre installed</strong> for 215/50R17 and from <strong>$155</strong> for 235/40R18.
-        </p>
       </div>
+    </section>
+
+    <main class="max-w-3xl mx-auto px-4 py-6">
 
       <!-- Section 1: OEM Tyre Sizes -->
       <div class="bg-white rounded-2xl border border-gray-100 p-6 mb-5 transition-shadow hover:shadow-md">
@@ -339,19 +406,28 @@ function waRimUrl(brand: string, model: string): string {
         </p>
         <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
 
-          <!-- Rim: Advanti Typhoon -->
-          <div class="border border-gray-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md">
-            <div class="aspect-square bg-gradient-to-br from-slate-500 to-slate-700 flex items-center justify-center">
-              <div class="w-20 h-20 rounded-full border-4 border-slate-300 flex items-center justify-center relative">
-                <div class="w-12 h-12 rounded-full border-2 border-slate-400 flex items-center justify-center">
-                  <div class="w-4 h-4 rounded-full bg-slate-300" />
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div v-for="deg in [0, 36, 72, 108, 144]" :key="deg"
-                       class="w-full h-0.5 bg-slate-300 absolute"
-                       :style="`transform: rotate(${deg}deg)`" />
-                </div>
-              </div>
+          <!-- Rim: Advanti Typhoon (Budget) -->
+          <div class="border border-gray-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md bg-white">
+            <div class="bg-gradient-to-b from-slate-800 to-slate-950 flex items-center justify-center py-5">
+              <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="98" fill="#0f172a"/>
+                <circle cx="100" cy="100" r="91" fill="none" stroke="#1f2937" stroke-width="12"/>
+                <circle cx="100" cy="100" r="98" fill="none" stroke="#374151" stroke-width="2"/>
+                <circle cx="100" cy="100" r="77" fill="#1e293b" stroke="#4b5563" stroke-width="2"/>
+                <line x1="100" y1="76" x2="100" y2="32" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+                <line x1="123" y1="93" x2="165" y2="79" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+                <line x1="114" y1="119" x2="140" y2="155" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+                <line x1="86" y1="119" x2="60" y2="155" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+                <line x1="77" y1="93" x2="35" y2="79" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="50" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="20" fill="#0f172a" stroke="#6b7280" stroke-width="2"/>
+                <circle cx="100" cy="100" r="7" fill="#6b7280" opacity="0.9"/>
+                <circle cx="100" cy="70" r="3.5" fill="#0f172a" stroke="#6b7280" stroke-width="1.5"/>
+                <circle cx="129" cy="91" r="3.5" fill="#0f172a" stroke="#6b7280" stroke-width="1.5"/>
+                <circle cx="118" cy="124" r="3.5" fill="#0f172a" stroke="#6b7280" stroke-width="1.5"/>
+                <circle cx="82" cy="124" r="3.5" fill="#0f172a" stroke="#6b7280" stroke-width="1.5"/>
+                <circle cx="71" cy="91" r="3.5" fill="#0f172a" stroke="#6b7280" stroke-width="1.5"/>
+              </svg>
             </div>
             <div class="p-3">
               <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Budget</span>
@@ -366,19 +442,27 @@ function waRimUrl(brand: string, model: string): string {
             </div>
           </div>
 
-          <!-- Rim: MSW Type 88 -->
-          <div class="border border-gray-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md">
-            <div class="aspect-square bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center">
-              <div class="w-20 h-20 rounded-full border-4 border-gray-500 flex items-center justify-center relative">
-                <div class="w-12 h-12 rounded-full border-2 border-gray-600 flex items-center justify-center">
-                  <div class="w-4 h-4 rounded-full bg-gray-500" />
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div v-for="deg in [22.5, 67.5, 112.5, 157.5]" :key="deg"
-                       class="w-full h-0.5 bg-gray-500 absolute"
-                       :style="`transform: rotate(${deg}deg)`" />
-                </div>
-              </div>
+          <!-- Rim: MSW Type 88 (Budget, dark 8-spoke mesh) -->
+          <div class="border border-gray-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md bg-white">
+            <div class="bg-gradient-to-b from-gray-900 to-slate-950 flex items-center justify-center py-5">
+              <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="98" fill="#0f172a"/>
+                <circle cx="100" cy="100" r="91" fill="none" stroke="#1f2937" stroke-width="12"/>
+                <circle cx="100" cy="100" r="98" fill="none" stroke="#374151" stroke-width="2"/>
+                <circle cx="100" cy="100" r="77" fill="#111827" stroke="#374151" stroke-width="2"/>
+                <!-- 8 spokes at 45° intervals -->
+                <line x1="100" y1="76" x2="100" y2="32" stroke="#4b5563" stroke-width="9" stroke-linecap="round"/>
+                <line x1="117" y1="83" x2="148" y2="52" stroke="#4b5563" stroke-width="9" stroke-linecap="round"/>
+                <line x1="124" y1="100" x2="168" y2="100" stroke="#4b5563" stroke-width="9" stroke-linecap="round"/>
+                <line x1="117" y1="117" x2="148" y2="148" stroke="#4b5563" stroke-width="9" stroke-linecap="round"/>
+                <line x1="100" y1="124" x2="100" y2="168" stroke="#4b5563" stroke-width="9" stroke-linecap="round"/>
+                <line x1="83" y1="117" x2="52" y2="148" stroke="#4b5563" stroke-width="9" stroke-linecap="round"/>
+                <line x1="76" y1="100" x2="32" y2="100" stroke="#4b5563" stroke-width="9" stroke-linecap="round"/>
+                <line x1="83" y1="83" x2="52" y2="52" stroke="#4b5563" stroke-width="9" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="50" fill="#0f172a" stroke="#374151" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="20" fill="#0f172a" stroke="#4b5563" stroke-width="2"/>
+                <circle cx="100" cy="100" r="7" fill="#374151" opacity="0.9"/>
+              </svg>
             </div>
             <div class="p-3">
               <span class="text-xs text-gray-400 font-bold uppercase tracking-wide">Budget</span>
@@ -393,19 +477,29 @@ function waRimUrl(brand: string, model: string): string {
             </div>
           </div>
 
-          <!-- Rim: Enkei RPF1 -->
-          <div class="border border-blue-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md">
-            <div class="aspect-square bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-              <div class="w-20 h-20 rounded-full border-4 border-gray-300 flex items-center justify-center relative">
-                <div class="w-12 h-12 rounded-full border-2 border-gray-500 flex items-center justify-center">
-                  <div class="w-4 h-4 rounded-full bg-gray-300" />
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div v-for="deg in [0, 45, 90, 135]" :key="deg"
-                       class="w-full h-0.5 bg-gray-300 absolute"
-                       :style="`transform: rotate(${deg}deg)`" />
-                </div>
-              </div>
+          <!-- Rim: Enkei RPF1 (Mid, silver + blue) -->
+          <div class="border border-blue-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md bg-white">
+            <div class="bg-gradient-to-b from-slate-800 to-slate-950 flex items-center justify-center py-5">
+              <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="98" fill="#0f172a"/>
+                <circle cx="100" cy="100" r="91" fill="none" stroke="#1e293b" stroke-width="12"/>
+                <circle cx="100" cy="100" r="98" fill="none" stroke="#475569" stroke-width="2"/>
+                <circle cx="100" cy="100" r="77" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                <line x1="100" y1="76" x2="100" y2="32" stroke="#cbd5e1" stroke-width="14" stroke-linecap="round"/>
+                <line x1="123" y1="93" x2="165" y2="79" stroke="#cbd5e1" stroke-width="14" stroke-linecap="round"/>
+                <line x1="114" y1="119" x2="140" y2="155" stroke="#cbd5e1" stroke-width="14" stroke-linecap="round"/>
+                <line x1="86" y1="119" x2="60" y2="155" stroke="#cbd5e1" stroke-width="14" stroke-linecap="round"/>
+                <line x1="77" y1="93" x2="35" y2="79" stroke="#cbd5e1" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="50" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="20" fill="#0f172a" stroke="#1a56db" stroke-width="2.5"/>
+                <circle cx="100" cy="100" r="7" fill="#1a56db" opacity="0.85"/>
+                <circle cx="100" cy="70" r="3.5" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+                <circle cx="129" cy="91" r="3.5" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+                <circle cx="118" cy="124" r="3.5" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+                <circle cx="82" cy="124" r="3.5" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+                <circle cx="71" cy="91" r="3.5" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="77" fill="none" stroke="#1a56db" stroke-width="1" opacity="0.4"/>
+              </svg>
             </div>
             <div class="p-3">
               <span class="text-xs text-primary font-bold uppercase tracking-wide">Mid ⭐</span>
@@ -420,19 +514,28 @@ function waRimUrl(brand: string, model: string): string {
             </div>
           </div>
 
-          <!-- Rim: Work Emotion ZR10 -->
-          <div class="border border-gray-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md">
-            <div class="aspect-square bg-gradient-to-br from-zinc-700 to-zinc-900 flex items-center justify-center">
-              <div class="w-20 h-20 rounded-full border-4 border-zinc-400 flex items-center justify-center relative">
-                <div class="w-12 h-12 rounded-full border-2 border-zinc-500 flex items-center justify-center">
-                  <div class="w-4 h-4 rounded-full bg-zinc-400" />
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div v-for="deg in [0, 36, 72, 108, 144]" :key="deg"
-                       class="w-full h-0.5 bg-zinc-400 absolute"
-                       :style="`transform: rotate(${deg}deg)`" />
-                </div>
-              </div>
+          <!-- Rim: Work Emotion ZR10 (Mid, gunmetal) -->
+          <div class="border border-gray-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md bg-white">
+            <div class="bg-gradient-to-b from-zinc-800 to-zinc-950 flex items-center justify-center py-5">
+              <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="98" fill="#0f172a"/>
+                <circle cx="100" cy="100" r="91" fill="none" stroke="#27272a" stroke-width="12"/>
+                <circle cx="100" cy="100" r="98" fill="none" stroke="#52525b" stroke-width="2"/>
+                <circle cx="100" cy="100" r="77" fill="#1c1c1f" stroke="#52525b" stroke-width="2"/>
+                <line x1="100" y1="76" x2="100" y2="32" stroke="#71717a" stroke-width="14" stroke-linecap="round"/>
+                <line x1="123" y1="93" x2="165" y2="79" stroke="#71717a" stroke-width="14" stroke-linecap="round"/>
+                <line x1="114" y1="119" x2="140" y2="155" stroke="#71717a" stroke-width="14" stroke-linecap="round"/>
+                <line x1="86" y1="119" x2="60" y2="155" stroke="#71717a" stroke-width="14" stroke-linecap="round"/>
+                <line x1="77" y1="93" x2="35" y2="79" stroke="#71717a" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="50" fill="#111112" stroke="#3f3f46" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="20" fill="#0f0f10" stroke="#71717a" stroke-width="2"/>
+                <circle cx="100" cy="100" r="7" fill="#52525b" opacity="0.9"/>
+                <circle cx="100" cy="70" r="3.5" fill="#0f0f10" stroke="#71717a" stroke-width="1.5"/>
+                <circle cx="129" cy="91" r="3.5" fill="#0f0f10" stroke="#71717a" stroke-width="1.5"/>
+                <circle cx="118" cy="124" r="3.5" fill="#0f0f10" stroke="#71717a" stroke-width="1.5"/>
+                <circle cx="82" cy="124" r="3.5" fill="#0f0f10" stroke="#71717a" stroke-width="1.5"/>
+                <circle cx="71" cy="91" r="3.5" fill="#0f0f10" stroke="#71717a" stroke-width="1.5"/>
+              </svg>
             </div>
             <div class="p-3">
               <span class="text-xs text-primary font-bold uppercase tracking-wide">Mid</span>
@@ -447,19 +550,32 @@ function waRimUrl(brand: string, model: string): string {
             </div>
           </div>
 
-          <!-- Rim: Rays Volk TE37 -->
-          <div class="border border-amber-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md">
-            <div class="aspect-square bg-gradient-to-br from-amber-800 to-amber-950 flex items-center justify-center">
-              <div class="w-20 h-20 rounded-full border-4 border-amber-400 flex items-center justify-center relative">
-                <div class="w-12 h-12 rounded-full border-2 border-amber-500 flex items-center justify-center">
-                  <div class="w-4 h-4 rounded-full bg-amber-400" />
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div v-for="deg in [0, 60, 120]" :key="deg"
-                       class="w-full h-0.5 bg-amber-400 absolute"
-                       :style="`transform: rotate(${deg}deg)`" />
-                </div>
-              </div>
+          <!-- Rim: Rays Volk TE37 (Premium, 6-spoke bronze/gold) -->
+          <div class="border border-amber-100 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-md bg-white">
+            <div class="bg-gradient-to-b from-stone-900 to-stone-950 flex items-center justify-center py-5">
+              <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="98" fill="#0c0a09"/>
+                <circle cx="100" cy="100" r="91" fill="none" stroke="#1c1917" stroke-width="12"/>
+                <circle cx="100" cy="100" r="98" fill="none" stroke="#44403c" stroke-width="2"/>
+                <circle cx="100" cy="100" r="77" fill="#1c1917" stroke="#78716c" stroke-width="2"/>
+                <!-- 6 spokes (TE37 style) at 60° intervals -->
+                <line x1="100" y1="76" x2="100" y2="32" stroke="#d97706" stroke-width="14" stroke-linecap="round"/>
+                <line x1="121" y1="88" x2="159" y2="66" stroke="#d97706" stroke-width="14" stroke-linecap="round"/>
+                <line x1="121" y1="112" x2="159" y2="134" stroke="#d97706" stroke-width="14" stroke-linecap="round"/>
+                <line x1="100" y1="124" x2="100" y2="168" stroke="#d97706" stroke-width="14" stroke-linecap="round"/>
+                <line x1="79" y1="112" x2="41" y2="134" stroke="#d97706" stroke-width="14" stroke-linecap="round"/>
+                <line x1="79" y1="88" x2="41" y2="66" stroke="#d97706" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="50" fill="#0c0a09" stroke="#292524" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="20" fill="#0c0a09" stroke="#d97706" stroke-width="2.5"/>
+                <circle cx="100" cy="100" r="7" fill="#d97706" opacity="0.8"/>
+                <circle cx="100" cy="70" r="3.5" fill="#0c0a09" stroke="#a16207" stroke-width="1.5"/>
+                <circle cx="119" cy="86" r="3.5" fill="#0c0a09" stroke="#a16207" stroke-width="1.5"/>
+                <circle cx="119" cy="114" r="3.5" fill="#0c0a09" stroke="#a16207" stroke-width="1.5"/>
+                <circle cx="100" cy="130" r="3.5" fill="#0c0a09" stroke="#a16207" stroke-width="1.5"/>
+                <circle cx="81" cy="114" r="3.5" fill="#0c0a09" stroke="#a16207" stroke-width="1.5"/>
+                <circle cx="81" cy="86" r="3.5" fill="#0c0a09" stroke="#a16207" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="77" fill="none" stroke="#d97706" stroke-width="1" opacity="0.3"/>
+              </svg>
             </div>
             <div class="p-3">
               <span class="text-xs text-amber-700 font-bold uppercase tracking-wide">Premium</span>

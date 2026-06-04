@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-30',
   devtools: { enabled: true },
+  devServer: { host: '0.0.0.0' },
 
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
 
