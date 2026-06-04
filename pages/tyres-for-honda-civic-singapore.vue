@@ -95,6 +95,33 @@ useHead({
               offers: { '@type': 'Offer', price: '175', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
             },
           },
+          {
+            '@type': 'ListItem', position: 4,
+            item: {
+              '@type': 'Product',
+              name: 'Kumho Ecsta PS71 235/40R18',
+              brand: { '@type': 'Brand', name: 'Kumho' },
+              offers: { '@type': 'Offer', price: '155', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
+            },
+          },
+          {
+            '@type': 'ListItem', position: 5,
+            item: {
+              '@type': 'Product',
+              name: 'Bridgestone Turanza T005 235/40R18',
+              brand: { '@type': 'Brand', name: 'Bridgestone' },
+              offers: { '@type': 'Offer', price: '195', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
+            },
+          },
+          {
+            '@type': 'ListItem', position: 6,
+            item: {
+              '@type': 'Product',
+              name: 'Michelin Pilot Sport 4 235/40R18',
+              brand: { '@type': 'Brand', name: 'Michelin' },
+              offers: { '@type': 'Offer', price: '240', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
+            },
+          },
         ],
       }),
     },
@@ -156,7 +183,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
       <h1 class="hero-title">
         <span class="hero-make">HONDA</span>
         <em class="hero-model">CIVIC</em>
-        <span class="hero-guide">TYRE GUIDE</span>
+        <span class="hero-guide">TYRE GUIDE · SINGAPORE</span>
       </h1>
       <p class="hero-eyebrow">Singapore · OEM Sizes · Price Comparison · Rim Fitment</p>
 
