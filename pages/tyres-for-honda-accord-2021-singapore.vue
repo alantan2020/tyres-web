@@ -135,9 +135,9 @@ const activeTab = ref<'R17' | 'R18' | 'R19'>('R17')
       <div class="year-nav">
         <span class="year-nav-label">Other years:</span>
         <NuxtLink to="/tyres-for-honda-accord-singapore/" class="year-chip">2018–19</NuxtLink>
-        <NuxtLink to="/tyres-for-honda-accord-singapore/" class="year-chip">2020</NuxtLink>
+        <NuxtLink to="/tyres-for-honda-accord-2020-singapore/" class="year-chip year-chip--live">2020</NuxtLink>
         <span class="year-chip year-chip--active">2021</span>
-        <NuxtLink to="/tyres-for-honda-accord-singapore/" class="year-chip">2022</NuxtLink>
+        <NuxtLink to="/tyres-for-honda-accord-2022-singapore/" class="year-chip year-chip--live">2022</NuxtLink>
         <NuxtLink to="/tyres-for-honda-accord-singapore/" class="year-chip">2023–24</NuxtLink>
       </div>
 

@@ -212,9 +212,9 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
       <!-- Year-specific pages -->
       <div class="year-nav">
         <span class="year-nav-label">Browse by year:</span>
+        <NuxtLink to="/tyres-for-honda-accord-2020-singapore/" class="year-chip year-chip--live">2020</NuxtLink>
         <NuxtLink to="/tyres-for-honda-accord-2021-singapore/" class="year-chip year-chip--live">2021</NuxtLink>
-        <span class="year-chip year-chip--dim">2020</span>
-        <span class="year-chip year-chip--dim">2022</span>
+        <NuxtLink to="/tyres-for-honda-accord-2022-singapore/" class="year-chip year-chip--live">2022</NuxtLink>
         <span class="year-chip year-chip--dim">2023</span>
         <span class="year-chip year-chip--dim">2019</span>
       </div>
