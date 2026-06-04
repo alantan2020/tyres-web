@@ -1,4 +1,5 @@
 <script setup lang="ts">
+useHead({ meta: [{ name: 'robots', content: 'noindex, nofollow' }] })
 useSeoMeta({
   title: 'Honda Civic Tyre Size & Best Price Singapore | SGCarPass',
   description: 'Honda Civic uses 215/50R17 or 235/40R18 tyres. Compare Michelin ($175) vs Bridgestone ($145). From $110 installed in Singapore. WhatsApp for a quote.',

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /temp/
+
+Sitemap: https://tyres.sgcarpass.com/sitemap.xml

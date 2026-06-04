@@ -1,4 +1,5 @@
 <script setup lang="ts">
+useHead({ meta: [{ name: 'robots', content: 'noindex, nofollow' }] })
 // ── SEO Meta (unchanged) ──────────────────────────────────────────────────
 useSeoMeta({
   title: 'Honda Civic Tyre Size & Best Price Singapore | SGCarPass',

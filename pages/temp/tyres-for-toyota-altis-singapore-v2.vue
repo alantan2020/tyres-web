@@ -1,4 +1,5 @@
 <script setup lang="ts">
+useHead({ meta: [{ name: 'robots', content: 'noindex, nofollow' }] })
 // ── SEO Meta ──────────────────────────────────────────────────────────────
 useSeoMeta({
   title: 'Toyota Corolla Altis Tyre Size & Best Price Singapore | SGCarPass',
