@@ -6,6 +6,8 @@ export default defineNuxtConfig({
 
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
 
+  css: ['~/assets/css/tokens.css'],
+
   // Cloudflare Pages — only applied during build, not dev
   ...(process.env.NODE_ENV === 'production' && {
     nitro: { preset: 'cloudflare-pages' },

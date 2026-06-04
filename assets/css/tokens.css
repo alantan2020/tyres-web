@@ -1,0 +1,27 @@
+:root {
+  --red:    #E31837;
+  --gold:   #C9962A;
+  --blue:   #1a56db;
+  --green:  #15803d;
+  --cream:  #F5F1E8;
+  --ink:    #1A1719;
+  --muted:  #6B6470;
+  --border: rgba(26, 23, 25, 0.09);
+  --dark:   #0F0F12;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
