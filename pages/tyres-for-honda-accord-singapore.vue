@@ -1,14 +1,14 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Honda Accord Tyre Size & Best Price Singapore | SGCarPass',
-  description: 'Honda Accord uses 225/50R17, 235/45R18 or 235/40R19 tyres. Compare Michelin ($190) vs Bridgestone ($155). From $120 installed in Singapore. WhatsApp for a quote.',
+  description: 'Honda Accord tyre size guide for Singapore — 2018 to 2022 (Gen 9, 10, 11). OEM sizes 225/50R17, 235/45R18, 235/40R19. From $120 installed. Filter by year and WhatsApp for a quote.',
   ogTitle: 'Honda Accord Tyre Size & Best Price Singapore | SGCarPass',
-  ogDescription: 'Honda Accord uses 225/50R17, 235/45R18 or 235/40R19 tyres. Compare Michelin ($190) vs Bridgestone ($155). From $120 installed in Singapore. WhatsApp for a quote.',
+  ogDescription: 'Honda Accord tyre sizes 225/50R17, 235/45R18 or 235/40R19. Covers 2018–2022 all generations. From $120 installed in Singapore.',
   ogUrl: 'https://tyres.sgcarpass.com/tyres-for-honda-accord-singapore/',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'Honda Accord Tyre Size & Best Price Singapore | SGCarPass',
-  twitterDescription: 'Honda Accord uses 225/50R17, 235/45R18 or 235/40R19 tyres. Compare Michelin ($190) vs Bridgestone ($155). From $120 installed in Singapore.',
+  twitterDescription: 'Honda Accord tyre sizes 225/50R17, 235/45R18, 235/40R19. From $120 installed in Singapore. Filter by year.',
 })
 
 useHead({
@@ -41,6 +41,16 @@ useHead({
           },
           {
             '@type': 'Question',
+            name: 'What tyre size does the 2020 or 2021 Honda Accord use in Singapore?',
+            acceptedAnswer: { '@type': 'Answer', text: 'The 2020 and 2021 Honda Accord are both 10th generation (Gen 10 CV) with identical tyre sizes: 225/50R17 for the 1.5T base and 2.0 HEV base trims, 235/40R19 for the 1.5T sport/top trim, and 235/45R18 for the 2.0 HEV sport trim.' },
+          },
+          {
+            '@type': 'Question',
+            name: 'What tyre size does the 2022 Honda Accord use in Singapore?',
+            acceptedAnswer: { '@type': 'Answer', text: 'The 2022 Honda Accord is available as either the continuing Gen 10 CV (1.5T and 2.0 HEV) or the new Gen 11 CY (2.0 e:HEV). Gen 11 Sport/EL uses 235/40R19; Gen 11 Base uses 225/50R17. Gen 10 CV sizes are unchanged from 2020–2021.' },
+          },
+          {
+            '@type': 'Question',
             name: 'What is the bolt pattern of the Honda Accord?',
             acceptedAnswer: { '@type': 'Answer', text: 'The Honda Accord (Gen 9 CR, Gen 10 CV, and Gen 11 CY) all use the 5×114.3 bolt pattern — the most common in Singapore. Centre bore is 64.1mm and lug nut thread is M12×1.5. Note that the offset differs by generation: Gen 9 CR uses ET55, while Gen 10 CV and Gen 11 CY use ET45 (17") or ET50 (18"/19").' },
           },
@@ -48,16 +58,6 @@ useHead({
             '@type': 'Question',
             name: 'How much does it cost to replace tyres on a Honda Accord in Singapore?',
             acceptedAnswer: { '@type': 'Answer', text: 'For 225/50R17: budget from $120–$140 installed; mid-range $155–$185; premium $190–$235. For 235/45R18: budget from $145; mid-range $180–$215; premium $225–$270. For 235/40R19: budget from $170; mid-range $210–$250; premium $265–$320. A full set of 4 mid-range tyres for the 225/50R17 size typically costs $620–$740 all-in.' },
-          },
-          {
-            '@type': 'Question',
-            name: 'Can I use 225/50R17 tyres on a Honda Accord that came with 235/40R19?',
-            acceptedAnswer: { '@type': 'Answer', text: 'Not directly — you would need to swap to 17-inch wheels as well. The Gen 10 CV and Gen 11 CY Accord sport trims use 19-inch wheels (8.5J ET50). Fitting 225/50R17 requires 17-inch rims (7.5J ET45). While the bolt pattern is identical, the wheel size must match the tyre. Downsizing from 19" to 17" is possible and gives a softer ride, but verify with your workshop.' },
-          },
-          {
-            '@type': 'Question',
-            name: 'How often should I change tyres on my Honda Accord in Singapore?',
-            acceptedAnswer: { '@type': 'Answer', text: 'In Singapore\'s climate, tyres typically last 3–5 years or 40,000–50,000 km, whichever comes first. Singapore law requires minimum 1.6mm tread depth; experts recommend replacing at 3mm for safety in heavy rain. Tyres over 5 years old should be inspected even if tread looks adequate. The Accord\'s heavier weight means front tyres wear faster — consider rotating every 10,000 km.' },
           },
         ],
       }),
@@ -71,57 +71,27 @@ useHead({
         itemListElement: [
           {
             '@type': 'ListItem', position: 1,
-            item: {
-              '@type': 'Product',
-              name: 'Hankook Kinergy Eco 2 K435 225/50R17',
-              brand: { '@type': 'Brand', name: 'Hankook' },
-              offers: { '@type': 'Offer', price: '120', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
-            },
+            item: { '@type': 'Product', name: 'Hankook Kinergy Eco 2 K435 225/50R17', brand: { '@type': 'Brand', name: 'Hankook' }, offers: { '@type': 'Offer', price: '120', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } } },
           },
           {
             '@type': 'ListItem', position: 2,
-            item: {
-              '@type': 'Product',
-              name: 'Bridgestone Ecopia EP300 225/50R17',
-              brand: { '@type': 'Brand', name: 'Bridgestone' },
-              offers: { '@type': 'Offer', price: '155', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
-            },
+            item: { '@type': 'Product', name: 'Bridgestone Ecopia EP300 225/50R17', brand: { '@type': 'Brand', name: 'Bridgestone' }, offers: { '@type': 'Offer', price: '155', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } } },
           },
           {
             '@type': 'ListItem', position: 3,
-            item: {
-              '@type': 'Product',
-              name: 'Michelin Primacy 4+ 225/50R17',
-              brand: { '@type': 'Brand', name: 'Michelin' },
-              offers: { '@type': 'Offer', price: '190', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
-            },
+            item: { '@type': 'Product', name: 'Michelin Primacy 4+ 225/50R17', brand: { '@type': 'Brand', name: 'Michelin' }, offers: { '@type': 'Offer', price: '190', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } } },
           },
           {
             '@type': 'ListItem', position: 4,
-            item: {
-              '@type': 'Product',
-              name: 'Kumho Ecsta HS51 235/45R18',
-              brand: { '@type': 'Brand', name: 'Kumho' },
-              offers: { '@type': 'Offer', price: '145', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
-            },
+            item: { '@type': 'Product', name: 'Kumho Ecsta HS51 235/45R18', brand: { '@type': 'Brand', name: 'Kumho' }, offers: { '@type': 'Offer', price: '145', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } } },
           },
           {
             '@type': 'ListItem', position: 5,
-            item: {
-              '@type': 'Product',
-              name: 'Bridgestone Turanza T005 235/40R19',
-              brand: { '@type': 'Brand', name: 'Bridgestone' },
-              offers: { '@type': 'Offer', price: '210', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
-            },
+            item: { '@type': 'Product', name: 'Bridgestone Turanza T005 235/40R19', brand: { '@type': 'Brand', name: 'Bridgestone' }, offers: { '@type': 'Offer', price: '210', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } } },
           },
           {
             '@type': 'ListItem', position: 6,
-            item: {
-              '@type': 'Product',
-              name: 'Michelin Pilot Sport 4 235/40R19',
-              brand: { '@type': 'Brand', name: 'Michelin' },
-              offers: { '@type': 'Offer', price: '265', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } },
-            },
+            item: { '@type': 'Product', name: 'Michelin Pilot Sport 4 235/40R19', brand: { '@type': 'Brand', name: 'Michelin' }, offers: { '@type': 'Offer', price: '265', priceCurrency: 'SGD', availability: 'https://schema.org/InStock', priceValidUntil: '2026-12-31', seller: { '@type': 'Organization', name: 'SGCarPass' } } },
           },
         ],
       }),
@@ -129,13 +99,68 @@ useHead({
   ],
 })
 
+type Year = 'all' | '2020' | '2021' | '2022'
+const selectedYear = ref<Year>('all')
 const activeTab = ref<'R17' | 'R18' | 'R19'>('R17')
 
-const CX = 70, CY = 70, MAX_R = 44, N = 6
+const heroBadge = computed(() => {
+  if (selectedYear.value === '2020') return '2020 · 10th Gen CV'
+  if (selectedYear.value === '2021') return '2021 · 10th Gen CV'
+  if (selectedYear.value === '2022') return '2022 · Gen 10 CV + Gen 11 CY'
+  return 'Gen 9 CR · Gen 10 CV · Gen 11 CY'
+})
 
-function axisAngle(i: number) {
-  return (i / N) * 2 * Math.PI - Math.PI / 2
-}
+const heroGuide = computed(() =>
+  selectedYear.value !== 'all' ? `${selectedYear.value} TYRE GUIDE · SINGAPORE` : 'TYRE GUIDE · SINGAPORE'
+)
+
+const yearChips = computed(() => {
+  if (selectedYear.value === '2020' || selectedYear.value === '2021') {
+    return [
+      { label: '1.5T Base / 2.0 HEV Base', value: '225/50R17' },
+      { label: '1.5T Sport / Top', value: '235/40R19' },
+      { label: '2.0 HEV Sport', value: '235/45R18' },
+      { label: 'From installed', value: '$120', green: true },
+    ]
+  }
+  if (selectedYear.value === '2022') {
+    return [
+      { label: '2.0 e:HEV Sport/EL (Gen 11)', value: '235/40R19' },
+      { label: 'e:HEV Base / 1.5T Base', value: '225/50R17' },
+      { label: '2.0 HEV Sport (Gen 10)', value: '235/45R18' },
+      { label: 'From installed', value: '$120', green: true },
+    ]
+  }
+  return [
+    { label: 'Gen 11 CY Sport (2022–)', value: '235/40R19' },
+    { label: 'Gen 10/11 Base (2018–)', value: '225/50R17' },
+    { label: 'Gen 9/10 HEV Sport', value: '235/45R18' },
+    { label: 'From installed', value: '$120', green: true },
+  ]
+})
+
+const yearNote = computed(() => {
+  if (selectedYear.value === '2020') return 'Showing 10th gen Accord CV (2020). OEM tyre sizes are the same as 2018–2021 — 1.5T and 2.0 HEV variants. COE expires approximately 2030.'
+  if (selectedYear.value === '2021') return 'Showing 10th gen Accord CV (2021). OEM tyre sizes are the same as 2018–2021 — 1.5T and 2.0 HEV variants. COE expires approximately 2031.'
+  if (selectedYear.value === '2022') return '2022 had two generations in Singapore: the continuing Gen 10 CV (1.5T / 2.0 HEV) and the new Gen 11 CY (2.0 e:HEV only). Check your variant below.'
+  return null
+})
+
+const waLink = computed(() => {
+  const msgs: Record<Year, string> = {
+    all: 'Hi%20SGCarPass%2C%20I%20have%20a%20Honda%20Accord%20and%20need%20a%20tyre%20quote.',
+    '2020': 'Hi%20SGCarPass%2C%20Honda%20Accord%202020%20tyre%20quote%20please.',
+    '2021': 'Hi%20SGCarPass%2C%20Honda%20Accord%202021%20tyre%20quote%20please.',
+    '2022': 'Hi%20SGCarPass%2C%20Honda%20Accord%202022%20tyre%20quote%20please.',
+  }
+  return `https://wa.me/6581525875?text=${msgs[selectedYear.value]}`
+})
+
+const showGen11 = computed(() => selectedYear.value === 'all' || selectedYear.value === '2022')
+const showGen9  = computed(() => selectedYear.value === 'all')
+
+const CX = 70, CY = 70, MAX_R = 44, N = 6
+function axisAngle(i: number) { return (i / N) * 2 * Math.PI - Math.PI / 2 }
 function hexPoints(scale: number) {
   return Array.from({ length: N }, (_, i) => {
     const a = axisAngle(i)
@@ -158,7 +183,6 @@ function labelPos(i: number) {
   const r = MAX_R + 13
   return { x: (CX + r * Math.cos(a)).toFixed(1), y: (CY + r * Math.sin(a)).toFixed(1) }
 }
-
 const LABELS = ['Wet', 'Dry', 'Wear', 'NVH', 'Fuel', 'Value']
 const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 </script>
@@ -180,50 +204,44 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 
       <div class="hero-badges">
         <span class="badge badge-green">✓ Updated Jun 2026</span>
-        <span class="badge badge-red">Gen 9 CR · Gen 10 CV · Gen 11 CY</span>
+        <span class="badge badge-red">{{ heroBadge }}</span>
       </div>
 
       <h1 class="hero-title">
         <span class="hero-make">HONDA</span>
         <em class="hero-model">ACCORD</em>
-        <span class="hero-guide">TYRE GUIDE · SINGAPORE</span>
+        <span class="hero-guide">{{ heroGuide }}</span>
       </h1>
       <p class="hero-eyebrow">Singapore · OEM Sizes · Price Comparison · Rim Fitment</p>
 
+      <!-- Year Selector -->
+      <div class="year-tabs-wrap">
+        <span class="year-tabs-label">Select your year:</span>
+        <div class="year-tabs">
+          <button class="year-tab-btn" :class="{ active: selectedYear === 'all' }" @click="selectedYear = 'all'">All Years</button>
+          <button class="year-tab-btn" :class="{ active: selectedYear === '2020' }" @click="selectedYear = '2020'">2020</button>
+          <button class="year-tab-btn" :class="{ active: selectedYear === '2021' }" @click="selectedYear = '2021'">2021</button>
+          <button class="year-tab-btn" :class="{ active: selectedYear === '2022' }" @click="selectedYear = '2022'">2022</button>
+        </div>
+      </div>
+
+      <Transition name="note-fade">
+        <p v-if="yearNote" class="year-note">{{ yearNote }}</p>
+      </Transition>
+
       <div class="spec-chips">
-        <div class="spec-chip">
-          <span class="chip-label">Gen 11 CY Sport (2022–)</span>
-          <span class="chip-value">235/40R19</span>
-        </div>
-        <div class="spec-chip">
-          <span class="chip-label">Gen 10/11 Base (2018–)</span>
-          <span class="chip-value">225/50R17</span>
-        </div>
-        <div class="spec-chip">
-          <span class="chip-label">Gen 9/10 HEV Sport</span>
-          <span class="chip-value">235/45R18</span>
-        </div>
-        <div class="spec-chip spec-chip--green">
-          <span class="chip-label">From installed</span>
-          <span class="chip-value chip-green">$120</span>
+        <div
+          v-for="chip in yearChips"
+          :key="chip.value"
+          class="spec-chip"
+          :class="{ 'spec-chip--green': chip.green }"
+        >
+          <span class="chip-label">{{ chip.label }}</span>
+          <span class="chip-value" :class="{ 'chip-green': chip.green }">{{ chip.value }}</span>
         </div>
       </div>
 
-      <!-- Year-specific pages -->
-      <div class="year-nav">
-        <span class="year-nav-label">Browse by year:</span>
-        <NuxtLink to="/tyres-for-honda-accord-2020-singapore/" class="year-chip year-chip--live">2020</NuxtLink>
-        <NuxtLink to="/tyres-for-honda-accord-2021-singapore/" class="year-chip year-chip--live">2021</NuxtLink>
-        <NuxtLink to="/tyres-for-honda-accord-2022-singapore/" class="year-chip year-chip--live">2022</NuxtLink>
-        <span class="year-chip year-chip--dim">2023</span>
-        <span class="year-chip year-chip--dim">2019</span>
-      </div>
-
-      <a
-        href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I%20have%20a%20Honda%20Accord%20and%20need%20a%20tyre%20quote."
-        target="_blank"
-        class="wa-btn"
-      >
+      <a :href="waLink" target="_blank" class="wa-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
@@ -251,7 +269,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
       <div class="section-head">
         <span class="section-num">01</span>
         <div>
-          <h2>OEM Tyre Sizes</h2>
+          <h2>OEM Tyre Sizes{{ selectedYear !== 'all' ? ` · ${selectedYear} Honda Accord` : '' }}</h2>
           <p>Factory-fitted sizes · verified against LTA-registered specs</p>
         </div>
       </div>
@@ -266,18 +284,22 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="row-label">2022–2026 · Gen 11 CY · 2.0 e:HEV Sport/EL</td>
-              <td><span class="tag tag-oe">OE</span></td>
-              <td class="mono-bold">235/40R19</td>
-              <td class="price-cell">from $170</td>
-            </tr>
-            <tr>
-              <td class="row-label muted">2022–2026 · Gen 11 CY · 2.0 e:HEV Base</td>
-              <td><span class="tag tag-oe">OE</span></td>
-              <td class="mono-bold">225/50R17</td>
-              <td class="price-cell">from $120</td>
-            </tr>
+            <!-- Gen 11 rows — show for All or 2022 -->
+            <template v-if="showGen11">
+              <tr>
+                <td class="row-label">2022–2026 · Gen 11 CY · 2.0 e:HEV Sport/EL</td>
+                <td><span class="tag tag-oe">OE</span></td>
+                <td class="mono-bold">235/40R19</td>
+                <td class="price-cell">from $170</td>
+              </tr>
+              <tr>
+                <td class="row-label muted">2022–2026 · Gen 11 CY · 2.0 e:HEV Base</td>
+                <td><span class="tag tag-oe">OE</span></td>
+                <td class="mono-bold">225/50R17</td>
+                <td class="price-cell">from $120</td>
+              </tr>
+            </template>
+            <!-- Gen 10 rows — always visible for all selected years -->
             <tr>
               <td class="row-label">2018–2024 · Gen 10 CV · 1.5 Turbo Sport/EL</td>
               <td><span class="tag tag-oe">OE</span></td>
@@ -302,18 +324,21 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
               <td class="mono-bold">225/50R17</td>
               <td class="price-cell">from $120</td>
             </tr>
-            <tr>
-              <td class="row-label">2013–2019 · Gen 9 CR · 3.5i / 3.0i / 2.0</td>
-              <td><span class="tag tag-oe">OE</span></td>
-              <td class="mono-bold">235/45R18</td>
-              <td class="price-cell">from $145</td>
-            </tr>
-            <tr>
-              <td class="row-label muted">2013–2019 · Gen 9 CR · 2.4i</td>
-              <td><span class="tag tag-oe">OE</span></td>
-              <td class="mono-bold">225/50R17</td>
-              <td class="price-cell">from $120</td>
-            </tr>
+            <!-- Gen 9 rows — show for All only -->
+            <template v-if="showGen9">
+              <tr>
+                <td class="row-label">2013–2019 · Gen 9 CR · 3.5i / 3.0i / 2.0</td>
+                <td><span class="tag tag-oe">OE</span></td>
+                <td class="mono-bold">235/45R18</td>
+                <td class="price-cell">from $145</td>
+              </tr>
+              <tr>
+                <td class="row-label muted">2013–2019 · Gen 9 CR · 2.4i</td>
+                <td><span class="tag tag-oe">OE</span></td>
+                <td class="mono-bold">225/50R17</td>
+                <td class="price-cell">from $120</td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -341,20 +366,22 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="row-label">2022–2026 · Gen 11 CY · Sport/EL (19")</td>
-              <td class="mono-bold">8.5J</td>
-              <td class="mono-alt">19"</td>
-              <td class="mono-alt">ET50</td>
-              <td class="mono-bold" style="color: var(--red);">5×114.3</td>
-            </tr>
-            <tr>
-              <td class="row-label">2022–2026 · Gen 11 CY · Base (17")</td>
-              <td class="mono-bold">7.5J</td>
-              <td class="mono-alt">17"</td>
-              <td class="mono-alt">ET45</td>
-              <td class="mono-bold" style="color: var(--red);">5×114.3</td>
-            </tr>
+            <template v-if="showGen11">
+              <tr>
+                <td class="row-label">2022–2026 · Gen 11 CY · Sport/EL (19")</td>
+                <td class="mono-bold">8.5J</td>
+                <td class="mono-alt">19"</td>
+                <td class="mono-alt">ET50</td>
+                <td class="mono-bold" style="color: var(--red);">5×114.3</td>
+              </tr>
+              <tr>
+                <td class="row-label">2022–2026 · Gen 11 CY · Base (17")</td>
+                <td class="mono-bold">7.5J</td>
+                <td class="mono-alt">17"</td>
+                <td class="mono-alt">ET45</td>
+                <td class="mono-bold" style="color: var(--red);">5×114.3</td>
+              </tr>
+            </template>
             <tr>
               <td class="row-label">2018–2024 · Gen 10 CV · Sport/EL (19")</td>
               <td class="mono-bold">8.5J</td>
@@ -376,20 +403,22 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
               <td class="mono-alt">ET45</td>
               <td class="mono-bold" style="color: var(--red);">5×114.3</td>
             </tr>
-            <tr>
-              <td class="row-label">2013–2019 · Gen 9 CR · V6/3.0i (18")</td>
-              <td class="mono-bold">8J</td>
-              <td class="mono-alt">18"</td>
-              <td class="mono-alt">ET55</td>
-              <td class="mono-bold" style="color: var(--red);">5×114.3</td>
-            </tr>
-            <tr>
-              <td class="row-label">2013–2019 · Gen 9 CR · 2.4i (17")</td>
-              <td class="mono-bold">7.5J</td>
-              <td class="mono-alt">17"</td>
-              <td class="mono-alt">ET55</td>
-              <td class="mono-bold" style="color: var(--red);">5×114.3</td>
-            </tr>
+            <template v-if="showGen9">
+              <tr>
+                <td class="row-label">2013–2019 · Gen 9 CR · V6/3.0i (18")</td>
+                <td class="mono-bold">8J</td>
+                <td class="mono-alt">18"</td>
+                <td class="mono-alt">ET55</td>
+                <td class="mono-bold" style="color: var(--red);">5×114.3</td>
+              </tr>
+              <tr>
+                <td class="row-label">2013–2019 · Gen 9 CR · 2.4i (17")</td>
+                <td class="mono-bold">7.5J</td>
+                <td class="mono-alt">17"</td>
+                <td class="mono-alt">ET55</td>
+                <td class="mono-bold" style="color: var(--red);">5×114.3</td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -417,10 +446,10 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
           225/50R17 · Base / EX
         </button>
         <button class="tab-btn" :class="{ active: activeTab === 'R18' }" @click="activeTab = 'R18'">
-          235/45R18 · HEV Sport / Gen 9 V6
+          235/45R18 · HEV Sport
         </button>
         <button class="tab-btn" :class="{ active: activeTab === 'R19' }" @click="activeTab = 'R19'">
-          235/40R19 · Sport / EL Top
+          235/40R19 · Sport / EL
         </button>
       </div>
 
@@ -433,7 +462,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big">$120</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Kumho Ecsta HS51, Maxxis MAP5</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20budget%20tyre%20quote%20for%20Honda%20Accord%20225%2F50R17%20(Hankook%20Kinergy%20or%20similar)." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20225%2F50R17%20budget%20tyre%20quote%20(Hankook%20or%20similar).`" target="_blank" class="quote-link">Get quote →</a>
           </div>
           <div class="price-card price-card--popular">
             <span class="tier tier--mid">Mid-Range ⭐ Popular</span>
@@ -442,7 +471,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big price-big--mid">$155</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Continental CC6, Dunlop SP Sport</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20mid-range%20tyre%20quote%20for%20Honda%20Accord%20225%2F50R17%20(Bridgestone%20Ecopia%20EP300%20or%20similar)." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20225%2F50R17%20mid-range%20tyre%20quote%20(Bridgestone%20EP300%20or%20similar).`" target="_blank" class="quote-link">Get quote →</a>
           </div>
           <div class="price-card price-card--premium">
             <span class="tier tier--premium">Premium</span>
@@ -451,7 +480,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big price-big--premium">$190</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Pirelli Cinturato P7, Goodyear EfficientGrip</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20premium%20tyre%20quote%20for%20Honda%20Accord%20225%2F50R17%20(Michelin%20Primacy%204%2B)." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20225%2F50R17%20premium%20tyre%20quote%20(Michelin%20Primacy%204%2B).`" target="_blank" class="quote-link">Get quote →</a>
           </div>
         </div>
         <div class="set-estimate">
@@ -469,7 +498,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big">$145</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Maxxis Victra Sport 5, Nankang NS-25</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20budget%20tyre%20quote%20for%20Honda%20Accord%20235%2F45R18." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20235%2F45R18%20budget%20tyre%20quote.`" target="_blank" class="quote-link">Get quote →</a>
           </div>
           <div class="price-card price-card--popular">
             <span class="tier tier--mid">Mid-Range ⭐ Popular</span>
@@ -478,7 +507,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big price-big--mid">$180</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Continental SportContact 6, Dunlop SP Sport Maxx</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20mid-range%20tyre%20quote%20for%20Honda%20Accord%20235%2F45R18%20(Bridgestone%20Turanza%20or%20similar)." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20235%2F45R18%20mid-range%20tyre%20quote%20(Bridgestone%20Turanza%20or%20similar).`" target="_blank" class="quote-link">Get quote →</a>
           </div>
           <div class="price-card price-card--premium">
             <span class="tier tier--premium">Premium</span>
@@ -487,7 +516,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big price-big--premium">$225</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Pirelli P7 Cinturato, Goodyear EfficientGrip</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20premium%20tyre%20quote%20for%20Honda%20Accord%20235%2F45R18%20(Michelin%20Primacy%204%2B)." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20235%2F45R18%20premium%20tyre%20quote%20(Michelin%20Primacy%204%2B).`" target="_blank" class="quote-link">Get quote →</a>
           </div>
         </div>
         <div class="set-estimate">
@@ -505,7 +534,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big">$170</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Maxxis Victra Sport 5, Nankang NS-25</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20budget%20tyre%20quote%20for%20Honda%20Accord%20235%2F40R19." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20235%2F40R19%20budget%20tyre%20quote.`" target="_blank" class="quote-link">Get quote →</a>
           </div>
           <div class="price-card price-card--popular">
             <span class="tier tier--mid">Mid-Range ⭐ Popular</span>
@@ -514,7 +543,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big price-big--mid">$210</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Continental SportContact 6, Dunlop SP Sport Maxx</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20mid-range%20tyre%20quote%20for%20Honda%20Accord%20235%2F40R19%20(Bridgestone%20Turanza%20or%20similar)." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20235%2F40R19%20mid-range%20tyre%20quote%20(Bridgestone%20Turanza%20or%20similar).`" target="_blank" class="quote-link">Get quote →</a>
           </div>
           <div class="price-card price-card--premium">
             <span class="tier tier--premium">Premium</span>
@@ -523,7 +552,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
             <p class="price-big price-big--premium">$265</p>
             <p class="price-unit">per tyre installed</p>
             <p class="also">Also: Pirelli P Zero, Goodyear Eagle F1</p>
-            <a href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I'd%20like%20a%20premium%20tyre%20quote%20for%20Honda%20Accord%20235%2F40R19%20(Michelin%20Pilot%20Sport%204)." target="_blank" class="quote-link">Get quote →</a>
+            <a :href="`https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20Honda%20Accord${selectedYear !== 'all' ? `%20${selectedYear}` : ''}%20235%2F40R19%20premium%20tyre%20quote%20(Michelin%20Pilot%20Sport%204).`" target="_blank" class="quote-link">Get quote →</a>
           </div>
         </div>
         <div class="set-estimate">
@@ -561,35 +590,15 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
         >
           <span :class="radar.labelClass">{{ radar.label }}</span>
           <p class="radar-name">{{ radar.name }}</p>
-
-          <div class="radar-svg-wrap"
-               :style="{ transformOrigin: idx === 0 ? '25% center' : idx === 2 ? '75% center' : 'center' }">
+          <div class="radar-svg-wrap" :style="{ transformOrigin: idx === 0 ? '25% center' : idx === 2 ? '75% center' : 'center' }">
             <svg width="100%" viewBox="0 0 140 140" class="radar-svg">
-              <polygon v-for="s in GRID_RINGS" :key="s"
-                       :points="hexPoints(s)"
-                       fill="none"
-                       :stroke="s === 1 ? '#d1d5db' : '#f0f0ee'"
-                       :stroke-width="s === 1 ? '1.5' : '1'" />
-              <line v-for="i in 6" :key="i"
-                    :x1="CX" :y1="CY"
-                    :x2="axisEnd(i-1).x" :y2="axisEnd(i-1).y"
-                    stroke="#ece9e1" stroke-width="1" />
-              <polygon :points="scorePoints(radar.scores)"
-                       :fill="radar.fill"
-                       :stroke="radar.stroke"
-                       stroke-width="2" stroke-linejoin="round" />
-              <circle v-for="(s, i) in radar.scores" :key="i"
-                      :cx="(CX + (s/100)*MAX_R*Math.cos(axisAngle(i))).toFixed(1)"
-                      :cy="(CY + (s/100)*MAX_R*Math.sin(axisAngle(i))).toFixed(1)"
-                      r="2.5" :fill="radar.stroke" />
-              <text v-for="(lbl, i) in LABELS" :key="lbl"
-                    :x="labelPos(i).x" :y="labelPos(i).y"
-                    font-size="8" fill="#9ca3af"
-                    text-anchor="middle" dominant-baseline="middle"
-                    font-family="Outfit,system-ui,sans-serif">{{ lbl }}</text>
+              <polygon v-for="s in GRID_RINGS" :key="s" :points="hexPoints(s)" fill="none" :stroke="s === 1 ? '#d1d5db' : '#f0f0ee'" :stroke-width="s === 1 ? '1.5' : '1'" />
+              <line v-for="i in 6" :key="i" :x1="CX" :y1="CY" :x2="axisEnd(i-1).x" :y2="axisEnd(i-1).y" stroke="#ece9e1" stroke-width="1" />
+              <polygon :points="scorePoints(radar.scores)" :fill="radar.fill" :stroke="radar.stroke" stroke-width="2" stroke-linejoin="round" />
+              <circle v-for="(s, i) in radar.scores" :key="i" :cx="(CX + (s/100)*MAX_R*Math.cos(axisAngle(i))).toFixed(1)" :cy="(CY + (s/100)*MAX_R*Math.sin(axisAngle(i))).toFixed(1)" r="2.5" :fill="radar.stroke" />
+              <text v-for="(lbl, i) in LABELS" :key="lbl" :x="labelPos(i).x" :y="labelPos(i).y" font-size="8" fill="#9ca3af" text-anchor="middle" dominant-baseline="middle" font-family="Outfit,system-ui,sans-serif">{{ lbl }}</text>
             </svg>
           </div>
-
           <p class="radar-score">{{ radar.score }}</p>
           <p class="radar-score-label">SG Score / 10</p>
           <div class="radar-stats">
@@ -609,11 +618,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
           <h2>Get a Tyre Quote</h2>
           <p>Tell us your year and variant — we'll get you installation price within the hour.</p>
         </div>
-        <a
-          href="https://wa.me/6581525875?text=Hi%20SGCarPass%2C%20I%20have%20a%20Honda%20Accord%20and%20need%20a%20tyre%20quote."
-          target="_blank"
-          class="cta-wa-btn"
-        >
+        <a :href="waLink" target="_blank" class="cta-wa-btn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
@@ -632,7 +637,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
         </div>
       </div>
       <div class="guide-items">
-        <div class="guide-item guide-item--red">
+        <div v-if="showGen11" class="guide-item guide-item--red">
           <h3>Gen 11 CY (2022–2026) owners</h3>
           <p>The Gen 11 Accord is sold in Singapore as the <strong>2.0 e:HEV hybrid only</strong>. Base/EX trim uses <strong>225/50R17</strong>; Sport/EL trim uses <strong>235/40R19</strong>. The 19" low-profile tyre prioritises handling — for Singapore's wet roads, choose an A-rated wet grip tyre like the Bridgestone Turanza T005 or Michelin Pilot Sport 4. The 17" base trim has a much wider budget-friendly selection.</p>
         </div>
@@ -640,7 +645,7 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
           <h3>Gen 10 CV (2018–2024) owners</h3>
           <p>The Gen 10 offers the most variants: 1.5T base uses <strong>225/50R17</strong>, 1.5T Sport/EL uses <strong>235/40R19</strong>, and 2.0 HEV Sport uses <strong>235/45R18</strong>. If you're on the 1.5T base, the Bridgestone Ecopia EP300 is our top pick — A-rated wet grip and excellent fuel efficiency complement the Accord's VTEC Turbo engine. HEV owners should prioritise low rolling resistance to preserve the hybrid's efficiency gains.</p>
         </div>
-        <div class="guide-item guide-item--red">
+        <div v-if="showGen9" class="guide-item guide-item--red">
           <h3>Gen 9 CR (2013–2019) owners</h3>
           <p>The Gen 9 Accord had a V6 option in Singapore — 3.5i and 3.0i variants came with <strong>235/45R18</strong>, while the 2.4i used <strong>225/50R17</strong>. With the car now 6–11 years old, prioritise tyre age over tread depth: tyres older than 5 years should be replaced regardless of tread. The Hankook Kinergy Eco 2 or Kumho Ecsta offer good value for this generation — no need to spend premium on an aging car.</p>
         </div>
@@ -676,11 +681,31 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 
       <details class="faq-item">
         <summary>
+          <h3>What tyre size does the 2020 or 2021 Honda Accord use?</h3>
+          <span class="faq-chevron">▾</span>
+        </summary>
+        <div class="faq-body">
+          The 2020 and 2021 Accord are both 10th gen CV with <strong>identical tyre sizes</strong>: <strong>225/50R17</strong> (1.5T base and 2.0 HEV base), <strong>235/40R19</strong> (1.5T Sport/EL), and <strong>235/45R18</strong> (2.0 HEV Sport). Use the year selector above to filter the specs table to your year.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <h3>What tyre size does the 2022 Honda Accord use?</h3>
+          <span class="faq-chevron">▾</span>
+        </summary>
+        <div class="faq-body">
+          2022 saw two Accord generations in Singapore. The <strong>Gen 10 CV</strong> (continuing, 1.5T and 2.0 HEV) uses the same sizes as 2018–2021. The new <strong>Gen 11 CY</strong> (2.0 e:HEV only) uses <strong>225/50R17</strong> base or <strong>235/40R19</strong> Sport/EL. Select "2022" above to see both sets of specs.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
           <h3>What is the bolt pattern of the Honda Accord?</h3>
           <span class="faq-chevron">▾</span>
         </summary>
         <div class="faq-body">
-          All three generations — <strong>Gen 9 CR, Gen 10 CV, and Gen 11 CY</strong> — use the <strong>5×114.3</strong> bolt pattern, the most common in Singapore, shared by most Honda, Toyota, Mazda, Hyundai, and Kia models. Centre bore is <strong>64.1mm</strong>, lug nut thread is <strong>M12×1.5</strong>. Important: offset differs by generation — Gen 9 uses <strong>ET55</strong>, while Gen 10 and Gen 11 use <strong>ET45</strong> (17") or <strong>ET50</strong> (18"/19"). Using Gen 9 wheels on a Gen 10 car (or vice versa) may cause clearance issues.
+          All three generations — <strong>Gen 9 CR, Gen 10 CV, and Gen 11 CY</strong> — use the <strong>5×114.3</strong> bolt pattern, the most common in Singapore, shared by most Honda, Toyota, Mazda, Hyundai, and Kia models. Centre bore is <strong>64.1mm</strong>, lug nut thread is <strong>M12×1.5</strong>. Important: offset differs by generation — Gen 9 uses <strong>ET55</strong>, while Gen 10 and Gen 11 use <strong>ET45</strong> (17") or <strong>ET50</strong> (18"/19").
         </div>
       </details>
 
@@ -706,16 +731,6 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
           Not directly — you would need to swap wheels as well. The Sport/EL trims use <strong>19-inch rims (8.5J ET50)</strong>, which are incompatible with 17-inch tyres. Downsizing to 17" requires purchasing 17-inch rims (7.5J ET45). The bolt pattern is the same (5×114.3), so the swap is physically possible and gives a softer ride — but tyre size changes must stay within 3% of overall diameter for Singapore road legality. Consult your workshop before proceeding.
         </div>
       </details>
-
-      <details class="faq-item">
-        <summary>
-          <h3>How often should I change tyres on my Honda Accord in Singapore?</h3>
-          <span class="faq-chevron">▾</span>
-        </summary>
-        <div class="faq-body">
-          In Singapore's climate, tyres typically last <strong>3–5 years</strong> or <strong>40,000–50,000 km</strong>, whichever comes first. Singapore law requires a minimum <strong>1.6mm tread depth</strong>; experts recommend replacing at <strong>3mm</strong> for safety in heavy rain. Tyres over <strong>5 years old</strong> should be inspected and likely replaced. The Accord's heavier kerb weight (1,500–1,700 kg) means front tyres wear faster — rotate every <strong>10,000 km</strong> to extend tyre life.
-        </div>
-      </details>
     </section>
 
   </main>
@@ -724,7 +739,6 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 <style scoped>
 .main-content { padding: 2rem 0 3rem; }
 
-/* ── Animations ──────────────────────────────────────────────────────────── */
 @keyframes heroIn {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -744,30 +758,22 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 .hero-stripes {
   position: absolute; inset: 0; pointer-events: none;
   background-image: repeating-linear-gradient(
-    -58deg,
-    transparent 0px, transparent 18px,
+    -58deg, transparent 0px, transparent 18px,
     rgba(255,255,255,0.016) 18px, rgba(255,255,255,0.016) 19px
   );
 }
 .hero-bg-word {
   position: absolute; right: -1.5rem; bottom: -2rem;
-  font-family: 'Chakra Petch', sans-serif;
-  font-weight: 700; font-style: italic;
-  font-size: clamp(6rem, 22vw, 16rem);
-  color: rgba(255,255,255,0.022);
-  line-height: 1; pointer-events: none; user-select: none;
-  letter-spacing: -0.04em;
+  font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-style: italic;
+  font-size: clamp(6rem, 22vw, 16rem); color: rgba(255,255,255,0.022);
+  line-height: 1; pointer-events: none; user-select: none; letter-spacing: -0.04em;
 }
-.hero-red-line {
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 3px; background: var(--red);
-}
+.hero-red-line { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--red); }
 .hero-content { position: relative; }
 
 .breadcrumb {
   font-size: 0.6875rem; color: rgba(255,255,255,0.28);
-  margin-bottom: 1.375rem;
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem;
+  margin-bottom: 1.375rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem;
 }
 .breadcrumb a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.15s; }
 .breadcrumb a:hover { color: rgba(255,255,255,0.6); }
@@ -779,17 +785,39 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 .badge-red   { background: rgba(227,24,55,0.12); color: #ff7285; border: 1px solid rgba(232,25,44,0.22); }
 
 .hero-title {
-  font-family: 'Chakra Petch', sans-serif;
-  font-weight: 700; line-height: 0.9;
-  text-transform: uppercase; margin-bottom: 0.75rem;
-  display: flex; flex-direction: column;
+  font-family: 'Chakra Petch', sans-serif; font-weight: 700; line-height: 0.9;
+  text-transform: uppercase; margin-bottom: 0.75rem; display: flex; flex-direction: column;
 }
-.hero-make { font-size: clamp(1rem, 3vw, 1.375rem); color: rgba(255,255,255,0.35); letter-spacing: 0.2em; }
+.hero-make  { font-size: clamp(1rem, 3vw, 1.375rem); color: rgba(255,255,255,0.35); letter-spacing: 0.2em; }
 .hero-model { font-size: clamp(3.5rem, 12vw, 6.5rem); color: white; font-style: italic; letter-spacing: -0.02em; line-height: 0.88; }
 .hero-guide { font-size: clamp(0.875rem, 2.5vw, 1.125rem); color: var(--red); letter-spacing: 0.15em; font-style: normal; margin-top: 0.5rem; }
-.hero-eyebrow { font-size: 0.6875rem; font-weight: 600; color: rgba(255,255,255,0.28); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.75rem; }
+.hero-eyebrow { font-size: 0.6875rem; font-weight: 600; color: rgba(255,255,255,0.28); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
 
-.spec-chips { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 2rem; }
+/* Year Tabs */
+.year-tabs-wrap { margin-bottom: 0.75rem; }
+.year-tabs-label { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.28); display: block; margin-bottom: 0.5rem; }
+.year-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.year-tab-btn {
+  padding: 0.45rem 1.125rem; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: transparent;
+  font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 700;
+  color: rgba(255,255,255,0.4); cursor: pointer;
+  transition: all 0.15s;
+}
+.year-tab-btn:hover { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.75); }
+.year-tab-btn.active { background: var(--red); border-color: var(--red); color: white; }
+
+.year-note {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem; color: rgba(255,255,255,0.55); line-height: 1.5;
+  margin-top: 0.75rem; margin-bottom: 0;
+}
+.note-fade-enter-active, .note-fade-leave-active { transition: opacity 0.2s, transform 0.2s; }
+.note-fade-enter-from, .note-fade-leave-to { opacity: 0; transform: translateY(-4px); }
+
+.spec-chips { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 1.25rem; margin-bottom: 2rem; }
 .spec-chip {
   display: flex; flex-direction: column; gap: 0.25rem;
   background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.07);
@@ -802,20 +830,11 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 .chip-value { font-family: 'Chakra Petch', sans-serif; font-size: 1.125rem; font-weight: 700; color: white; }
 .chip-green { color: #22c55e; }
 
-/* Year Navigator */
-.year-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
-.year-nav-label { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.28); margin-right: 0.25rem; }
-.year-chip { font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.4); text-decoration: none; }
-.year-chip--live { border-color: var(--red); color: white; background: rgba(227,24,55,0.18); transition: background 0.15s; }
-.year-chip--live:hover { background: rgba(227,24,55,0.3); }
-.year-chip--dim { opacity: 0.35; cursor: default; }
-
 .wa-btn {
   display: inline-flex; align-items: center; gap: 0.625rem;
   background: #25D366; color: white; font-weight: 700; font-size: 0.9375rem;
   padding: 0.875rem 1.625rem; border-radius: 10px; text-decoration: none;
-  animation: pulseWa 2.5s ease-in-out 1.2s infinite;
-  transition: background 0.15s, transform 0.1s;
+  animation: pulseWa 2.5s ease-in-out 1.2s infinite; transition: background 0.15s, transform 0.1s;
 }
 .wa-btn:hover { background: #20bd5a; transform: translateY(-2px); animation: none; box-shadow: 0 6px 28px rgba(37,211,102,0.35); }
 
@@ -860,7 +879,6 @@ const GRID_RINGS = [0.25, 0.5, 0.75, 1]
 .mono-bold { font-family: 'Barlow Condensed', sans-serif; font-size: 1.0625rem; font-weight: 800; color: var(--ink); letter-spacing: 0.01em; }
 .mono-alt  { font-family: 'Barlow Condensed', sans-serif; font-size: 1.0625rem; font-weight: 600; color: var(--muted); }
 .price-cell { color: var(--green); font-weight: 700; font-size: 0.875rem; }
-.price-cell.muted { color: var(--muted); font-weight: 500; }
 .table-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.875rem; }
 .text-right { text-align: right !important; }
 
