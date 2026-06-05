@@ -326,7 +326,7 @@ function scoreLabelPos(score: number, i: number) {
             <tbody>
               <template v-if="showGen11">
                 <tr>
-                  <td class="row-label">2022–2026 · Gen 11 FE · 1.5T Turbo / e:HEV</td>
+                  <td class="row-label">2022–2026 · Gen 11 FE · All variants (Turbo &amp; Hybrid)</td>
                   <td><span class="tag tag-oe">OE</span></td>
                   <td class="mono-size">235/40R18</td>
                   <td class="price-cell">from $155</td>
