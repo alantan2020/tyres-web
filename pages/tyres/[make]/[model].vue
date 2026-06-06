@@ -644,7 +644,7 @@ const allBoltPatterns = computed(() => {
 
 /* ── Why-us bar (between hero and section nav) ───────────────────── */
 .why-us-bar {
-  background: rgba(255,255,255,0.03);
+  background: #0F0F12;
   border-top: 1px solid rgba(255,255,255,0.06);
   border-bottom: 1px solid rgba(255,255,255,0.06);
   padding: 0.875rem 1.25rem;
