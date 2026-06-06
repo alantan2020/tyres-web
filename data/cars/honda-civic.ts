@@ -36,6 +36,11 @@ const data: CarData = {
       key: 'gen10face',
       label: 'Gen 10 FC FL',
       years: '2019–2021',
+      upgrade: {
+        size: '235/40R18',
+        rimInch: 18,
+        note: 'The most popular upgrade among Singapore Civic owners — sportier stance, sharper cornering feel. Pairs with 18" aftermarket rims.',
+      },
       heroChips: [
         { label: '1.5T Sport', value: '235/40R18' },
         { label: '1.5T Base',  value: '215/50R17' },
@@ -55,6 +60,11 @@ const data: CarData = {
       key: 'gen10',
       label: 'Gen 10 FC',
       years: '2016–2018',
+      upgrade: {
+        size: '235/40R18',
+        rimInch: 18,
+        note: 'The most popular upgrade among Singapore Civic owners — sportier stance, sharper cornering feel. Pairs with 18" aftermarket rims.',
+      },
       heroChips: [
         { label: '1.5T Turbo', value: '215/50R17' },
         { label: '1.8 i-VTEC', value: '215/55R16' },

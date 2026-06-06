@@ -15,6 +15,12 @@ export interface HeroChip {
   green?: boolean
 }
 
+export interface UpgradeOption {
+  size: string
+  rimInch: number
+  note: string
+}
+
 export interface Generation {
   key: string
   label: string
@@ -22,6 +28,7 @@ export interface Generation {
   note?: string
   heroChips: HeroChip[]
   variants: Variant[]
+  upgrade?: UpgradeOption
 }
 
 export interface RimSpec {

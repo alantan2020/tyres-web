@@ -87,6 +87,13 @@ const genericWaHref = computed(() => {
   return `https://wa.me/${WA}?text=${txt}`
 })
 
+const upgradeWaHref = computed(() => {
+  const g = currentGen.value
+  if (!g.upgrade) return ''
+  const txt = encodeURIComponent(`Hi SGCarPass, I want to upgrade my ${g.years} ${car.make} ${car.model} to ${g.upgrade.size} on ${g.upgrade.rimInch}" rims. Please quote rim + tyre package.`)
+  return `https://wa.me/${WA}?text=${txt}`
+})
+
 function waForSize(size: string): string {
   const g = currentGen.value
   const txt = encodeURIComponent(`Hi SGCarPass, ${car.make} ${car.model} ${g.years} (${g.label}) ${size} tyre quote please.`)
@@ -233,6 +240,31 @@ const visibleGuide = computed(() =>
 
       <Transition name="note-fade">
         <p v-if="currentGen.note" class="gen-note">{{ currentGen.note }}</p>
+      </Transition>
+
+      <!-- Upgrade showcase -->
+      <Transition name="note-fade">
+        <div v-if="currentGen.upgrade" class="upgrade-showcase">
+          <div class="upgrade-col upgrade-col--stock">
+            <div class="upgrade-col-label">Factory Size</div>
+            <div class="upgrade-col-size">{{ uniqueSizes(currentGen).join(' · ') }}</div>
+            <div class="upgrade-col-sub">OEM · stock 17&quot; / 16&quot; rims</div>
+          </div>
+          <div class="upgrade-divider" aria-hidden="true">
+            <span class="upgrade-arrow-icon">→</span>
+            <span class="upgrade-arrow-label">Popular<br>upgrade</span>
+          </div>
+          <div class="upgrade-col upgrade-col--new">
+            <div class="upgrade-hot-badge">🔥 Most common in SG</div>
+            <div class="upgrade-col-size upgrade-col-size--highlight">{{ currentGen.upgrade.size }}</div>
+            <div class="upgrade-col-sub">on {{ currentGen.upgrade.rimInch }}&quot; aftermarket rims</div>
+            <p class="upgrade-note-text">{{ currentGen.upgrade.note }}</p>
+            <a :href="upgradeWaHref" target="_blank" class="upgrade-wa-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Ask for Rim + Tyre Package
+            </a>
+          </div>
+        </div>
       </Transition>
 
       <!-- v-show keeps all gen blocks in DOM so Google indexes full data -->
@@ -545,6 +577,69 @@ const visibleGuide = computed(() =>
 }
 .note-fade-enter-active, .note-fade-leave-active { transition: opacity 0.2s, transform 0.2s; }
 .note-fade-enter-from, .note-fade-leave-to { opacity: 0; transform: translateY(-4px); }
+
+/* ── Upgrade showcase ────────────────────────────────────────────── */
+.upgrade-showcase {
+  display: flex; align-items: center; gap: 0;
+  margin: 1.25rem 0 1.5rem;
+  border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; background: white;
+}
+.upgrade-col {
+  padding: 1.25rem 1.5rem; flex: 1;
+}
+.upgrade-col--stock {
+  background: var(--cream);
+  border-right: 1px solid var(--border);
+}
+.upgrade-col--new {
+  background: white;
+}
+.upgrade-col-label {
+  font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.4rem;
+}
+.upgrade-col-size {
+  font-size: 1.375rem; font-weight: 800; color: var(--muted); line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+.upgrade-col-size--highlight {
+  color: var(--ink);
+}
+.upgrade-col-sub {
+  font-size: 0.75rem; color: var(--muted); margin-bottom: 0;
+}
+.upgrade-divider {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 0.875rem; flex-shrink: 0;
+  color: var(--muted);
+}
+.upgrade-arrow-icon { font-size: 1.25rem; line-height: 1; color: var(--accent); }
+.upgrade-arrow-label { font-size: 0.5625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; text-align: center; color: var(--muted); margin-top: 0.2rem; }
+.upgrade-hot-badge {
+  display: inline-block; font-size: 0.6875rem; font-weight: 700;
+  color: #c05621; background: #fff7ed; border: 1px solid #fed7aa;
+  border-radius: 20px; padding: 0.15rem 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.upgrade-note-text {
+  font-size: 0.8125rem; color: var(--muted); line-height: 1.5;
+  margin: 0.5rem 0 0.875rem;
+}
+.upgrade-wa-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: #25d366; color: white;
+  font-family: 'Outfit', sans-serif; font-size: 0.8125rem; font-weight: 700;
+  padding: 0.5rem 1rem; border-radius: 8px;
+  text-decoration: none; transition: background 0.15s;
+}
+.upgrade-wa-btn:hover { background: #1ebe5d; }
+@media (max-width: 600px) {
+  .upgrade-showcase { flex-direction: column; }
+  .upgrade-col--stock { border-right: none; border-bottom: 1px solid var(--border); }
+  .upgrade-divider { flex-direction: row; padding: 0.5rem 1.5rem; gap: 0.5rem; }
+  .upgrade-arrow-icon { font-size: 1rem; }
+}
 
 /* ── OEM sizes — variant list ────────────────────────────────────── */
 .yr-header {
