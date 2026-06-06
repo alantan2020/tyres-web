@@ -8,7 +8,8 @@
         </div>
         <div>
           <p class="footer-heading">Popular Cars</p>
-          <NuxtLink to="/tyres-for-honda-civic-singapore/">Honda Civic</NuxtLink>
+          <NuxtLink to="/tyres/honda/civic/">Honda Civic</NuxtLink>
+          <NuxtLink to="/tyres/honda/accord/">Honda Accord</NuxtLink>
         </div>
         <div>
           <p class="footer-heading">Contact</p>
