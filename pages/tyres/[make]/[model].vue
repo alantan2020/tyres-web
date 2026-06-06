@@ -89,7 +89,7 @@ const genericWaHref = computed(() => {
 
 function waForSize(size: string): string {
   const g = currentGen.value
-  const txt = encodeURIComponent(`Hi SGCarPass, ${car.make} ${car.model} ${g.label} ${size} tyre quote please.`)
+  const txt = encodeURIComponent(`Hi SGCarPass, ${car.make} ${car.model} ${g.years} (${g.label}) ${size} tyre quote please.`)
   return `https://wa.me/${WA}?text=${txt}`
 }
 
