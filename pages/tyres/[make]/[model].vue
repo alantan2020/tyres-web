@@ -139,6 +139,40 @@ function labelPos(i: number) {
 const visibleGuide = computed(() =>
   car.buyingGuide.filter(item => !item.genKey || item.genKey === selectedGenKey.value)
 )
+
+// ── Year Size Finder ─────────────────────────────────────────────────
+const yearToGen = computed(() => {
+  const map = new Map<number, (typeof car.generations)[0]>()
+  car.generations.forEach(gen => {
+    const [startStr, endStr] = gen.years.split('–')
+    const start = parseInt(startStr)
+    const end = parseInt(endStr) || start
+    for (let y = start; y <= end; y++) map.set(y, gen)
+  })
+  return map
+})
+
+const finderYears = computed(() =>
+  [...yearToGen.value.keys()].sort((a, b) => b - a)
+)
+
+const finderYear = ref<number | ''>('')
+
+const finderResult = computed(() => {
+  if (finderYear.value === '') return null
+  return yearToGen.value.get(Number(finderYear.value)) ?? null
+})
+
+function waForFinderYear(size: string): string {
+  const txt = encodeURIComponent(`Hi SGCarPass, ${finderYear.value} ${car.make} ${car.model} ${size} tyre quote please.`)
+  return `https://wa.me/${WA}?text=${txt}`
+}
+
+const allBoltPatterns = computed(() => {
+  const seen = new Set<string>()
+  car.rimSpecs.forEach(r => seen.add(r.boltPattern))
+  return [...seen]
+})
 </script>
 
 <template>
@@ -206,6 +240,7 @@ const visibleGuide = computed(() =>
       <a href="#prices">Prices</a>
       <a href="#brands">Brands</a>
       <a href="#faq">FAQ</a>
+      <a href="#size-finder">Size Finder</a>
     </div>
   </div>
 
@@ -240,31 +275,6 @@ const visibleGuide = computed(() =>
 
       <Transition name="note-fade">
         <p v-if="currentGen.note" class="gen-note">{{ currentGen.note }}</p>
-      </Transition>
-
-      <!-- Upgrade showcase -->
-      <Transition name="note-fade">
-        <div v-if="currentGen.upgrade" class="upgrade-showcase">
-          <div class="upgrade-col upgrade-col--stock">
-            <div class="upgrade-col-label">Factory Size</div>
-            <div class="upgrade-col-size">{{ uniqueSizes(currentGen).join(' · ') }}</div>
-            <div class="upgrade-col-sub">OEM · stock 17&quot; / 16&quot; rims</div>
-          </div>
-          <div class="upgrade-divider" aria-hidden="true">
-            <span class="upgrade-arrow-icon">→</span>
-            <span class="upgrade-arrow-label">Popular<br>upgrade</span>
-          </div>
-          <div class="upgrade-col upgrade-col--new">
-            <div class="upgrade-hot-badge">🔥 Most common in SG</div>
-            <div class="upgrade-col-size upgrade-col-size--highlight">{{ currentGen.upgrade.size }}</div>
-            <div class="upgrade-col-sub">on {{ currentGen.upgrade.rimInch }}&quot; aftermarket rims</div>
-            <p class="upgrade-note-text">{{ currentGen.upgrade.note }}</p>
-            <a :href="upgradeWaHref" target="_blank" class="upgrade-wa-btn">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Ask for Rim + Tyre Package
-            </a>
-          </div>
-        </div>
       </Transition>
 
       <!-- v-show keeps all gen blocks in DOM so Google indexes full data -->
@@ -462,6 +472,39 @@ const visibleGuide = computed(() =>
       </div>
     </section>
 
+    <!-- UPGRADE PATH — appears after user has seen tyre options; conditional on gen data -->
+    <Transition name="note-fade">
+      <section v-if="currentGen.upgrade" :key="selectedGenKey" class="card upgrade-card">
+        <div class="section-head">
+          <div>
+            <h2>Already decided on tyres? One step further.</h2>
+            <p>What Singapore {{ car.make }} {{ car.model }} owners do after picking their tyre</p>
+          </div>
+        </div>
+        <div class="upgrade-showcase">
+          <div class="upgrade-col upgrade-col--stock">
+            <div class="upgrade-col-label">Your Factory Size</div>
+            <div class="upgrade-col-size">{{ uniqueSizes(currentGen).join(' · ') }}</div>
+            <div class="upgrade-col-sub">OEM · stock 17&quot; / 16&quot; rims</div>
+          </div>
+          <div class="upgrade-divider" aria-hidden="true">
+            <span class="upgrade-arrow-icon">→</span>
+            <span class="upgrade-arrow-label">Popular<br>upgrade</span>
+          </div>
+          <div class="upgrade-col upgrade-col--new">
+            <div class="upgrade-hot-badge">🔥 Most common in SG</div>
+            <div class="upgrade-col-size upgrade-col-size--highlight">{{ currentGen.upgrade.size }}</div>
+            <div class="upgrade-col-sub">on {{ currentGen.upgrade.rimInch }}&quot; aftermarket rims</div>
+            <p class="upgrade-note-text">{{ currentGen.upgrade.note }}</p>
+            <a :href="upgradeWaHref" target="_blank" class="upgrade-wa-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Ask for Rim + Tyre Package
+            </a>
+          </div>
+        </div>
+      </section>
+    </Transition>
+
     <!-- CTA BLOCK -->
     <div class="cta-block">
       <div class="cta-inner">
@@ -516,6 +559,74 @@ const visibleGuide = computed(() =>
         </summary>
         <div class="faq-body"><p>{{ item.a }}</p></div>
       </details>
+    </section>
+
+    <!-- 07 TYRE SIZE FINDER -->
+    <section id="size-finder" class="card sf-card">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <div>
+          <h2>Tyre Size Finder</h2>
+          <p>Quick lookup for mechanics — select registration year, get exact size + bolt pattern</p>
+        </div>
+      </div>
+
+      <div class="sf-tool">
+        <div class="sf-select-row">
+          <label for="sf-year" class="sf-label">Registration Year</label>
+          <select id="sf-year" v-model="finderYear" class="sf-select">
+            <option value="">-- Select year --</option>
+            <option v-for="y in finderYears" :key="y" :value="y">{{ y }}</option>
+          </select>
+        </div>
+
+        <div v-if="finderYear === ''" class="sf-empty">
+          Select a year above to instantly see tyre sizes and bolt pattern.
+        </div>
+
+        <Transition name="note-fade">
+          <div v-if="finderResult" class="sf-result">
+            <div class="sf-gen-badge">{{ finderResult.label }} · {{ finderResult.years }}</div>
+
+            <div class="sf-variant-table">
+              <div v-for="v in finderResult.variants" :key="v.name" class="sf-variant-row">
+                <span class="sf-variant-name">{{ v.name }}</span>
+                <div class="sf-size-chips">
+                  <span
+                    v-for="s in v.sizes"
+                    :key="s.size"
+                    class="sf-size-chip"
+                    :class="s.tag === 'OE' ? 'sf-chip-oe' : 'sf-chip-alt'"
+                  >
+                    {{ s.size }}<small>{{ s.tag === 'OE' ? ' OE' : ' Alt' }}</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sf-specs-bar">
+              <span>Bolt pattern: <strong>{{ allBoltPatterns.join(' / ') }}</strong></span>
+              <span class="pill-divider">·</span>
+              <span>Centre bore: <strong>{{ car.rimCommon.centreBore }}</strong></span>
+              <span class="pill-divider">·</span>
+              <span>Torque: <strong>{{ car.rimCommon.torque }}</strong></span>
+            </div>
+
+            <div class="sf-wa-row">
+              <a
+                v-for="sz in uniqueSizes(finderResult)"
+                :key="sz"
+                :href="waForFinderYear(sz)"
+                target="_blank"
+                class="pq-link sf-wa-link"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp quote for {{ sz }}
+              </a>
+            </div>
+          </div>
+        </Transition>
+      </div>
     </section>
 
   </main>
@@ -715,6 +826,89 @@ const visibleGuide = computed(() =>
   font-size: 1.125rem; font-weight: 800; letter-spacing: 0.02em;
 }
 .pq-arrow { opacity: 0.7; flex-shrink: 0; }
+
+/* ── Upgrade card (standalone, after brand ratings) ─────────────── */
+.upgrade-card { border-top: 3px solid var(--accent, #E31837); }
+
+/* ── Size Finder (Section 07) ────────────────────────────────────── */
+.sf-card { background: #f9f8f5; }
+.sf-tool { max-width: 640px; }
+.sf-select-row {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.sf-label {
+  font-size: 0.8125rem; font-weight: 700; color: var(--ink);
+  white-space: nowrap;
+}
+.sf-select {
+  padding: 0.5rem 1rem; border-radius: 8px;
+  border: 1.5px solid var(--border); background: white;
+  font-family: 'Outfit', sans-serif; font-size: 0.9375rem; font-weight: 600;
+  color: var(--ink); cursor: pointer; min-width: 180px;
+  appearance: auto;
+}
+.sf-select:focus { outline: 2px solid var(--accent, #E31837); border-color: transparent; }
+.sf-empty {
+  font-size: 0.875rem; color: var(--muted);
+  padding: 1rem 0; font-style: italic;
+}
+.sf-result { padding-top: 0.25rem; }
+.sf-gen-badge {
+  display: inline-block;
+  font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.07em; color: var(--muted);
+  background: rgba(26,23,25,0.05); border: 1px solid var(--border);
+  border-radius: 999px; padding: 0.2rem 0.75rem;
+  margin-bottom: 1rem;
+}
+.sf-variant-table {
+  border: 1px solid var(--border); border-radius: 10px;
+  overflow: hidden; margin-bottom: 1rem;
+}
+.sf-variant-row {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem;
+  padding: 0.75rem 1rem; background: white;
+  border-bottom: 1px solid rgba(26,23,25,0.06);
+}
+.sf-variant-row:last-child { border-bottom: none; }
+.sf-variant-name {
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+  min-width: 130px;
+}
+.sf-size-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sf-size-chip {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.0625rem; font-weight: 800; letter-spacing: 0.02em;
+  padding: 0.2rem 0.625rem; border-radius: 6px;
+}
+.sf-size-chip small {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.5625rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; vertical-align: middle; margin-left: 0.2rem;
+}
+.sf-chip-oe {
+  background: var(--red, #E31837); color: white;
+}
+.sf-chip-alt {
+  background: rgba(26,23,25,0.06); color: var(--muted);
+  border: 1px solid var(--border);
+}
+.sf-specs-bar {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 0.75rem;
+  align-items: center;
+  font-size: 0.8125rem; color: var(--muted);
+  padding: 0.75rem 1rem;
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 1rem;
+}
+.sf-wa-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.sf-wa-link { flex: 1; min-width: 200px; }
+@media (max-width: 540px) {
+  .sf-variant-row { flex-direction: column; align-items: flex-start; }
+  .sf-variant-name { min-width: unset; }
+}
 
 /* ── FAQ ─────────────────────────────────────────────────────────── */
 .faq-title-row {
