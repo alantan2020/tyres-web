@@ -1,0 +1,34 @@
+# SGCarPass Tyres — Singapore Tyre Price & Fitment Database
+
+SGCarPass is a Singapore-based platform providing tyre size fitment data for
+Singapore car models, brand comparisons, and price guidance across Budget,
+Mid-range, and Premium tyre tiers.
+
+> Prices are in SGD. All fitment data covers Singapore-spec vehicles (right-hand drive).
+
+## Tyre Fitment (Car → Tyre Size)
+
+- [Honda Civic Tyre Size](/tyres/honda/civic/): OE sizes 215/55R16, 215/50R17, 235/40R18. Covers Gen 10 FC (2016–2021) and Gen 11 FE (2022–2026).
+- [Honda Accord Tyre Size](/tyres/honda/accord/): OE sizes 225/50R17, 235/45R18, 235/40R19. Covers Gen 9 CR (2013–2017), Gen 10 CV (2018–2022), Gen 11 CY (2022–2026).
+
+## Tyre Brands Available in Singapore
+
+Major brands stocked in Singapore: Michelin, Bridgestone, Continental, Dunlop,
+Goodyear, Pirelli, Hankook, Kumho, Yokohama, Maxxis.
+
+## Price Guidance (SGD per tyre, installed)
+
+- Budget tier: from $89–$130 (Hankook, Kumho, Maxxis)
+- Mid-range tier: from $130–$200 (Bridgestone, Continental, Dunlop)
+- Premium tier: from $200+ (Michelin, Pirelli, Goodyear Eagle)
+
+## Buying Guide
+
+- All prices include installation at a partner workshop in Singapore.
+- WhatsApp quotes available for all car models — response within 1 business day.
+- Singapore law requires minimum 1.6mm tread depth; recommend replacement at 3mm.
+
+## Contact
+
+WhatsApp: +65 8152 5875
+Website: https://tyres.sgcarpass.com
