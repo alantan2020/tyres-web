@@ -8,6 +8,23 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Make Hub Pages -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/toyota/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/honda/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- Car Model Pages -->
   <url>
     <loc>https://tyres.sgcarpass.com/tyres/honda/civic/</loc>
