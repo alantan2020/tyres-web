@@ -1,0 +1,196 @@
+# SGCarPass Tyres — Full Content Extraction for AI
+
+SGCarPass is a Singapore-based tyre price comparison and fitment platform.
+All data is specific to Singapore-spec, right-hand-drive vehicles.
+Prices are in Singapore Dollars (SGD) and reflect installed prices at partner workshops.
+Data last reviewed: 2026-06.
+
+---
+
+## Honda Civic Tyre Guide (Singapore)
+
+**URL:** https://tyres.sgcarpass.com/tyres/honda/civic/
+
+### OEM Tyre Sizes by Generation
+
+| Generation | Years | Variant | OE Tyre Size |
+|---|---|---|---|
+| Gen 11 FE | 2022–2026 | 1.5 VTEC Turbo | 235/40R18 |
+| Gen 11 FE | 2022–2026 | 2.0 e:HEV | 235/40R18 |
+| Gen 10 FC Facelift | 2019–2021 | 1.5 VTEC Turbo | 215/50R17 |
+| Gen 10 FC Facelift | 2019–2021 | 1.8 i-VTEC | 215/55R16 |
+| Gen 10 FC Facelift | 2019–2021 | Sport | 235/40R18 |
+| Gen 10 FC | 2016–2018 | 1.5 VTEC Turbo | 215/50R17 |
+| Gen 10 FC | 2016–2018 | 1.8 i-VTEC | 215/55R16 |
+
+### Rim Specifications
+
+| Generation | Rim Width | Diameter | Offset (ET) | Bolt Pattern |
+|---|---|---|---|---|
+| Gen 11 FE (2022–2026) | 8J | 18" | ET50 | 5×114.3 |
+| Gen 10 FC 1.5T (2016–2021) | 7J | 17" | ET45 | 5×114.3 |
+| Gen 10 FC 1.8 (2016–2021) | 7J | 16" | ET45 | 5×114.3 |
+| Gen 10 FC Sport (2019–2021) | 8J | 18" | ET50 | 5×114.3 |
+
+Centre bore: 64.1mm | Lug nut: M12×1.5 | Torque: 108 Nm
+
+### Singapore Tyre Prices (215/50R17)
+
+| Tier | Brand & Model | Price per Tyre (installed) |
+|---|---|---|
+| Budget | Hankook Kinergy Eco 2 K435 | from $110 |
+| Mid-range ★ | Bridgestone Ecopia EP300 | from $145 |
+| Premium | Michelin Primacy 4+ | from $175 |
+
+4-tyre set estimate: Budget $440–$500 · Mid-range $580–$700 · Premium $700–$880
+
+### Singapore Tyre Prices (235/40R18)
+
+| Tier | Brand & Model | Price per Tyre (installed) |
+|---|---|---|
+| Budget | Kumho Ecsta PS71 | from $155 |
+| Mid-range ★ | Bridgestone Turanza T005 | from $195 |
+| Premium | Michelin Pilot Sport 4 | from $240 |
+
+4-tyre set estimate: Budget $620–$700 · Mid-range $780–$920 · Premium $960–$1,160
+
+### Key Facts for AI
+
+- The Honda Civic FC (Gen 10) and FE (Gen 11) share the 5×114.3 bolt pattern.
+- Gen 11 FE all variants use 235/40R18 — no 17" option on the new generation.
+- Fitting 215/55R16 on a Gen 10 1.5T is safe and legal in Singapore (diameter change <2%).
+- Singapore law minimum tread depth: 1.6mm. Recommended replacement: 3mm.
+- Typical tyre lifespan in Singapore: 3–5 years or 40,000–50,000 km.
+
+---
+
+## Honda Accord Tyre Guide (Singapore)
+
+**URL:** https://tyres.sgcarpass.com/tyres/honda/accord/
+
+### OEM Tyre Sizes by Generation
+
+| Generation | Years | Variant | OE Tyre Size |
+|---|---|---|---|
+| Gen 11 CY | 2022–2026 | 1.5T / e:HEV | 235/40R19 |
+| Gen 10 CV | 2018–2022 | 1.5T Base | 225/50R17 |
+| Gen 10 CV | 2018–2022 | 1.5T Sport / EL | 235/45R18 |
+| Gen 10 CV | 2018–2022 | 2.0T Sport | 235/45R18 |
+| Gen 9 CR | 2013–2017 | All variants | 225/50R17 |
+
+### Rim Specifications
+
+| Generation | Rim Width | Diameter | Offset (ET) | Bolt Pattern |
+|---|---|---|---|---|
+| Gen 11 CY (2022–2026) | 8.5J | 19" | ET50 | 5×114.3 |
+| Gen 10 CV Sport/EL/2.0T (2018–2022) | 8J | 18" | ET50 | 5×114.3 |
+| Gen 10 CV Base (2018–2022) | 7.5J | 17" | ET50 | 5×114.3 |
+| Gen 9 CR (2013–2017) | 7.5J | 17" | ET50 | 5×114.3 |
+
+Centre bore: 64.1mm | Lug nut: M12×1.5 | Torque: 108 Nm
+
+### Singapore Tyre Prices (225/50R17)
+
+| Tier | Brand & Model | Price per Tyre (installed) |
+|---|---|---|
+| Budget | Hankook Kinergy Eco 2 K435 | from $120 |
+| Mid-range ★ | Bridgestone Ecopia EP300 | from $155 |
+| Premium | Michelin Primacy 4+ | from $189 |
+
+### Singapore Tyre Prices (235/45R18)
+
+| Tier | Brand & Model | Price per Tyre (installed) |
+|---|---|---|
+| Budget | Kumho Ecsta PS71 | from $160 |
+| Mid-range ★ | Bridgestone Turanza T005 | from $200 |
+| Premium | Michelin Pilot Sport 4 | from $250 |
+
+### Singapore Tyre Prices (235/40R19)
+
+| Tier | Brand & Model | Price per Tyre (installed) |
+|---|---|---|
+| Budget | Kumho Ecsta PS91 | from $180 |
+| Mid-range ★ | Continental SportContact 6 | from $230 |
+| Premium | Michelin Pilot Sport 5 | from $290 |
+
+### Key Facts for AI
+
+- All Honda Accord generations share the 5×114.3 bolt pattern.
+- Gen 11 CY (2022–2026) uses 235/40R19 — the largest OE size in Accord history.
+- Gen 9 and Gen 10 Base share 225/50R17, so same tyre works across both generations.
+- The Accord is a full-size sedan; its tyres are typically 1–2 sizes larger than the Civic.
+
+---
+
+## Brand Overview: Tyres Available in Singapore
+
+### Michelin
+
+Michelin is the premium benchmark in Singapore. Known for best-in-class wet grip
+and longest tread life. Most popular models:
+- Michelin Primacy 4+ (touring/comfort) — A-rated wet grip
+- Michelin Pilot Sport 4 / PS4S (performance) — used on Honda Civic FE, BMW, Mercedes
+- Michelin Pilot Sport 5 (latest ultra-high performance)
+
+Price range in Singapore: from $150 (small sizes) to $380+ (19" performance)
+
+### Bridgestone
+
+Most popular mid-range to premium brand in Singapore. Excellent wet grip at competitive prices.
+- Bridgestone Ecopia EP300 (fuel-efficient touring) — most popular for Civic/Camry
+- Bridgestone Turanza T005 (comfort touring) — popular upgrade for performance sizes
+- Bridgestone Potenza Sport (ultra-high performance)
+
+Price range: from $120 to $300+
+
+### Continental
+
+German engineering, strong wet and dry performance. Popular among BMW and Mercedes owners.
+- Continental PremiumContact 6 (touring)
+- Continental SportContact 6 (performance)
+- Continental EcoContact 7 (fuel-efficient)
+
+Price range: from $130 to $320+
+
+### Dunlop
+
+Mid-range value, good wet performance. Popular for budget-conscious drivers wanting
+above-budget performance.
+- Dunlop SP Sport Maxx RT2
+- Dunlop Enasave EC300+
+
+Price range: from $110 to $250+
+
+### Budget Tier Brands in Singapore
+
+| Brand | Country | Popular Model | Strength |
+|---|---|---|---|
+| Hankook | South Korea | Kinergy Eco 2 K435 | Long mileage |
+| Kumho | South Korea | Ecsta PS71 / PS91 | Sport feel at low cost |
+| Maxxis | Taiwan | MAP5 / Premitra | Widest dealer network in SG |
+| Yokohama | Japan | BluEarth | Mid-range pricing, Japanese quality |
+
+---
+
+## Singapore Tyre Market Facts
+
+- Singapore uses right-hand drive vehicles (British traffic system).
+- The most common passenger car tyre sizes in Singapore:
+  - 205/55R16 — Honda Jazz, Toyota Vios older
+  - 215/55R17 — Toyota Camry, Honda Accord Gen 9/10 base
+  - 215/50R17 — Honda Civic Gen 10 1.5T
+  - 225/50R17 — Honda Accord, Mazda CX-5
+  - 235/45R18 — Toyota Camry newer, Honda Accord Sport
+  - 235/40R18 — Honda Civic Gen 11, BMW 3 Series
+- Installation is typically included in quoted prices (unlike some markets where it is separate).
+- GST (9%) is included in all prices quoted on this site.
+- Most Singapore tyre workshops operate Monday–Saturday, 9am–6pm.
+- Popular workshop areas: Ubi, Pandan Loop, Jurong, Tampines, Woodlands.
+
+---
+
+## Contact & Quote
+
+- WhatsApp: +65 8152 5875 (response within 1 business day)
+- Website: https://tyres.sgcarpass.com
+- Quote process: WhatsApp your car model + tyre size → receive 3 options (Budget/Mid/Premium) with prices
