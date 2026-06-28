@@ -249,6 +249,37 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- BMW -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/bmw/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/bmw/3-series/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/bmw/5-series/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/bmw/x1/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/bmw/x3/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/bmw/x5/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <!-- Subaru -->
   <url>
     <loc>https://tyres.sgcarpass.com/tyres/subaru/</loc>
