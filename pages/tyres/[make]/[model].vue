@@ -126,21 +126,22 @@ const allBoltPatterns = computed(() => {
 
 // ── Brand hero background + glow color ──────────────────────────────
 const BRAND_HERO: Record<string, { bg: string; glow: string }> = {
-  bmw:          { bg: '#003580', glow: 'rgba(100,160,255,0.30)' },
-  mercedes:     { bg: '#1a1a2e', glow: 'rgba(180,180,210,0.22)' },
-  audi:         { bg: '#1a1a1a', glow: 'rgba(200,16,46,0.22)'   },
-  volkswagen:   { bg: '#001E50', glow: 'rgba(0,157,224,0.22)'   },
-  volvo:        { bg: '#003057', glow: 'rgba(30,174,233,0.24)'  },
-  skoda:        { bg: '#1A2620', glow: 'rgba(75,168,46,0.24)'   },
-  mini:         { bg: '#1a1a1a', glow: 'rgba(255,215,0,0.18)'   },
-  porsche:      { bg: '#1a1108', glow: 'rgba(200,164,80,0.24)'  },
-  'land-rover': { bg: '#1a2e1a', glow: 'rgba(0,120,60,0.30)'   },
-  lexus:        { bg: '#1a1a24', glow: 'rgba(196,169,98,0.24)'  },
-  hyundai:      { bg: '#002C5F', glow: 'rgba(0,170,210,0.24)'   },
-  kia:          { bg: '#05141F', glow: 'rgba(187,22,43,0.24)'   },
-  mazda:        { bg: '#2a0808', glow: 'rgba(192,0,31,0.30)'    },
-  subaru:       { bg: '#003399', glow: 'rgba(91,164,207,0.30)'  },
-  byd:          { bg: '#1a1e3a', glow: 'rgba(26,111,191,0.26)'  },
+  // Rule: glow must be LIGHTER than bg — same-hue glow on dark bg = invisible
+  bmw:          { bg: '#003580', glow: 'rgba(255,255,255,0.45)' }, // white clouds on blue sky
+  mercedes:     { bg: '#1a1a2e', glow: 'rgba(220,220,245,0.42)' }, // silver-white on charcoal
+  audi:         { bg: '#1a1a1a', glow: 'rgba(255,80,60,0.42)'   }, // bright coral-red on black
+  volkswagen:   { bg: '#001E50', glow: 'rgba(80,200,255,0.40)'  }, // sky blue on navy
+  volvo:        { bg: '#003057', glow: 'rgba(140,220,255,0.42)' }, // icy blue on dark blue
+  skoda:        { bg: '#1A2620', glow: 'rgba(100,240,80,0.40)'  }, // bright lime on dark green
+  mini:         { bg: '#1a1a1a', glow: 'rgba(255,220,0,0.42)'   }, // bright gold on black
+  porsche:      { bg: '#1a1108', glow: 'rgba(240,195,60,0.44)'  }, // vivid gold on near-black
+  'land-rover': { bg: '#1a2e1a', glow: 'rgba(80,220,120,0.42)' }, // bright green on dark green
+  lexus:        { bg: '#1a1a24', glow: 'rgba(220,190,100,0.44)' }, // gold on deep purple-black
+  hyundai:      { bg: '#002C5F', glow: 'rgba(80,210,255,0.42)'  }, // bright cyan on navy
+  kia:          { bg: '#05141F', glow: 'rgba(255,60,60,0.42)'   }, // bright red on near-black
+  mazda:        { bg: '#2a0808', glow: 'rgba(255,90,40,0.46)'   }, // vivid orange-red on dark red
+  subaru:       { bg: '#003399', glow: 'rgba(160,220,255,0.44)' }, // ice blue on blue
+  byd:          { bg: '#1a1e3a', glow: 'rgba(60,160,255,0.44)'  }, // bright blue on dark navy
 }
 const _theme = BRAND_HERO[makeSlug]
 const heroStyle = _theme
@@ -917,17 +918,17 @@ const siblingCars = Object.entries(allCars)
 ───────────────────────────────────────────────────────────────────── */
 .hero-glow-1 {
   position: absolute;
-  width: 580px; height: 580px; border-radius: 50%;
-  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 68%);
-  top: -220px; right: -80px;
+  width: 700px; height: 380px; border-radius: 50%;
+  background: radial-gradient(ellipse, var(--hero-glow) 0%, transparent 65%);
+  top: -160px; right: -120px;
   pointer-events: none;
   animation: glowDrift1 9s ease-in-out infinite;
 }
 .hero-glow-2 {
   position: absolute;
-  width: 280px; height: 280px; border-radius: 50%;
-  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 65%);
-  bottom: -60px; left: 38%;
+  width: 340px; height: 200px; border-radius: 50%;
+  background: radial-gradient(ellipse, var(--hero-glow) 0%, transparent 62%);
+  bottom: -40px; left: 30%;
   pointer-events: none;
   animation: glowDrift2 7s ease-in-out infinite;
 }
