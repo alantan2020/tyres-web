@@ -23,7 +23,10 @@ const heroWaHref = `https://wa.me/${WA}?text=${encodeURIComponent('Hi SGCarPass,
 const plateWaHref = `https://wa.me/${WA}?text=${encodeURIComponent('Hi SGCarPass, my car plate is ')}`
 const bottomWaHref = `https://wa.me/${WA}?text=${encodeURIComponent("Hi SGCarPass, my car isn't listed on your website. Can you give me a tyre quote?")}`
 
-const makeQuickLinks = makes.slice(0, 5)
+const QUICK_LINK_ORDER = ['toyota', 'honda', 'nissan', 'hyundai', 'mazda']
+const makeQuickLinks = QUICK_LINK_ORDER
+  .map(slug => makes.find(([s]) => s === slug))
+  .filter(Boolean) as typeof makes
 
 useSeoMeta({
   title: 'Tyre Size & Price Guide for Singapore Cars | SGCarPass',
