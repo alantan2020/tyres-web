@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { CarData } from '~/data/cars/types'
 
 const BASE_URL = 'https://tyres.sgcarpass.com'
 
 const allCars = import.meta.glob<{ default: CarData }>('/data/cars/*.ts', { eager: true })
 
-// Group by make, skip types.ts
 const byMake = new Map<string, CarData[]>()
 for (const [path, mod] of Object.entries(allCars)) {
   if (path.endsWith('types.ts')) continue
@@ -14,14 +14,30 @@ for (const [path, mod] of Object.entries(allCars)) {
   list.push(car)
   byMake.set(car.makeSlug, list)
 }
-// Sort models within each make
-for (const [, cars] of byMake) {
-  cars.sort((a, b) => a.model.localeCompare(b.model))
-}
-// Sort makes alphabetically
-const makes = [...byMake.entries()].sort(([a], [b]) => a.localeCompare(b))
+for (const [, cars] of byMake) cars.sort((a, b) => a.model.localeCompare(b.model))
+
+// Sort by SG population, remainder alphabetical
+const MAKE_ORDER = [
+  'toyota', 'honda', 'nissan', 'hyundai', 'mazda', 'kia',
+  'mitsubishi', 'subaru', 'suzuki', 'lexus',
+  'mercedes', 'bmw', 'volkswagen', 'audi', 'volvo', 'skoda', 'mini', 'porsche', 'land-rover',
+  'byd', 'tesla', 'mg',
+]
+const makes = [
+  ...MAKE_ORDER.filter(s => byMake.has(s)).map(s => [s, byMake.get(s)!] as [string, CarData[]]),
+  ...[...byMake.entries()]
+    .filter(([s]) => !MAKE_ORDER.includes(s))
+    .sort(([a], [b]) => a.localeCompare(b)),
+]
 
 const totalModels = makes.reduce((n, [, cars]) => n + cars.length, 0)
+
+// Toyota open by default
+const openMakes = ref<Set<string>>(new Set(['toyota']))
+function toggle(slug: string) {
+  if (openMakes.value.has(slug)) openMakes.value.delete(slug)
+  else openMakes.value.add(slug)
+}
 
 useSeoMeta({
   title: 'All Car Tyres Singapore | Size & Price Guide | SGCarPass',
@@ -51,45 +67,58 @@ const waHref = `https://wa.me/${WA}?text=${encodeURIComponent('Hi SGCarPass, I n
       </nav>
       <h1 class="idx-title">Tyres for Your Car · Singapore</h1>
       <p class="idx-desc">
-        {{ totalModels }} car model guide{{ totalModels > 1 ? 's' : '' }} — correct size, bolt pattern, and best price, all in one place.
+        {{ totalModels }} car models — correct size, bolt pattern, and best price.
       </p>
     </div>
   </section>
 
-  <!-- ── MAKES LIST ──────────────────────────────────────────────────── -->
+  <!-- ── ACCORDION LIST ─────────────────────────────────────────────── -->
   <div class="idx-body">
     <div class="container">
-      <section
-        v-for="[makeSlug, cars] in makes"
-        :key="makeSlug"
-        class="make-section"
-      >
-        <div class="make-header">
-          <h2 class="make-name">{{ cars[0].make }}</h2>
-          <NuxtLink :to="`/tyres/${makeSlug}/`" class="make-hub-link">
-            All {{ cars[0].make }} models →
-          </NuxtLink>
-        </div>
 
-        <div class="model-grid">
-          <NuxtLink
-            v-for="car in cars"
-            :key="car.modelSlug"
-            :to="`/tyres/${car.makeSlug}/${car.modelSlug}/`"
-            class="model-card"
-          >
-            <div class="model-card-badge">{{ car.seo.oeSize }}</div>
-            <div class="model-card-name">{{ car.model }}</div>
-            <div class="model-card-gens">{{ car.generations.length }} gen · {{ car.generations[car.generations.length - 1].years.split('–')[0] }}–present</div>
-            <div class="model-card-price">From <strong>${{ car.seo.priceFrom }}</strong></div>
-            <div class="model-card-cta">View guide →</div>
-          </NuxtLink>
-        </div>
-      </section>
+      <div class="accordion">
+        <div
+          v-for="[makeSlug, cars] in makes"
+          :key="makeSlug"
+          class="acc-item"
+          :class="{ 'is-open': openMakes.has(makeSlug) }"
+        >
+          <!-- Brand header (clickable) -->
+          <button class="acc-header" @click="toggle(makeSlug)" :aria-expanded="openMakes.has(makeSlug)">
+            <span class="acc-make">{{ cars[0].make }}</span>
+            <span class="acc-meta">{{ cars.length }} model{{ cars.length > 1 ? 's' : '' }}</span>
+            <svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
 
-      <!-- WhatsApp fallback if model not listed -->
+          <!-- Model grid (collapsible) -->
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="model-grid">
+                <NuxtLink
+                  v-for="car in cars"
+                  :key="car.modelSlug"
+                  :to="`/tyres/${car.makeSlug}/${car.modelSlug}/`"
+                  class="model-card"
+                >
+                  <div class="model-card-badge">{{ car.seo.oeSize }}</div>
+                  <div class="model-card-name">{{ car.model }}</div>
+                  <div class="model-card-gens">{{ car.generations[car.generations.length - 1].years.split('–')[0] }}+</div>
+                  <div class="model-card-price">From <strong>${{ car.seo.priceFrom }}</strong></div>
+                </NuxtLink>
+              </div>
+              <NuxtLink :to="`/tyres/${makeSlug}/`" class="all-models-link">
+                All {{ cars[0].make }} models →
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp fallback -->
       <div class="idx-no-model">
-        <p>Don't see your car? Send us a WhatsApp — we cover 100+ models.</p>
+        <p>Don't see your car? WhatsApp us — we cover 100+ models.</p>
         <a :href="waHref" target="_blank" class="wa-btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -97,6 +126,7 @@ const waHref = `https://wa.me/${WA}?text=${encodeURIComponent('Hi SGCarPass, I n
           WhatsApp Us
         </a>
       </div>
+
     </div>
   </div>
 </template>
@@ -129,64 +159,122 @@ const waHref = `https://wa.me/${WA}?text=${encodeURIComponent('Hi SGCarPass, I n
 .idx-desc { color: rgba(255,255,255,0.65); margin: 0; font-size: 1rem; }
 
 /* ── Body ───────────────────────────────────────────── */
-.idx-body { padding: 2.5rem 0 3rem; }
+.idx-body { padding: 2rem 0 3rem; }
 
-/* ── Make section ───────────────────────────────────── */
-.make-section { margin-bottom: 2.5rem; }
-.make-header {
-  display: flex; align-items: baseline; justify-content: space-between;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid var(--border);
-  padding-bottom: 0.5rem;
+/* ── Accordion ──────────────────────────────────────── */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
-.make-name { font-size: 1.25rem; font-weight: 900; margin: 0; }
-.make-hub-link {
-  font-size: 0.82rem; font-weight: 700;
-  color: var(--red); text-decoration: none;
-}
-.make-hub-link:hover { text-decoration: underline; }
 
-/* ── Model cards ────────────────────────────────────── */
-.model-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.85rem;
-}
-.model-card {
-  display: block;
+.acc-item {
   background: #fff;
   border: 1.5px solid var(--border);
   border-radius: 10px;
-  padding: 1.1rem 1.1rem 0.9rem;
+  overflow: hidden;
+}
+
+.acc-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.25rem;
+  min-height: 56px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--ink);
+  transition: background 0.12s;
+}
+.acc-header:hover { background: var(--cream); }
+
+.acc-make {
+  font-size: 1.05rem;
+  font-weight: 800;
+  flex: 1;
+}
+.acc-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.acc-chevron {
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 0.22s ease;
+}
+.acc-item.is-open .acc-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Collapsible body ───────────────────────────────── */
+.acc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+.acc-item.is-open .acc-body {
+  grid-template-rows: 1fr;
+}
+.acc-body-inner {
+  overflow: hidden;
+}
+
+/* ── Model grid ─────────────────────────────────────── */
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.7rem;
+  padding: 1rem 1.25rem 0.75rem;
+}
+
+.model-card {
+  display: block;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem 0.8rem;
   text-decoration: none;
   color: var(--ink);
   transition: border-color .15s, box-shadow .15s;
 }
 .model-card:hover {
   border-color: var(--red);
-  box-shadow: 0 4px 16px rgba(227,24,55,0.1);
+  box-shadow: 0 3px 12px rgba(227,24,55,0.1);
 }
 .model-card-badge {
   display: inline-block;
-  background: var(--cream);
+  background: #fff;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.18rem 0.55rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 4px;
-  margin-bottom: 0.6rem;
-  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
 }
-.model-card-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.2rem; }
-.model-card-gens { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.55rem; }
-.model-card-price { font-size: 0.85rem; margin-bottom: 0.55rem; }
+.model-card-name { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.15rem; }
+.model-card-gens { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.4rem; }
+.model-card-price { font-size: 0.82rem; }
 .model-card-price strong { color: var(--red); }
-.model-card-cta { font-size: 0.82rem; font-weight: 700; color: var(--red); }
+
+.all-models-link {
+  display: inline-block;
+  margin: 0 1.25rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--red);
+  text-decoration: none;
+}
+.all-models-link:hover { text-decoration: underline; }
 
 /* ── Bottom CTA ─────────────────────────────────────── */
 .idx-no-model {
-  margin-top: 2rem;
-  padding: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
   background: #fff;
   border: 1.5px solid var(--border);
   border-radius: 10px;
@@ -208,5 +296,9 @@ const waHref = `https://wa.me/${WA}?text=${encodeURIComponent('Hi SGCarPass, I n
 
 @media (min-width: 560px) {
   .idx-no-model { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+@media (min-width: 768px) {
+  .model-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 }
 </style>
