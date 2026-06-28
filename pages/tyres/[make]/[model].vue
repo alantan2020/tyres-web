@@ -124,25 +124,28 @@ const allBoltPatterns = computed(() => {
   return [...seen]
 })
 
-// ── Brand hero background ────────────────────────────────────────────
-const BRAND_HERO: Record<string, string> = {
-  bmw:          '#003580',
-  mercedes:     '#1a1a2e',
-  audi:         '#1a1a1a',
-  volkswagen:   '#001E50',
-  volvo:        '#003057',
-  skoda:        '#1A2620',
-  mini:         '#1a1a1a',
-  porsche:      '#1a1108',
-  'land-rover': '#1a2e1a',
-  lexus:        '#1a1a24',
-  hyundai:      '#002C5F',
-  kia:          '#05141F',
-  mazda:        '#2a0808',
-  subaru:       '#003399',
-  byd:          '#1a1e3a',
+// ── Brand hero background + glow color ──────────────────────────────
+const BRAND_HERO: Record<string, { bg: string; glow: string }> = {
+  bmw:          { bg: '#003580', glow: 'rgba(100,160,255,0.30)' },
+  mercedes:     { bg: '#1a1a2e', glow: 'rgba(180,180,210,0.22)' },
+  audi:         { bg: '#1a1a1a', glow: 'rgba(200,16,46,0.22)'   },
+  volkswagen:   { bg: '#001E50', glow: 'rgba(0,157,224,0.22)'   },
+  volvo:        { bg: '#003057', glow: 'rgba(30,174,233,0.24)'  },
+  skoda:        { bg: '#1A2620', glow: 'rgba(75,168,46,0.24)'   },
+  mini:         { bg: '#1a1a1a', glow: 'rgba(255,215,0,0.18)'   },
+  porsche:      { bg: '#1a1108', glow: 'rgba(200,164,80,0.24)'  },
+  'land-rover': { bg: '#1a2e1a', glow: 'rgba(0,120,60,0.30)'   },
+  lexus:        { bg: '#1a1a24', glow: 'rgba(196,169,98,0.24)'  },
+  hyundai:      { bg: '#002C5F', glow: 'rgba(0,170,210,0.24)'   },
+  kia:          { bg: '#05141F', glow: 'rgba(187,22,43,0.24)'   },
+  mazda:        { bg: '#2a0808', glow: 'rgba(192,0,31,0.30)'    },
+  subaru:       { bg: '#003399', glow: 'rgba(91,164,207,0.30)'  },
+  byd:          { bg: '#1a1e3a', glow: 'rgba(26,111,191,0.26)'  },
 }
-const heroBg = BRAND_HERO[makeSlug] ?? null
+const _theme = BRAND_HERO[makeSlug]
+const heroStyle = _theme
+  ? { background: _theme.bg, '--hero-glow': _theme.glow }
+  : { '--hero-glow': 'rgba(255,255,255,0.07)' }
 
 // ── Sibling models (same make) for model switcher strip ──────────────
 const siblingCars = Object.entries(allCars)
@@ -154,10 +157,12 @@ const siblingCars = Object.entries(allCars)
 
 <template>
   <!-- ── HERO ─────────────────────────────────────────────────────── -->
-  <section class="hero" :style="heroBg ? { background: heroBg } : undefined">
+  <section class="hero" :style="heroStyle">
     <div class="hero-stripes" aria-hidden="true" />
     <div class="hero-bg-word" aria-hidden="true">{{ car.bgWord }}</div>
     <div class="hero-red-line" aria-hidden="true" />
+    <div class="hero-glow-1" aria-hidden="true" />
+    <div class="hero-glow-2" aria-hidden="true" />
     <div class="container hero-content">
 
       <nav aria-label="breadcrumb" class="breadcrumb">
@@ -904,6 +909,36 @@ const siblingCars = Object.entries(allCars)
 @media (max-width: 540px) {
   .sf-variant-row { flex-direction: column; align-items: flex-start; }
   .sf-variant-name { min-width: unset; }
+}
+
+/* ── Brand glow orbs ────────────────────────────────────────────────
+   Two drifting radial-gradient blobs; color set via --hero-glow.
+   Non-branded pages use the white fallback (rgba(255,255,255,0.07)).
+───────────────────────────────────────────────────────────────────── */
+.hero-glow-1 {
+  position: absolute;
+  width: 580px; height: 580px; border-radius: 50%;
+  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 68%);
+  top: -220px; right: -80px;
+  pointer-events: none;
+  animation: glowDrift1 9s ease-in-out infinite;
+}
+.hero-glow-2 {
+  position: absolute;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 65%);
+  bottom: -60px; left: 38%;
+  pointer-events: none;
+  animation: glowDrift2 7s ease-in-out infinite;
+}
+@keyframes glowDrift1 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  40%       { transform: translate(-50px, 25px) scale(1.08); }
+  70%       { transform: translate(25px, -15px) scale(0.96); }
+}
+@keyframes glowDrift2 {
+  0%, 100% { transform: translate(0,0) scale(1); opacity: 0.8; }
+  55%       { transform: translate(18px, -28px) scale(1.14); opacity: 1; }
 }
 
 /* ── Model nav strip (same-brand switcher) ───────────────────────── */
