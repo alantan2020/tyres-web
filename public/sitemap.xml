@@ -618,5 +618,214 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/kia/cerato/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Lexus (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/lexus/ct/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/lexus/gs/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/lexus/lm/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Toyota (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/toyota/vellfire/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/toyota/c-hr/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/toyota/noah/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/toyota/crown/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/toyota/wish/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/toyota/estima/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Honda (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/honda/stepwgn/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/honda/vezel/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/honda/zr-v/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/honda/stream/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Hyundai (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/hyundai/ioniq-5/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/hyundai/ioniq-6/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/hyundai/staria/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/hyundai/palisade/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/hyundai/sonata/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Nissan (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/nissan/serena/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/nissan/qashqai/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/nissan/teana/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/nissan/leaf/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/nissan/elgrand/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Mazda (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mazda/cx-9/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mazda/mx-5/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- BYD (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/byd/dolphin/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Suzuki -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/suzuki/swift/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/suzuki/jimny/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Subaru (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/subaru/impreza/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/subaru/wrx/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Mitsubishi (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mitsubishi/triton/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Skoda -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/skoda/octavia/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/skoda/kodiaq/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/skoda/karoq/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Mercedes (2nd batch) -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mercedes/gle/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mercedes/cla/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
 </urlset>
