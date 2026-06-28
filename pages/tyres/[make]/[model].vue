@@ -123,11 +123,38 @@ const allBoltPatterns = computed(() => {
   car.rimSpecs.forEach(r => seen.add(r.boltPattern))
   return [...seen]
 })
+
+// ── Brand hero background ────────────────────────────────────────────
+const BRAND_HERO: Record<string, string> = {
+  bmw:          '#003580',
+  mercedes:     '#1a1a2e',
+  audi:         '#1a1a1a',
+  volkswagen:   '#001E50',
+  volvo:        '#003057',
+  skoda:        '#1A2620',
+  mini:         '#1a1a1a',
+  porsche:      '#1a1108',
+  'land-rover': '#1a2e1a',
+  lexus:        '#1a1a24',
+  hyundai:      '#002C5F',
+  kia:          '#05141F',
+  mazda:        '#2a0808',
+  subaru:       '#003399',
+  byd:          '#1a1e3a',
+}
+const heroBg = BRAND_HERO[makeSlug] ?? null
+
+// ── Sibling models (same make) for model switcher strip ──────────────
+const siblingCars = Object.entries(allCars)
+  .filter(([path]) => !path.endsWith('types.ts'))
+  .map(([, mod]) => mod.default)
+  .filter(c => c?.makeSlug === makeSlug)
+  .sort((a, b) => a.model.localeCompare(b.model))
 </script>
 
 <template>
   <!-- ── HERO ─────────────────────────────────────────────────────── -->
-  <section class="hero">
+  <section class="hero" :style="heroBg ? { background: heroBg } : undefined">
     <div class="hero-stripes" aria-hidden="true" />
     <div class="hero-bg-word" aria-hidden="true">{{ car.bgWord }}</div>
     <div class="hero-red-line" aria-hidden="true" />
@@ -136,7 +163,11 @@ const allBoltPatterns = computed(() => {
       <nav aria-label="breadcrumb" class="breadcrumb">
         <NuxtLink to="/">Home</NuxtLink>
         <span class="bc-sep">/</span>
-        <span>{{ car.make }} {{ car.model }} Tyres</span>
+        <NuxtLink to="/tyres/">All Tyres</NuxtLink>
+        <span class="bc-sep">/</span>
+        <NuxtLink :to="`/tyres/${makeSlug}/`">{{ car.make }}</NuxtLink>
+        <span class="bc-sep">/</span>
+        <span>{{ car.model }}</span>
       </nav>
 
       <div class="hero-badges">
@@ -163,6 +194,21 @@ const allBoltPatterns = computed(() => {
       </a>
     </div>
   </section>
+
+  <!-- ── SAME-BRAND MODEL NAV ───────────────────────────────────────── -->
+  <div v-if="siblingCars.length > 1" class="model-nav" aria-label="Other {{ car.make }} models">
+    <div class="container model-nav-inner">
+      <NuxtLink
+        v-for="sibling in siblingCars"
+        :key="sibling.modelSlug"
+        :to="`/tyres/${makeSlug}/${sibling.modelSlug}/`"
+        class="model-nav-chip"
+        :class="{ 'is-current': sibling.modelSlug === modelSlug }"
+      >
+        {{ sibling.model }}
+      </NuxtLink>
+    </div>
+  </div>
 
   <!-- ── WHY US BAR ──────────────────────────────────────────────── -->
   <div class="why-us-bar">
@@ -858,6 +904,36 @@ const allBoltPatterns = computed(() => {
 @media (max-width: 540px) {
   .sf-variant-row { flex-direction: column; align-items: flex-start; }
   .sf-variant-name { min-width: unset; }
+}
+
+/* ── Model nav strip (same-brand switcher) ───────────────────────── */
+.model-nav {
+  background: #0D0D10;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 0.5rem 0;
+}
+.model-nav-inner {
+  display: flex; gap: 0.375rem;
+  overflow-x: auto; scrollbar-width: none;
+  padding-bottom: 0.125rem;
+}
+.model-nav-inner::-webkit-scrollbar { display: none; }
+.model-nav-chip {
+  display: inline-block; flex-shrink: 0;
+  padding: 0.3rem 0.875rem; border-radius: 999px;
+  font-size: 0.75rem; font-weight: 600;
+  color: rgba(255,255,255,0.45); text-decoration: none; white-space: nowrap;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.model-nav-chip:hover {
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.22);
+}
+.model-nav-chip.is-current {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.22);
 }
 
 /* ── FAQ ─────────────────────────────────────────────────────────── */
