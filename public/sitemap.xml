@@ -332,6 +332,32 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Lexus -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/lexus/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/lexus/nx/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/lexus/rx/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/lexus/es/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/lexus/ux/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <!-- Audi -->
   <url>
     <loc>https://tyres.sgcarpass.com/tyres/audi/</loc>
