@@ -332,6 +332,37 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Mercedes-Benz -->
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mercedes/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mercedes/c-class/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mercedes/e-class/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mercedes/gla/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mercedes/glc/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tyres.sgcarpass.com/tyres/mercedes/glb/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <!-- Hyundai -->
   <url>
     <loc>https://tyres.sgcarpass.com/tyres/hyundai/tucson/</loc>
