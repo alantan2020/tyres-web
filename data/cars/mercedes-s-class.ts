@@ -3,7 +3,7 @@ import type { CarData } from './types'
 const data: CarData = {
   make: 'Mercedes-Benz',
   model: 'S-Class',
-  makeSlug: 'mercedes-benz',
+  makeSlug: 'mercedes',
   modelSlug: 's-class',
   bgWord: 'SCLASS',
 
