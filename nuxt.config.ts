@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const backendUrl = process.env.BACKEND_URL ?? 'http://47.82.1.87:8080'
+const backendUrl = process.env.BACKEND_URL ?? 'https://api.sgcarpass.com'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-30',
