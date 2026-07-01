@@ -428,6 +428,8 @@ const siblingCars = Object.entries(allCars)
           </div>
         </template>
       </template>
+
+      <TyreLiveInventory :size="activeTab" :make="car.make" :model="car.model" />
     </section>
 
     <!-- 04 BRAND RATINGS -->

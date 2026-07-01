@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const backendUrl = process.env.BACKEND_URL ?? 'http://47.82.1.87:8080'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-30',
   devtools: { enabled: true },
@@ -16,6 +18,13 @@ export default defineNuxtConfig({
   // TypeScript strict mode
   typescript: {
     strict: true,
+  },
+
+  // Backend API proxy — /api/** → Spring Boot
+  // Dev: set BACKEND_URL=http://localhost:8080 in .env.local
+  // Prod (Cloudflare): defaults to 47.82.1.87:8080
+  routeRules: {
+    '/api/**': { proxy: `${backendUrl}/**` },
   },
 
   // App-level head defaults (per-page SEO set via useSeoMeta / useHead)
