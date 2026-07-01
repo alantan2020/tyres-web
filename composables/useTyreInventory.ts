@@ -24,7 +24,7 @@ export function useTyreInventory(size: Ref<string>) {
     loading.value = true
     try {
       const res = await $fetch<ApiResponse>(
-        `/api/tys/web/tyre/by-size?size=${encodeURIComponent(s)}`
+        `https://api.sgcarpass.com/tys/web/tyre/by-size?size=${encodeURIComponent(s)}`
       )
       items.value = res.data ?? []
     } catch {
