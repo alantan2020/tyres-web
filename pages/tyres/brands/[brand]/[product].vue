@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { CarData } from '~/data/cars/types'
 import { getProduct, getProductBySlug } from '~/data/tyres/products'
+import { carSizeMap } from '~/data/tyres/car-size-map'
 
 const route = useRoute()
 const brandSlug = route.params.brand as string
@@ -16,16 +16,20 @@ const canonicalUrl = `${BASE}/tyres/brands/${brandSlug}/${productSlug}/`
 // Live sizes from API (client-side only)
 const { sizes, loading: sizesLoading, minPrice } = useTyreProductSizes(p.patternPrefix)
 
-// Compatible cars — computed from static car data vs available sizes
-const allCars = import.meta.glob<{ default: CarData }>('/data/cars/*.ts', { eager: true })
+// Compatible cars — from pre-computed size→cars map (avoids bundling 141 car files)
 const compatibleCars = computed(() => {
   const sizeSet = new Set(sizes.value.map(s => s.displaySize))
+  const seen = new Set<string>()
   const matches: { make: string; model: string; makeSlug: string; modelSlug: string; sizes: string[] }[] = []
-  for (const [path, mod] of Object.entries(allCars)) {
-    if (path.endsWith('types.ts')) continue
-    const car = mod.default
-    const matchedSizes = car.priceTabs.map(t => t.size).filter(s => sizeSet.has(s))
-    if (matchedSizes.length) matches.push({ make: car.make, model: car.model, makeSlug: car.makeSlug, modelSlug: car.modelSlug, sizes: matchedSizes })
+  for (const sz of sizeSet) {
+    for (const car of (carSizeMap[sz] ?? [])) {
+      const key = `${car.makeSlug}/${car.modelSlug}`
+      if (!seen.has(key)) {
+        seen.add(key)
+        const carSizes = [...sizeSet].filter(s => carSizeMap[s]?.some(c => c.makeSlug === car.makeSlug && c.modelSlug === car.modelSlug))
+        matches.push({ ...car, sizes: carSizes })
+      }
+    }
   }
   return matches.slice(0, 12)
 })
