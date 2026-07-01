@@ -15,6 +15,9 @@ const canonicalUrl = `${BASE}/tyres/brands/${brandSlug}/${productSlug}/`
 
 // Live sizes from API (client-side only)
 const { sizes, loading: sizesLoading, minPrice } = useTyreProductSizes(p.patternPrefix)
+const maxPrice = computed(() =>
+  sizes.value.length ? Math.max(...sizes.value.map(s => s.minPrice)) : null
+)
 
 // Compatible cars — from pre-computed size→cars map (avoids bundling 141 car files)
 const compatibleCars = computed(() => {
@@ -68,6 +71,16 @@ useHead({
         category: 'Tyre',
         description: p.whoIsItFor,
         url: canonicalUrl,
+        ...(minPrice.value ? {
+          offers: {
+            '@type': 'AggregateOffer',
+            lowPrice: String(minPrice.value),
+            ...(maxPrice.value && maxPrice.value !== minPrice.value ? { highPrice: String(maxPrice.value) } : {}),
+            priceCurrency: 'SGD',
+            availability: 'https://schema.org/InStock',
+            seller: { '@type': 'LocalBusiness', name: 'SGCarPass' },
+          },
+        } : {}),
         ...(p.scores.overall ? {
           aggregateRating: {
             '@type': 'AggregateRating',
@@ -165,28 +178,23 @@ const scoreRows = [
       <p class="score-source">Source: <a href="https://www.tyrereviews.com" target="_blank" rel="nofollow noopener">TyreReviews.com</a> — independent user reviews</p>
     </section>
 
-    <!-- ③ AVAILABLE SIZES + PRICE -->
+    <!-- ③ AVAILABLE SIZES -->
     <section class="section">
       <h2 class="section-title">Available Sizes in Singapore</h2>
-      <div v-if="sizesLoading" class="loading-msg">Loading live prices…</div>
-      <div v-else-if="sizes.length" class="sizes-table">
-        <div class="sizes-header">
-          <span>Size</span><span>From</span><span>Stock</span>
+      <div v-if="sizesLoading" class="loading-msg">Checking stock…</div>
+      <template v-else-if="sizes.length">
+        <div class="sizes-chips">
+          <a
+            v-for="s in sizes"
+            :key="s.rawSize"
+            :href="`https://wa.me/${WA}?text=${encodeURIComponent(`Hi SGCarPass, I'd like a quote for ${p.brand} ${p.name} size ${s.displaySize}. Please advise on today's price.`)}`"
+            target="_blank"
+            class="size-chip"
+          >{{ s.displaySize }}</a>
         </div>
-        <a
-          v-for="s in sizes"
-          :key="s.rawSize"
-          :href="`https://wa.me/${WA}?text=${encodeURIComponent(`Hi SGCarPass, I'd like a quote for ${p.brand} ${p.name} size ${s.displaySize}. Please advise.`)}`"
-          target="_blank"
-          class="size-row"
-        >
-          <span class="size-label">{{ s.displaySize }}</span>
-          <span class="size-price">${{ s.minPrice }}</span>
-          <span class="size-stock">{{ s.totalStock > 10 ? 'In Stock' : `${s.totalStock} left` }}</span>
-        </a>
-      </div>
-      <div v-else class="loading-msg">No sizes in stock — <a :href="waQuoteHref" target="_blank">WhatsApp us</a> for availability.</div>
-      <p class="live-note">Prices updated daily · Click any size to WhatsApp for today's exact quote</p>
+        <p class="sizes-cta-note">WhatsApp us your car plate — we'll confirm the right size and give you today's best price.</p>
+      </template>
+      <div v-else class="loading-msg">WhatsApp us for current availability → <a :href="waQuoteHref" target="_blank">Chat now</a></div>
     </section>
 
     <!-- ④ COMPATIBLE CARS -->
@@ -342,25 +350,16 @@ const scoreRows = [
 /* Sizes */
 .loading-msg { font-size: 0.9rem; color: var(--muted); font-style: italic; }
 .loading-msg a { color: var(--red); }
-.sizes-table { border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 0.5rem; }
-.sizes-header {
-  display: grid; grid-template-columns: 1fr auto auto;
-  gap: 1rem; padding: 0.6rem 1rem;
-  background: #f9fafb; font-size: 0.72rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
+.sizes-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+.size-chip {
+  display: inline-block; padding: 0.45rem 0.9rem;
+  border: 1.5px solid var(--border); border-radius: 6px;
+  font-size: 0.875rem; font-weight: 700; color: var(--ink);
+  text-decoration: none; background: #fff;
+  transition: border-color .12s, background .12s;
 }
-.size-row {
-  display: grid; grid-template-columns: 1fr auto auto;
-  gap: 1rem; padding: 0.75rem 1rem;
-  border-top: 1px solid var(--border);
-  text-decoration: none; color: var(--ink);
-  transition: background .12s;
-}
-.size-row:hover { background: #f0fdf4; }
-.size-label { font-weight: 700; font-size: 0.95rem; }
-.size-price { font-weight: 800; color: #15803d; font-size: 1rem; }
-.size-stock { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
-.live-note { font-size: 0.75rem; color: var(--muted); margin: 0; }
+.size-chip:hover { border-color: #25D366; background: #f0fdf4; color: #15803d; }
+.sizes-cta-note { font-size: 0.82rem; color: var(--muted); margin: 0; }
 
 /* Compatible cars */
 .cars-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
