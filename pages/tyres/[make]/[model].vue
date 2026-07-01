@@ -374,8 +374,8 @@ const siblingCars = Object.entries(allCars)
       <div class="section-head">
         <span class="section-num">03</span>
         <div>
-          <h2>Best Tyres by Budget</h2>
-          <p>Select your tyre size below</p>
+          <h2>Live Prices</h2>
+          <p>Real-time stock · updated daily</p>
         </div>
       </div>
 
@@ -390,44 +390,6 @@ const siblingCars = Object.entries(allCars)
           {{ tab.tabLabel }}
         </button>
       </div>
-
-      <template v-for="tab in car.priceTabs" :key="tab.size">
-        <template v-if="activeTab === tab.size">
-          <div class="price-grid">
-            <div class="price-card">
-              <span class="tier">Budget</span>
-              <p class="tyre-name">{{ tab.budget.name }}</p>
-              <p class="tyre-desc">{{ tab.budget.desc }}</p>
-              <p class="price-big">${{ tab.budget.price }}</p>
-              <p class="price-unit">per tyre installed</p>
-              <p class="also">{{ tab.budget.also }}</p>
-              <a :href="`https://wa.me/${WA}?text=Hi%20SGCarPass%2C%20${tab.budget.waText}.`" target="_blank" class="quote-link">Get quote →</a>
-            </div>
-            <div class="price-card" :class="tab.mid.popular ? 'price-card--popular' : ''">
-              <div v-if="tab.mid.popular" class="popular-bar">Most Popular</div>
-              <span class="tier tier--mid">Mid-Range</span>
-              <p class="tyre-name">{{ tab.mid.name }}</p>
-              <p class="tyre-desc">{{ tab.mid.desc }}</p>
-              <p class="price-big price-big--mid">${{ tab.mid.price }}</p>
-              <p class="price-unit">per tyre installed</p>
-              <p class="also">{{ tab.mid.also }}</p>
-              <a :href="`https://wa.me/${WA}?text=Hi%20SGCarPass%2C%20${tab.mid.waText}.`" target="_blank" class="quote-link quote-link--mid">Get quote →</a>
-            </div>
-            <div class="price-card price-card--premium">
-              <span class="tier tier--premium">Premium</span>
-              <p class="tyre-name">{{ tab.premium.name }}</p>
-              <p class="tyre-desc">{{ tab.premium.desc }}</p>
-              <p class="price-big price-big--premium">${{ tab.premium.price }}</p>
-              <p class="price-unit">per tyre installed</p>
-              <p class="also">{{ tab.premium.also }}</p>
-              <a :href="`https://wa.me/${WA}?text=Hi%20SGCarPass%2C%20${tab.premium.waText}.`" target="_blank" class="quote-link quote-link--premium">Get quote →</a>
-            </div>
-          </div>
-          <div class="set-estimate">
-            <strong>Full set of 4 tyres + installation:</strong> {{ tab.setEstimate }}
-          </div>
-        </template>
-      </template>
 
       <TyreLiveInventory :size="activeTab" :make="car.make" :model="car.model" />
     </section>
