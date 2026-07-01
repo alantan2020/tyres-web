@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CarData } from '~/data/cars/types'
+import { TOP_PICKS, getProductBySlug } from '~/data/tyres/products'
 
 const BASE_URL = 'https://tyres.sgcarpass.com'
 const WA = '6581525875'
@@ -22,6 +23,9 @@ const priceFrom = Math.min(...[...byMake.values()].flat().map(c => c.seo.priceFr
 const heroWaHref = `https://wa.me/${WA}?text=${encodeURIComponent('Hi SGCarPass, I need a tyre quote for my car.')}`
 const plateWaHref = `https://wa.me/${WA}?text=${encodeURIComponent('Hi SGCarPass, my car plate is ')}`
 const bottomWaHref = `https://wa.me/${WA}?text=${encodeURIComponent("Hi SGCarPass, my car isn't listed on your website. Can you give me a tyre quote?")}`
+
+const topPicks = TOP_PICKS.map(s => getProductBySlug(s)).filter(Boolean)
+const barColor = (v: number | null) => !v ? '#e5e7eb' : v >= 85 ? '#16a34a' : v >= 70 ? '#ca8a04' : '#dc2626'
 
 const QUICK_LINK_ORDER = ['toyota', 'honda', 'nissan', 'hyundai', 'mazda']
 const makeQuickLinks = QUICK_LINK_ORDER
@@ -182,17 +186,58 @@ useHead({
     <div class="container">
       <p class="home-brands-label">Brands we carry</p>
       <div class="brand-row">
-        <span class="brand-name">Michelin</span>
+        <NuxtLink to="/tyres/brands/michelin/" class="brand-name">Michelin</NuxtLink>
         <span class="brand-sep">·</span>
-        <span class="brand-name">Bridgestone</span>
+        <NuxtLink to="/tyres/brands/bridgestone/" class="brand-name">Bridgestone</NuxtLink>
         <span class="brand-sep">·</span>
-        <span class="brand-name">Continental</span>
+        <NuxtLink to="/tyres/brands/continental/" class="brand-name">Continental</NuxtLink>
         <span class="brand-sep">·</span>
-        <span class="brand-name">Dunlop</span>
+        <NuxtLink to="/tyres/brands/dunlop/" class="brand-name">Dunlop</NuxtLink>
         <span class="brand-sep">·</span>
-        <span class="brand-name">Goodyear</span>
+        <NuxtLink to="/tyres/brands/goodyear/" class="brand-name">Goodyear</NuxtLink>
         <span class="brand-sep">·</span>
-        <span class="brand-name">Pirelli</span>
+        <NuxtLink to="/tyres/brands/pirelli/" class="brand-name">Pirelli</NuxtLink>
+        <span class="brand-sep">·</span>
+        <NuxtLink to="/tyres/brands/" class="brand-name brand-name--more">All brands →</NuxtLink>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── POPULAR TYRES ──────────────────────────────────────────────────── -->
+  <section class="home-popular">
+    <div class="container">
+      <div class="popular-header">
+        <h2 class="section-title">Popular Tyres in Singapore</h2>
+        <NuxtLink to="/tyres/brands/" class="popular-see-all">Browse all brands →</NuxtLink>
+      </div>
+      <div class="popular-grid">
+        <NuxtLink
+          v-for="prod in topPicks"
+          :key="prod!.slug"
+          :to="`/tyres/brands/${prod!.brandSlug}/${prod!.slug}/`"
+          class="popular-card"
+        >
+          <div class="popular-card-top">
+            <span class="popular-brand">{{ prod!.brand }}</span>
+            <span class="popular-tier" :class="`popular-tier--${prod!.tier}`">
+              {{ prod!.tier === 'premium' ? 'Premium' : prod!.tier === 'mid' ? 'Mid' : 'Budget' }}
+            </span>
+          </div>
+          <h3 class="popular-name">{{ prod!.name }}</h3>
+          <div class="popular-scores">
+            <div class="popular-score-row">
+              <span class="popular-score-label">Wet</span>
+              <div class="popular-bar-track"><div class="popular-bar-fill" :style="{ width: (prod!.scores.wet ?? 0) + '%', background: barColor(prod!.scores.wet) }" /></div>
+              <span class="popular-score-val">{{ prod!.scores.wet ?? '—' }}</span>
+            </div>
+            <div class="popular-score-row">
+              <span class="popular-score-label">Comfort</span>
+              <div class="popular-bar-track"><div class="popular-bar-fill" :style="{ width: (prod!.scores.comfort ?? 0) + '%', background: barColor(prod!.scores.comfort) }" /></div>
+              <span class="popular-score-val">{{ prod!.scores.comfort ?? '—' }}</span>
+            </div>
+          </div>
+          <span class="popular-arrow">View &amp; Quote →</span>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -415,8 +460,38 @@ useHead({
   margin: 0 0 0.75rem;
 }
 .brand-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; }
-.brand-name { font-size: 1rem; font-weight: 700; color: var(--ink); }
+.brand-name { font-size: 1rem; font-weight: 700; color: var(--ink); text-decoration: none; transition: color .12s; }
+.brand-name:hover { color: var(--red); }
+.brand-name--more { color: var(--muted); font-size: 0.85rem; }
 .brand-sep { color: var(--muted); opacity: 0.4; }
+
+/* ── Popular Tyres ─────────────────────────────────────── */
+.home-popular { padding: 3rem 0; background: var(--cream); }
+.popular-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.25rem; }
+.popular-see-all { font-size: 0.85rem; font-weight: 700; color: var(--red); text-decoration: none; }
+.popular-see-all:hover { text-decoration: underline; }
+.popular-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.85rem; }
+.popular-card {
+  background: #fff; border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 1.1rem; text-decoration: none; color: var(--ink);
+  display: flex; flex-direction: column; gap: 0.5rem;
+  transition: border-color .15s, box-shadow .15s;
+}
+.popular-card:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(227,24,55,.1); }
+.popular-card-top { display: flex; justify-content: space-between; align-items: center; }
+.popular-brand { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.popular-tier { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; padding: 0.12rem 0.4rem; border-radius: 3px; }
+.popular-tier--premium { background: #fef3c7; color: #92400e; }
+.popular-tier--mid { background: #dbeafe; color: #1d4ed8; }
+.popular-tier--economy { background: #f3f4f6; color: #4b5563; }
+.popular-name { font-size: 1rem; font-weight: 800; margin: 0; line-height: 1.25; }
+.popular-scores { display: flex; flex-direction: column; gap: 0.25rem; }
+.popular-score-row { display: flex; align-items: center; gap: 0.4rem; }
+.popular-score-label { font-size: 0.65rem; color: var(--muted); width: 3.5rem; flex-shrink: 0; }
+.popular-bar-track { flex: 1; height: 4px; background: #f3f4f6; border-radius: 2px; overflow: hidden; }
+.popular-bar-fill { height: 100%; border-radius: 2px; }
+.popular-score-val { font-size: 0.65rem; font-weight: 700; width: 1.5rem; text-align: right; }
+.popular-arrow { font-size: 0.78rem; font-weight: 700; color: var(--red); margin-top: auto; }
 
 /* ── FAQ ───────────────────────────────────────────────── */
 .home-faq { padding: 3rem 0; }
