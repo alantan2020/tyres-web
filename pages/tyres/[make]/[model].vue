@@ -391,6 +391,7 @@ const siblingCars = Object.entries(allCars)
         </button>
       </div>
 
+      <TyreRecommend :size="activeTab" :make="car.make" :model="car.model" />
       <TyreLiveInventory :size="activeTab" :make="car.make" :model="car.model" />
     </section>
 
