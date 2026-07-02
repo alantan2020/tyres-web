@@ -15,9 +15,6 @@ const bottomWaHref = `https://wa.me/${WA}?text=${encodeURIComponent("Hi SGCarPas
 const topPicks = TOP_PICKS.map(s => getProductBySlug(s)).filter(Boolean)
 const barColor = (v: number | null) => !v ? '#e5e7eb' : v >= 85 ? '#16a34a' : v >= 70 ? '#ca8a04' : '#dc2626'
 
-// Tread marks for the hero tyre illustration
-const treadMarks = Array.from({ length: 32 }, (_, i) => i * (360 / 32))
-
 useSeoMeta({
   title: 'Tyre Size & Price Guide for Singapore Cars | SGCarPass',
   description: `Find the correct tyre size and best price for your car in Singapore. ${totalModels} car models covered — Toyota, Honda and more. Compare Michelin vs Bridgestone. From $${priceFrom} installed. WhatsApp for a quote.`,
@@ -107,50 +104,10 @@ useHead({
       </div>
 
       <div class="hero-visual" aria-hidden="true">
-        <svg viewBox="0 0 440 440" class="tyre-svg">
-          <defs>
-            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="var(--red)" stop-opacity="0.55"/>
-              <stop offset="60%" stop-color="var(--red-deep)" stop-opacity="0.22"/>
-              <stop offset="100%" stop-color="var(--red)" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="rim" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#e8e8ea"/>
-              <stop offset="50%" stop-color="#a6a6ac"/>
-              <stop offset="100%" stop-color="#6d6d74"/>
-            </linearGradient>
-          </defs>
-
-          <circle cx="220" cy="220" r="210" fill="url(#glow)"/>
-
-          <!-- tyre body -->
-          <circle cx="220" cy="220" r="175" fill="#1c1816" stroke="#332b27" stroke-width="2"/>
-          <!-- tread marks -->
-          <g stroke="#3a322e" stroke-width="6" stroke-linecap="round">
-            <line
-              v-for="deg in treadMarks" :key="deg"
-              :x1="220 + 158 * Math.cos(deg * Math.PI / 180)"
-              :y1="220 + 158 * Math.sin(deg * Math.PI / 180)"
-              :x2="220 + 172 * Math.cos(deg * Math.PI / 180)"
-              :y2="220 + 172 * Math.sin(deg * Math.PI / 180)"
-            />
-          </g>
-          <!-- sidewall -->
-          <circle cx="220" cy="220" r="128" fill="#100d0c"/>
-          <!-- rim -->
-          <circle cx="220" cy="220" r="112" fill="url(#rim)"/>
-          <circle cx="220" cy="220" r="98" fill="#1c1816"/>
-          <!-- spokes -->
-          <g fill="url(#rim)">
-            <path
-              v-for="i in 7" :key="i"
-              :transform="`rotate(${i * (360/7)} 220 220)`"
-              d="M220 220 L232 128 A16 16 0 0 0 208 128 Z"
-            />
-          </g>
-          <circle cx="220" cy="220" r="34" fill="#0f0d0c" stroke="var(--red)" stroke-width="3"/>
-          <circle cx="220" cy="220" r="10" fill="url(#rim)"/>
-        </svg>
+        <div class="tyre-photo-frame">
+          <img src="/hero/tyre-hero.jpg" alt="" class="tyre-photo" width="1611" height="2133" />
+          <div class="tyre-photo-glow"/>
+        </div>
 
         <div class="hero-badge">
           <span class="hero-badge-label">Trusted sizing for</span>
@@ -468,7 +425,26 @@ useHead({
   align-items: center;
   justify-content: center;
 }
-.tyre-svg { width: 100%; max-width: 380px; height: auto; }
+.tyre-photo-frame {
+  position: relative;
+  width: 100%; max-width: 360px;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+}
+.tyre-photo {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9) contrast(1.08);
+}
+.tyre-photo-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 65% 25%, rgba(227,24,55,0.55), transparent 62%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
 .hero-badge {
   position: absolute;
   bottom: 6%;
