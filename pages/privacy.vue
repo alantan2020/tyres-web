@@ -3,7 +3,7 @@ const BASE_URL = 'https://tyres.sgcarpass.com'
 
 useSeoMeta({
   title: 'Privacy Policy | SGCarPass',
-  description: 'How SGCarPass (operated by TYS Auto) collects, uses, and protects your data on our WhatsApp tyre and battery service assistant, in accordance with Singapore PDPA.',
+  description: 'How SGCarPass, a platform operated by SG Lube Company Pte Ltd connecting car owners with partner tyre workshops, collects, uses, and protects your data, in accordance with Singapore PDPA.',
   robots: 'noindex, follow',
   ogUrl: BASE_URL + '/privacy',
 })
@@ -19,7 +19,7 @@ useHead({
       <h1>Privacy Policy</h1>
       <p class="meta">SGCarPass &nbsp;|&nbsp; Effective: 1 June 2026 &nbsp;|&nbsp; Last updated: 3 July 2026</p>
 
-      <p>SGCarPass (operated by <strong>TYS Auto</strong>, "we", "us") operates a WhatsApp-based tyre and battery service assistant. This policy explains what personal data we collect, why we collect it, and how we protect it, in accordance with Singapore's <strong>Personal Data Protection Act 2012 (PDPA)</strong>.</p>
+      <p>SGCarPass (operated by <strong>SG Lube Company Pte Ltd</strong>, "we", "us") is a platform that connects car owners with a network of independent partner tyre-fitting workshops, via a WhatsApp-based tyre and battery service assistant. We do not perform tyre installations ourselves — installations and payment for the tyres/service are handled directly by the partner workshop matched to your booking. This policy explains what personal data we collect, why we collect it, and how we protect it, in accordance with Singapore's <strong>Personal Data Protection Act 2012 (PDPA)</strong>.</p>
 
       <h2>1. Data We Collect</h2>
       <ul>
@@ -54,15 +54,18 @@ useHead({
       </ul>
 
       <h2>5. Data Security</h2>
-      <p>All data is stored on servers in Singapore. Access is restricted to authorised TYS Auto personnel. We use industry-standard encryption in transit (TLS) and at rest.</p>
+      <p>All data is stored on servers in Singapore. Access is restricted to authorised SG Lube Company Pte Ltd personnel. We use industry-standard encryption in transit (TLS) and at rest.</p>
 
-      <h2>6. Third-Party Services</h2>
+      <h2>6. Sharing With Partner Workshops</h2>
+      <p>When you book a tyre installation, we share the details needed to fulfil your booking — your WhatsApp number, vehicle information, and order details (tyre, quantity, deposit status) — with the <strong>specific partner workshop</strong> matched to your booking, so they can contact you to arrange payment and installation. We do not share your data with any workshop you have not been matched to, and partner workshops may only use it to fulfil your booking.</p>
+
+      <h2>7. Third-Party Services</h2>
       <p>We use <strong>Meta (WhatsApp Business API)</strong> to deliver messages. Messages sent via WhatsApp are also subject to <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">Meta's Privacy Policy</a>. We may use an AI language model (e.g. DeepSeek or similar) to generate responses — only your query text and anonymised vehicle info is sent; no personally identifiable information beyond what you voluntarily share in the message.</p>
 
-      <h2>7. Contact Us</h2>
+      <h2>8. Contact Us</h2>
       <p>For any data enquiries or requests, WhatsApp us directly or email: <a href="mailto:privacy@sgcarpass.com">privacy@sgcarpass.com</a></p>
 
-      <p class="footer-note">SGCarPass · Operated by TYS Auto · Singapore · UEN available on request</p>
+      <p class="footer-note">SGCarPass · Operated by SG Lube Company Pte Ltd · Singapore · UEN available on request</p>
     </div>
   </div>
 </template>
