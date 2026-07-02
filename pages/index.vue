@@ -15,6 +15,9 @@ const bottomWaHref = `https://wa.me/${WA}?text=${encodeURIComponent("Hi SGCarPas
 const topPicks = TOP_PICKS.map(s => getProductBySlug(s)).filter(Boolean)
 const barColor = (v: number | null) => !v ? '#e5e7eb' : v >= 85 ? '#16a34a' : v >= 70 ? '#ca8a04' : '#dc2626'
 
+// Tread marks for the hero tyre illustration
+const treadMarks = Array.from({ length: 32 }, (_, i) => i * (360 / 32))
+
 useSeoMeta({
   title: 'Tyre Size & Price Guide for Singapore Cars | SGCarPass',
   description: `Find the correct tyre size and best price for your car in Singapore. ${totalModels} car models covered — Toyota, Honda and more. Compare Michelin vs Bridgestone. From $${priceFrom} installed. WhatsApp for a quote.`,
@@ -75,19 +78,7 @@ useHead({
 
   <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
   <section class="hero">
-    <div class="hero-bg-ring" aria-hidden="true">
-      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="200" cy="200" r="195" stroke="white" stroke-opacity="0.04" stroke-width="2"/>
-        <circle cx="200" cy="200" r="155" stroke="white" stroke-opacity="0.06" stroke-width="2"/>
-        <circle cx="200" cy="200" r="115" stroke="white" stroke-opacity="0.05" stroke-width="12"/>
-        <circle cx="200" cy="200" r="70"  stroke="white" stroke-opacity="0.08" stroke-width="2"/>
-        <circle cx="200" cy="200" r="30"  fill="white" fill-opacity="0.04"/>
-        <line x1="200" y1="5"   x2="200" y2="85"  stroke="white" stroke-opacity="0.05" stroke-width="2"/>
-        <line x1="200" y1="315" x2="200" y2="395" stroke="white" stroke-opacity="0.05" stroke-width="2"/>
-        <line x1="5"   y1="200" x2="85"  y2="200" stroke="white" stroke-opacity="0.05" stroke-width="2"/>
-        <line x1="315" y1="200" x2="395" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="2"/>
-      </svg>
-    </div>
+    <div class="hero-glow" aria-hidden="true" />
 
     <div class="container hero-inner">
       <div class="hero-content">
@@ -111,8 +102,82 @@ useHead({
             </svg>
             WhatsApp for Quote
           </a>
-          <NuxtLink to="/tyres/" class="btn-browse">Browse by car model →</NuxtLink>
+          <NuxtLink to="/tyres/" class="btn-outline">Browse by car model →</NuxtLink>
         </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 440 440" class="tyre-svg">
+          <defs>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="var(--red)" stop-opacity="0.55"/>
+              <stop offset="60%" stop-color="var(--red-deep)" stop-opacity="0.22"/>
+              <stop offset="100%" stop-color="var(--red)" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="rim" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#e8e8ea"/>
+              <stop offset="50%" stop-color="#a6a6ac"/>
+              <stop offset="100%" stop-color="#6d6d74"/>
+            </linearGradient>
+          </defs>
+
+          <circle cx="220" cy="220" r="210" fill="url(#glow)"/>
+
+          <!-- tyre body -->
+          <circle cx="220" cy="220" r="175" fill="#1c1816" stroke="#332b27" stroke-width="2"/>
+          <!-- tread marks -->
+          <g stroke="#3a322e" stroke-width="6" stroke-linecap="round">
+            <line
+              v-for="deg in treadMarks" :key="deg"
+              :x1="220 + 158 * Math.cos(deg * Math.PI / 180)"
+              :y1="220 + 158 * Math.sin(deg * Math.PI / 180)"
+              :x2="220 + 172 * Math.cos(deg * Math.PI / 180)"
+              :y2="220 + 172 * Math.sin(deg * Math.PI / 180)"
+            />
+          </g>
+          <!-- sidewall -->
+          <circle cx="220" cy="220" r="128" fill="#100d0c"/>
+          <!-- rim -->
+          <circle cx="220" cy="220" r="112" fill="url(#rim)"/>
+          <circle cx="220" cy="220" r="98" fill="#1c1816"/>
+          <!-- spokes -->
+          <g fill="url(#rim)">
+            <path
+              v-for="i in 7" :key="i"
+              :transform="`rotate(${i * (360/7)} 220 220)`"
+              d="M220 220 L232 128 A16 16 0 0 0 208 128 Z"
+            />
+          </g>
+          <circle cx="220" cy="220" r="34" fill="#0f0d0c" stroke="var(--red)" stroke-width="3"/>
+          <circle cx="220" cy="220" r="10" fill="url(#rim)"/>
+        </svg>
+
+        <div class="hero-badge">
+          <span class="hero-badge-label">Trusted sizing for</span>
+          <span class="hero-badge-num">{{ totalModels }}+</span>
+          <span class="hero-badge-label">car models</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STAT BAND ─────────────────────────────────────────────────────────── -->
+  <section class="stat-band">
+    <div class="container stat-grid">
+      <div class="stat-item">
+        <span class="stat-eyebrow">mapped &amp; verified</span>
+        <span class="stat-num">{{ totalModels }}+</span>
+        <span class="stat-label">Car Models</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-eyebrow">every major marque</span>
+        <span class="stat-num">{{ totalMakes }}</span>
+        <span class="stat-label">Car Makes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-eyebrow">real humans, no bots</span>
+        <span class="stat-num">&lt;5</span>
+        <span class="stat-label">Min. Reply</span>
       </div>
     </div>
   </section>
@@ -125,11 +190,10 @@ useHead({
 
         <div class="how-step">
           <div class="how-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
             </svg>
           </div>
-          <div class="how-num">01</div>
           <h3 class="how-step-title">Find Your Car</h3>
           <p class="how-step-desc">Browse by make and model, or send us your car plate on WhatsApp. We'll look up the correct tyre size instantly.</p>
         </div>
@@ -138,11 +202,10 @@ useHead({
 
         <div class="how-step">
           <div class="how-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
             </svg>
           </div>
-          <div class="how-num">02</div>
           <h3 class="how-step-title">Compare Tyres</h3>
           <p class="how-step-desc">See independent performance scores for every brand — wet grip, comfort, wear life. Pick what fits your driving style and budget.</p>
         </div>
@@ -151,11 +214,10 @@ useHead({
 
         <div class="how-step">
           <div class="how-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             </svg>
           </div>
-          <div class="how-num">03</div>
           <h3 class="how-step-title">Get Your Quote</h3>
           <p class="how-step-desc">WhatsApp us your choice. We confirm stock, give you today's best price, and arrange same-day fitting if needed.</p>
         </div>
@@ -238,7 +300,7 @@ useHead({
               <span class="pbar-val">{{ prod!.scores.comfort ?? '—' }}</span>
             </div>
           </div>
-          <span class="popular-cta">View & Quote →</span>
+          <span class="popular-cta">Get Quote →</span>
         </NuxtLink>
       </div>
     </div>
@@ -246,37 +308,26 @@ useHead({
 
   <!-- ── WHY SGCARPASS ──────────────────────────────────────────────────────── -->
   <section class="why-section">
-    <div class="container">
-      <h2 class="why-title">Why SGCarPass?</h2>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
-          </div>
-          <h3 class="why-card-title">{{ totalModels }}+ Car Models</h3>
-          <p class="why-card-desc">From Toyota Vios to BMW 5 Series — OEM tyre size confirmed for every generation sold in Singapore.</p>
+    <div class="container why-grid-outer">
+      <ScrollReveal class="why-copy">
+        <span class="why-eyebrow">Why SGCarPass</span>
+        <h2 class="why-title">Real Prices.<br>No Showroom Games.</h2>
+        <ul class="why-checklist">
+          <li><span class="why-check">✓</span> {{ totalModels }}+ car models, OEM size confirmed</li>
+          <li><span class="why-check">✓</span> Independent scores, not brand marketing</li>
+          <li><span class="why-check">✓</span> A real person replies — no call centres</li>
+          <li><span class="why-check">✓</span> Quote in minutes, not "we'll call you back"</li>
+        </ul>
+        <a :href="heroWaHref" target="_blank" class="btn-outline btn-outline--onDark">WhatsApp Us →</a>
+      </ScrollReveal>
+
+      <ScrollReveal :delay="150" class="why-visual">
+        <div class="chat-mock">
+          <div class="chat-bubble chat-bubble--in">Hi, need 215/55R17 for my Camry, best price?</div>
+          <div class="chat-bubble chat-bubble--out">Continental UC6 from $118 installed. In stock today 👍</div>
+          <div class="chat-timestamp">replied in 2 min</div>
         </div>
-        <div class="why-card">
-          <div class="why-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <h3 class="why-card-title">Independent Scores</h3>
-          <p class="why-card-desc">Performance data from TyreReviews.com — wet grip, comfort, wear life — not from the tyre manufacturers.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <h3 class="why-card-title">Fast WhatsApp Reply</h3>
-          <p class="why-card-desc">Send your car plate or model. Get a real price quote in minutes — no call centres, no automated bots.</p>
-        </div>
-      </div>
+      </ScrollReveal>
     </div>
   </section>
 
@@ -285,23 +336,15 @@ useHead({
     <div class="container">
       <p class="brands-label">Brands we carry</p>
       <div class="brands-row">
-        <NuxtLink to="/tyres/brands/michelin/"    class="brand-link">Michelin</NuxtLink>
-        <span class="brand-dot">·</span>
-        <NuxtLink to="/tyres/brands/bridgestone/" class="brand-link">Bridgestone</NuxtLink>
-        <span class="brand-dot">·</span>
-        <NuxtLink to="/tyres/brands/continental/" class="brand-link">Continental</NuxtLink>
-        <span class="brand-dot">·</span>
-        <NuxtLink to="/tyres/brands/goodyear/"    class="brand-link">Goodyear</NuxtLink>
-        <span class="brand-dot">·</span>
-        <NuxtLink to="/tyres/brands/pirelli/"     class="brand-link">Pirelli</NuxtLink>
-        <span class="brand-dot">·</span>
-        <NuxtLink to="/tyres/brands/yokohama/"    class="brand-link">Yokohama</NuxtLink>
-        <span class="brand-dot">·</span>
-        <NuxtLink to="/tyres/brands/dunlop/"      class="brand-link">Dunlop</NuxtLink>
-        <span class="brand-dot">·</span>
-        <NuxtLink to="/tyres/brands/hankook/"     class="brand-link">Hankook</NuxtLink>
-        <span class="brand-dot">·</span>
-        <NuxtLink to="/tyres/brands/"             class="brand-link brand-link--more">+ more →</NuxtLink>
+        <NuxtLink to="/tyres/brands/michelin/"    class="brand-pill">Michelin</NuxtLink>
+        <NuxtLink to="/tyres/brands/bridgestone/" class="brand-pill">Bridgestone</NuxtLink>
+        <NuxtLink to="/tyres/brands/continental/" class="brand-pill">Continental</NuxtLink>
+        <NuxtLink to="/tyres/brands/goodyear/"    class="brand-pill">Goodyear</NuxtLink>
+        <NuxtLink to="/tyres/brands/pirelli/"     class="brand-pill">Pirelli</NuxtLink>
+        <NuxtLink to="/tyres/brands/yokohama/"    class="brand-pill">Yokohama</NuxtLink>
+        <NuxtLink to="/tyres/brands/dunlop/"      class="brand-pill">Dunlop</NuxtLink>
+        <NuxtLink to="/tyres/brands/hankook/"     class="brand-pill">Hankook</NuxtLink>
+        <NuxtLink to="/tyres/brands/"             class="brand-pill brand-pill--more">+ more →</NuxtLink>
       </div>
     </div>
   </section>
@@ -331,10 +374,11 @@ useHead({
   <section class="bottom-cta">
     <div class="container bottom-cta-inner">
       <div>
-        <p class="bottom-cta-title">Can't find your car model?</p>
+        <span class="bottom-cta-eyebrow">Can't find your car?</span>
+        <p class="bottom-cta-title">We still know your tyre size.</p>
         <p class="bottom-cta-sub">We service 100+ models. WhatsApp us your car and we'll get you a quote.</p>
       </div>
-      <a :href="bottomWaHref" target="_blank" class="btn-wa">
+      <a :href="bottomWaHref" target="_blank" class="btn-wa btn-wa--lg">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
@@ -351,18 +395,26 @@ useHead({
   position: relative;
   background: var(--ink);
   color: #fff;
-  padding: 4rem 0 3.5rem;
+  padding: 4.5rem 0 4rem;
   overflow: hidden;
 }
-.hero-bg-ring {
+.hero-glow {
   position: absolute;
-  right: -80px; top: 50%;
-  transform: translateY(-50%);
-  width: 420px; height: 420px;
+  inset: 0;
+  background: radial-gradient(ellipse 800px 500px at 78% 45%, rgba(227,24,55,0.16), transparent 70%);
   pointer-events: none;
-  opacity: 1;
 }
-.hero-inner { position: relative; z-index: 1; }
+.hero-inner {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero-inner { grid-template-columns: 1.1fr 0.9fr; }
+  .container.hero-inner { max-width: 1080px; }
+}
 .hero-content { max-width: 560px; }
 
 .hero-eyebrow {
@@ -409,26 +461,98 @@ useHead({
   display: flex; align-items: center; flex-wrap: wrap; gap: 1rem;
 }
 
+/* Hero tyre illustration */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tyre-svg { width: 100%; max-width: 380px; height: auto; }
+.hero-badge {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: baseline; gap: 0.35rem;
+  background: rgba(20,16,14,0.85);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.hero-badge-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--red); }
+.hero-badge-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); }
+@media (max-width: 899px) {
+  .hero-visual { max-width: 280px; margin: 0 auto; }
+}
+
 /* ── BUTTONS ─────────────────────────────────────────────────────────────── */
 .btn-wa {
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: #25D366; color: #fff;
-  padding: 0.8rem 1.5rem; border-radius: 6px;
+  padding: 0.85rem 1.6rem; border-radius: 50px;
   font-weight: 700; font-size: 0.95rem;
-  text-decoration: none; transition: opacity .15s;
+  text-decoration: none; transition: transform .15s, box-shadow .15s;
   white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.25);
 }
-.btn-wa:hover { opacity: 0.88; }
-.btn-wa--sm { padding: 0.6rem 1.1rem; font-size: 0.85rem; }
+.btn-wa:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
+.btn-wa--sm { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+.btn-wa--lg { padding: 1rem 2rem; font-size: 1rem; }
 
-.btn-browse {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.55);
+.btn-outline {
+  display: inline-flex; align-items: center;
+  padding: 0.85rem 1.6rem; border-radius: 50px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  font-size: 0.9rem; font-weight: 700;
+  color: rgba(255,255,255,0.8);
   text-decoration: none;
-  transition: color .15s;
+  transition: border-color .15s, color .15s;
 }
-.btn-browse:hover { color: #fff; }
+.btn-outline:hover { border-color: var(--red); color: #fff; }
+.btn-outline--onDark { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); }
+.btn-outline--onDark:hover { border-color: var(--red); }
+
+/* ── STAT BAND (signature) ──────────────────────────────────────────────── */
+.stat-band {
+  background: linear-gradient(115deg, var(--red-deep) 0%, var(--ink) 65%);
+  padding: 2.25rem 0;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+.stat-item { display: flex; flex-direction: column; align-items: center; }
+.stat-eyebrow {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.35rem;
+}
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  color: #fff;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.6);
+  margin-top: 0.35rem;
+}
+@media (max-width: 560px) {
+  .stat-grid { gap: 0.75rem; }
+  .stat-eyebrow { display: none; }
+}
 
 /* ── HOW IT WORKS ────────────────────────────────────────────────────────── */
 .how-section {
@@ -453,16 +577,10 @@ useHead({
 .how-icon {
   display: inline-flex; align-items: center; justify-content: center;
   width: 56px; height: 56px;
-  background: var(--cream); border-radius: 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
   color: var(--red);
-  margin-bottom: 0.75rem;
-}
-.how-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.75rem; font-weight: 800;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.85rem;
 }
 .how-step-title {
   font-size: 1rem; font-weight: 800;
@@ -511,9 +629,9 @@ useHead({
   padding: 1rem 1.1rem;
   background: #fff; border: 1.5px solid var(--border); border-radius: 10px;
   text-decoration: none; color: var(--ink);
-  transition: border-color .15s, box-shadow .15s;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
 }
-.make-tile:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(227,24,55,.08); }
+.make-tile:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(227,24,55,.08); transform: translateY(-2px); }
 .make-tile--more { background: var(--cream); }
 .make-tile-name { font-size: 0.95rem; font-weight: 800; }
 .make-tile-count { font-size: 0.75rem; color: var(--muted); }
@@ -523,7 +641,7 @@ useHead({
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
   background: var(--ink); color: #fff;
-  padding: 1.25rem 1.5rem; border-radius: 12px;
+  padding: 1.25rem 1.5rem; border-radius: 16px;
 }
 .plate-bar-text { display: flex; flex-direction: column; gap: 0.15rem; }
 .plate-bar-text strong { font-size: 0.95rem; }
@@ -543,12 +661,12 @@ useHead({
   gap: 0.85rem;
 }
 .popular-card {
-  background: #fff; border: 1.5px solid var(--border); border-radius: 12px;
+  background: #fff; border: 1.5px solid var(--border); border-radius: 14px;
   padding: 1.25rem; text-decoration: none; color: var(--ink);
   display: flex; flex-direction: column; gap: 0.75rem;
-  transition: border-color .15s, box-shadow .15s;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
 }
-.popular-card:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(227,24,55,.1); }
+.popular-card:hover { border-color: var(--red); box-shadow: 0 8px 20px rgba(227,24,55,.12); transform: translateY(-3px); }
 .popular-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
 .popular-brand-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); display: block; margin-bottom: 0.2rem; }
 .popular-prod-name { font-size: 1.05rem; font-weight: 800; margin: 0; line-height: 1.2; }
@@ -563,33 +681,61 @@ useHead({
 .pbar-track { flex: 1; height: 5px; background: #f3f4f6; border-radius: 3px; overflow: hidden; }
 .pbar-fill { height: 100%; border-radius: 3px; }
 .pbar-val { font-size: 0.68rem; font-weight: 700; width: 1.5rem; text-align: right; }
-.popular-cta { font-size: 0.8rem; font-weight: 700; color: var(--red); margin-top: auto; }
+.popular-cta {
+  font-size: 0.78rem; font-weight: 800; color: #fff;
+  margin-top: auto; background: var(--red);
+  padding: 0.5rem 0.9rem; border-radius: 50px;
+  text-align: center; width: fit-content;
+}
 
 /* ── WHY SGCARPASS ───────────────────────────────────────────────────────── */
-.why-section { padding: 3rem 0; background: #fff; }
-.why-title { font-size: 1.4rem; font-weight: 900; margin: 0 0 1.75rem; }
-.why-grid {
+.why-section { padding: 4rem 0; background: var(--ink); color: #fff; }
+.why-grid-outer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
 }
-.why-card {
-  padding: 1.5rem;
-  border: 1.5px solid var(--border); border-radius: 12px;
-  background: var(--cream);
+@media (min-width: 860px) { .why-grid-outer { grid-template-columns: 1.1fr 0.9fr; } }
+.why-eyebrow {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 0.95rem; color: var(--red);
 }
-.why-icon {
+.why-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  font-weight: 900; text-transform: uppercase; line-height: 1.05;
+  margin: 0.5rem 0 1.5rem;
+}
+.why-checklist { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.85rem; }
+.why-checklist li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.95rem; color: rgba(255,255,255,0.82); }
+.why-check {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px;
-  background: #fff; border-radius: 10px;
-  color: var(--red); margin-bottom: 0.85rem;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(227,24,55,0.15); color: var(--red);
+  font-size: 0.8rem; font-weight: 800; flex-shrink: 0;
 }
-.why-card-title { font-size: 1rem; font-weight: 800; margin: 0 0 0.4rem; }
-.why-card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+.why-visual { display: flex; justify-content: center; }
+.chat-mock {
+  background: #0f0d0c;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 1.5rem;
+  width: 100%; max-width: 340px;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.chat-bubble {
+  padding: 0.65rem 0.9rem; border-radius: 14px;
+  font-size: 0.85rem; line-height: 1.4; max-width: 85%;
+}
+.chat-bubble--in { background: #26211f; color: rgba(255,255,255,0.85); align-self: flex-start; border-bottom-left-radius: 4px; }
+.chat-bubble--out { background: #1f6b3a; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.chat-timestamp { font-size: 0.7rem; color: rgba(255,255,255,0.35); text-align: right; margin-top: 0.2rem; }
 
 /* ── BRANDS ──────────────────────────────────────────────────────────────── */
 .brands-section {
-  padding: 1.5rem 0;
+  padding: 2rem 0;
   background: var(--cream);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -597,13 +743,18 @@ useHead({
 .brands-label {
   font-size: 0.7rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.12em;
-  color: var(--muted); margin: 0 0 0.6rem;
+  color: var(--muted); margin: 0 0 0.85rem;
 }
-.brands-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.5rem; }
-.brand-link { font-size: 0.9rem; font-weight: 700; color: var(--ink); text-decoration: none; transition: color .12s; }
-.brand-link:hover { color: var(--red); }
-.brand-link--more { color: var(--muted); font-size: 0.82rem; }
-.brand-dot { color: var(--border); }
+.brands-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.brand-pill {
+  font-size: 0.85rem; font-weight: 700; color: var(--ink);
+  text-decoration: none; padding: 0.45rem 0.95rem;
+  border: 1.5px solid var(--border); border-radius: 50px;
+  background: #fff;
+  transition: border-color .15s, color .15s;
+}
+.brand-pill:hover { border-color: var(--red); color: var(--red); }
+.brand-pill--more { color: var(--muted); border-style: dashed; }
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────── */
 .faq-section { padding: 3rem 0; }
@@ -622,11 +773,22 @@ details[open] .faq-q::after { transform: rotate(45deg); }
 .faq-a { margin: 0 0 1rem; color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
 
 /* ── BOTTOM CTA ──────────────────────────────────────────────────────────── */
-.bottom-cta { background: var(--ink); color: #fff; padding: 2.5rem 0; }
-.bottom-cta-inner { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
-.bottom-cta-title { font-size: 1.1rem; font-weight: 800; margin: 0 0 0.2rem; }
+.bottom-cta {
+  background: linear-gradient(115deg, var(--ink) 0%, var(--red-deep) 100%);
+  color: #fff; padding: 3rem 0;
+}
+.bottom-cta-inner { display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+.bottom-cta-eyebrow {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 0.95rem; color: rgba(255,255,255,0.6);
+}
+.bottom-cta-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 900;
+  text-transform: uppercase; margin: 0.3rem 0 0.4rem;
+}
 .bottom-cta-sub { margin: 0; color: rgba(255,255,255,0.55); font-size: 0.875rem; }
-@media (min-width: 600px) {
+@media (min-width: 700px) {
   .bottom-cta-inner { flex-direction: row; align-items: center; justify-content: space-between; }
 }
 </style>

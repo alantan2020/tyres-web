@@ -1,13 +1,14 @@
 :root {
-  --red:    #E31837;
-  --gold:   #C9962A;
-  --blue:   #1a56db;
-  --green:  #15803d;
-  --cream:  #F5F1E8;
-  --ink:    #1A1719;
-  --muted:  #6B6470;
-  --border: rgba(26, 23, 25, 0.09);
-  --dark:   #0F0F12;
+  --red:      #E31837;
+  --red-deep: #6E0F1E;
+  --gold:     #C9962A;
+  --blue:     #1a56db;
+  --green:    #15803d;
+  --cream:    #F5F1E8;
+  --ink:      #1A1719;
+  --muted:    #6B6470;
+  --border:   rgba(26, 23, 25, 0.09);
+  --dark:     #0F0F12;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
